@@ -2,4 +2,4 @@
 LPmud driver on Ethereum.
 
 ## License
-See: [https://github.com/twinsant/ethos](https://github.com/twinsant/ethos)
+See: [https://github.com/fluffos/fluffos/blob/master/Copyright](https://github.com/fluffos/fluffos/blob/master/Copyright)
