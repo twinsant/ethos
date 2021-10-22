@@ -9,7 +9,7 @@ LPmud driver on Ethereum. #metaverse
 
 ### Identity
 
-* NFT(ERC271) Username
+* NFT(ERC721) Username
 * NFT Avatar
 
 ### Variety
