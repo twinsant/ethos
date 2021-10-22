@@ -24,7 +24,7 @@ LPmud driver on Ethereum. #metaverse
 
 ### Economy
 
-* ERC20 Token
+* ERC20 Token/ERC1155
 * Market Room
 
 ### Civility
