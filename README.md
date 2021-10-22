@@ -13,6 +13,7 @@ LPmud driver on Ethereum. #metaverse
 
 ### Variety
 
+* Wizard Role
 * LPC Editor
 
 ### Economy
