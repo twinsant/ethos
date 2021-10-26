@@ -1,5 +1,5 @@
 # EthOS
-[LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on Ethereum. #metaverse
+[LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #metaverse
 
 ## Architecture
 
@@ -10,6 +10,7 @@
 ### Identity
 
 * NFT(ERC721) Username
+  - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
 ### Variety
