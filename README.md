@@ -1,5 +1,5 @@
 # EthOS
-LPmud driver on Ethereum. #metaverse
+[LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on Ethereum. #metaverse
 
 ## Architecture
 
@@ -15,7 +15,8 @@ LPmud driver on Ethereum. #metaverse
 ### Variety
 
 * Wizard Role
-* LPC Editor
+* [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
+  - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
 
 ### Anywere
 
