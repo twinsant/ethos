@@ -18,6 +18,7 @@
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
+  - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
 ### Anywere
 
