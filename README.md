@@ -34,6 +34,7 @@
 
 * The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics
 * The Great Game: The Emergence of Wall Street as a World Power
+* [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
 ### Civility
 
