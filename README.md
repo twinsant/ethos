@@ -33,6 +33,7 @@
 #### Ref books
 
 * The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics
+* The Great Game: The Emergence of Wall Street as a World Power
 
 ### Civility
 
