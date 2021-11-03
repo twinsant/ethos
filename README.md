@@ -13,6 +13,22 @@
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
+### Friends
+
+#### Refbooks
+
+* Human Evolution
+
+### Immersive
+
+#### Ref books
+
+* Hooked
+* Designing with the mind in mind
+* The element of user experience
+
+### Low Friction
+
 ### Variety
 
 * Wizard Role
@@ -32,8 +48,12 @@
 
 #### Ref books
 
+* Numbers and The making of us
+* Scale
+* Money changes everything
 * The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics
 * The Great Game: The Emergence of Wall Street as a World Power
+* Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
 ### Civility
@@ -43,6 +63,9 @@
 #### Ref books
 
 * The Crowd: A Study of the Popular Mind
+* Truth
+* The timeless way of building
+* Favor and face: Power game of chinese
 
 
 ## License
