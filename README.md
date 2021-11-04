@@ -9,6 +9,7 @@
 
 ### Identity
 
+* MetaMask
 * NFT(ERC721) Username
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
