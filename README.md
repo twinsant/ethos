@@ -29,6 +29,8 @@
 
 ### Low Friction
 
+* 5G/6G
+
 ### Variety
 
 * Wizard Role
