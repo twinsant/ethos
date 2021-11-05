@@ -71,6 +71,7 @@
 * The timeless way of building
 * Favor and face: Power game of chinese
 * The republic of pirates
+* 《中国历代政治得失》
 
 
 ## License
