@@ -51,6 +51,7 @@
 
 #### Ref books
 
+* Sapiens: brief history of humankind
 * Numbers and The making of us
 * Scale
 * Money changes everything
@@ -69,6 +70,7 @@
 * Truth
 * The timeless way of building
 * Favor and face: Power game of chinese
+* The republic of privates
 
 
 ## License
