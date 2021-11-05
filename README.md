@@ -30,7 +30,7 @@
 
 ### Low Friction
 
-* 5G/6G
+* 5G/6G market shares
 
 ### Variety
 
