@@ -70,7 +70,7 @@
 * Truth
 * The timeless way of building
 * Favor and face: Power game of chinese
-* The republic of privates
+* The republic of pirates
 
 
 ## License
