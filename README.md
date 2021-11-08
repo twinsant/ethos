@@ -7,20 +7,20 @@
 
 ## Roadmap
 
-### Identity
+### Identity/OpenID
 
-* MetaMask
+* MetaMask connect
 * NFT(ERC721) Username
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
-### Friends
+### Friends/Social
 
 #### Refbooks
 
 * Human Evolution
 
-### Immersive
+### Immersive/VR
 
 #### Ref books
 
@@ -28,7 +28,7 @@
 * **Designing with the mind in mind**
 * The element of user experience
 
-### Low Friction
+### Low Friction/Sockets
 
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
@@ -50,7 +50,7 @@
 * Android App
 * H5
 
-### Digital Economy
+### Digital Economy/Token
 
 * ERC20 Token/ERC1155
 * Market Room
