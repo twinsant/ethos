@@ -25,14 +25,19 @@
 #### Ref books
 
 * Hooked
-* Designing with the mind in mind
+* **Designing with the mind in mind**
 * The element of user experience
 
 ### Low Friction
 
 * 5G/6G market shares
+  * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
+  * 2022
+  * 2023
+  * 2024
+  * 2025: 50% Tipping Point
 
-### Variety
+### Variety/UGC+PGC
 
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
@@ -43,6 +48,7 @@
 
 * iOS App
 * Android App
+* H5
 
 ### Economy
 
@@ -51,11 +57,11 @@
 
 #### Ref books
 
-* Sapiens: brief history of humankind
+* **Sapiens: brief history of humankind**
 * Numbers and The making of us
 * Scale
 * Money changes everything
-* The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics
+* **The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics**
 * The Great Game: The Emergence of Wall Street as a World Power
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
@@ -71,7 +77,7 @@
 * The timeless way of building
 * Favor and face: Power game of chinese
 * The republic of pirates
-* 《中国历代政治得失》
+* **《中国历代政治得失》**
 
 
 ## License
