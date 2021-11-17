@@ -9,7 +9,7 @@
 
 ### Identity/OpenID
 
-* [SIWE](https://www.coindesk.com/policy/2021/10/08/sign-in-with-ethereum-is-coming/)/MetaMask connect
+* [SIWE](https://login.xyz/)/MetaMask connect
 * NFT(ERC721) Username
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
