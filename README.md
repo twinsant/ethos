@@ -14,13 +14,13 @@
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
-### Friends/Social
+### Friends/Social (Game)
 
 #### Refbooks
 
 * Human Evolution
 
-### Immersive/VR
+### Immersive/VR (AI)
 
 #### Ref books
 
@@ -44,13 +44,13 @@
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
-### Anywere/Internet
+### Anywere/Internet (IoT)
 
 * iOS App
 * Android App
 * H5
 
-### Digital Economy/Token
+### Digital Economy/Token (Blockchain)
 
 * ERC20 Token/ERC1155
 * Market Room
@@ -66,7 +66,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
-### Civility
+### Civility 
 
 * DAO
 
