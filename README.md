@@ -20,7 +20,7 @@
 
 * Human Evolution
 
-### 3. Immersive (AI+VR/AR/XR)
+### 3. Immersive (NLP/AI+VR/AR/XR)
 
 #### Ref books
 
