@@ -27,6 +27,7 @@
 * Hooked
 * **Designing with the mind in mind**
 * The element of user experience
+* Deep Learining
 
 ### 4. Low Friction (Network)
 
