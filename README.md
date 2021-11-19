@@ -7,20 +7,20 @@
 
 ## Roadmap
 
-### Identity (Blockchain)
+### 1. Identity (Blockchain)
 
 * [SIWE](https://login.xyz/)/MetaMask connect
 * NFT(ERC721) Username
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
-### Friends/Social (Game+Network)
+### 2. Friends/Social (Game+Network)
 
 #### Refbooks
 
 * Human Evolution
 
-### Immersive (AI+VR/AR/XR)
+### 3. Immersive (AI+VR/AR/XR)
 
 #### Ref books
 
@@ -28,7 +28,7 @@
 * **Designing with the mind in mind**
 * The element of user experience
 
-### Low Friction (Network)
+### 4. Low Friction (Network)
 
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
@@ -37,20 +37,20 @@
   * 2024
   * 2025: 50% Tipping Point
 
-### Variety (UGC+PGC)
+### 5. Variety (UGC+PGC)
 
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
-### Anywere/Internet (IoT)
+### 6. Anywere/Internet (IoT)
 
 * iOS App
 * Android App
 * H5
 
-### Digital Economy (Blockchain with Token)
+### 7. Digital Economy (Blockchain with Token)
 
 * ERC20 Token/ERC1155
 * Market Room
@@ -66,7 +66,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
-### Civility (Social Technology)
+### 8. Civility (Social Technology)
 
 * DAO
 
