@@ -7,20 +7,20 @@
 
 ## Roadmap
 
-### Identity/OpenID
+### Identity (Blockchain)
 
 * [SIWE](https://login.xyz/)/MetaMask connect
 * NFT(ERC721) Username
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * NFT Avatar
 
-### Friends/Social (Game)
+### Friends/Social (Game+Network)
 
 #### Refbooks
 
 * Human Evolution
 
-### Immersive/VR (AI)
+### Immersive (AI+VR/AR/XR)
 
 #### Ref books
 
@@ -28,7 +28,7 @@
 * **Designing with the mind in mind**
 * The element of user experience
 
-### Low Friction/Sockets
+### Low Friction (Network)
 
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
@@ -37,7 +37,7 @@
   * 2024
   * 2025: 50% Tipping Point
 
-### Variety/UGC+PGC
+### Variety (UGC+PGC)
 
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
@@ -50,7 +50,7 @@
 * Android App
 * H5
 
-### Digital Economy/Token (Blockchain)
+### Digital Economy (Blockchain with Token)
 
 * ERC20 Token/ERC1155
 * Market Room
@@ -66,7 +66,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
-### Civility 
+### Civility (Social Technology)
 
 * DAO
 
