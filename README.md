@@ -45,7 +45,7 @@
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
-### 6. Anywere/Internet (IoT)
+### 6. Anywere (Internet of Things)
 
 * iOS App
 * Android App
