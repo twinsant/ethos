@@ -10,9 +10,9 @@
 ### 1. Identity (Blockchain)
 
 * [SIWE](https://login.xyz/)/MetaMask connect
-* NFT(ERC721) Username
+* ENS
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
-* NFT Avatar
+* ENS Avatar
 
 ### 2. Friends/Social (Game+Network)
 
