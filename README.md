@@ -22,6 +22,7 @@
 
 ### 2. Friends/Social (Game+Network)
 
+* Ethereum Friend List(EFL)
 * Ethereum Message System(EMS)
 
 #### Refbooks
