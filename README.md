@@ -3,7 +3,8 @@
 
 ## Architecture
 
-<img width="823" alt="image" src="https://user-images.githubusercontent.com/299586/145743653-a06bdb78-cdd2-4a51-aaa1-45218b447084.png">
+<img width="797" alt="image" src="https://user-images.githubusercontent.com/299586/145743942-12e185c4-6f72-4ca4-8d01-c4976860608e.png">
+
 
 
 ## Roadmap
