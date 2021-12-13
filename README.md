@@ -9,6 +9,10 @@
 
 ## Roadmap
 
+* Phase 1: Identity + Friends + Variety + Digital Economy
+* Phase 2: Anywhere + Civility + Low Friction
+* Phase 3: Immersive
+
 ### 1. Identity (Blockchain)
 
 * [SIWE/EIP-4361](https://login.xyz/)/MetaMask connect
