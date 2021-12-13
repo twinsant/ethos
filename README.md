@@ -22,6 +22,8 @@
 
 ### 2. Friends/Social (Game+Network)
 
+* Ethereum Message System(EMS)
+
 #### Refbooks
 
 * Human Evolution
