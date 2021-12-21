@@ -56,7 +56,7 @@
 
 ### 6. Anywere (Internet of Things)
 
-* Mudlet
+* Discord
 * iOS App
 * Android App
 * H5
