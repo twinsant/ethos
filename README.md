@@ -1,4 +1,4 @@
-# EthOS
+# EthOS / Chinese Name: 灵境公社
 [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3
 
 ## Architecture
