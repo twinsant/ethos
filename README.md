@@ -18,7 +18,7 @@
 * [SIWE/EIP-4361](https://login.xyz/)/MetaMask connect
 * ENS
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
-* ENS Avatar
+* [ENS Profile](https://medium.com/the-ethereum-name-service/step-by-step-guide-to-setting-an-nft-as-your-ens-profile-avatar-3562d39567fc)
 
 ### 2. Friends/Social (Game+education)
 
