@@ -13,7 +13,7 @@
 * Phase 2: Anywhere + Civility + Low Friction
 * Phase 3: Immersive
 
-### 1. Identity (Blockchain)
+### 1. Identity (Blockchain NFT)
 
 * [SIWE/EIP-4361](https://login.xyz/)/MetaMask connect
 * ENS
@@ -38,7 +38,7 @@
 * The element of user experience
 * Deep Learining
 
-### 4. Low Friction (Network)
+### 4. Low Friction
 
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
