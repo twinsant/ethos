@@ -20,7 +20,7 @@
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * ENS Avatar
 
-### 2. Friends/Social (Game+Network)
+### 2. Friends/Social (Game+education)
 
 * Ethereum Friend List(EFL)
 * Ethereum Message System(EMS)
@@ -29,7 +29,7 @@
 
 * Human Evolution
 
-### 3. Immersive (NLP/AI+VR/AR/XR)
+### 3. Immersive (Interactive: NLP/AI+VR/AR/XR)
 
 #### Ref books
 
@@ -47,21 +47,21 @@
   * 2024
   * 2025: 50% Tipping Point
 
-### 5. Variety (UGC+PGC)
+### 5. Variety (AIGC+UGC+PGC)
 
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
-### 6. Anywere (Internet of Things)
+### 6. Anywere (internet of Things)
 
 * Discord
 * iOS App
 * Android App
 * H5
 
-### 7. Digital Economy (Blockchain with Token)
+### 7. Digital Economy (Blockchain with token)
 
 * ERC20 Token/ERC1155
 * Market Room
@@ -77,7 +77,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
-### 8. Civility (Social Technology)
+### 8. Civility (complex Network)
 
 * DAO
 
