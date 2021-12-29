@@ -1,4 +1,4 @@
-# EthOS
+# EthOS / Chinese Name: 灵境公社
 [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3
 
 ## Architecture
@@ -13,14 +13,14 @@
 * Phase 2: Anywhere + Civility + Low Friction
 * Phase 3: Immersive
 
-### 1. Identity (Blockchain)
+### 1. Identity (Blockchain NFT)
 
 * [SIWE/EIP-4361](https://login.xyz/)/MetaMask connect
 * ENS
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
-* ENS Avatar
+* [ENS Profile](https://medium.com/the-ethereum-name-service/step-by-step-guide-to-setting-an-nft-as-your-ens-profile-avatar-3562d39567fc)
 
-### 2. Friends/Social (Game+Network)
+### 2. Friends/Social (Game+education)
 
 * Ethereum Friend List(EFL)
 * Ethereum Message System(EMS)
@@ -29,7 +29,7 @@
 
 * Human Evolution
 
-### 3. Immersive (NLP/AI+VR/AR/XR)
+### 3. Immersive (Interactive: NLP/AI+VR/AR/XR)
 
 #### Ref books
 
@@ -38,7 +38,7 @@
 * The element of user experience
 * Deep Learining
 
-### 4. Low Friction (Network)
+### 4. Low Friction
 
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
@@ -47,21 +47,21 @@
   * 2024
   * 2025: 50% Tipping Point
 
-### 5. Variety (UGC+PGC)
+### 5. Variety (AIGC+UGC+PGC)
 
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
-### 6. Anywere (Internet of Things)
+### 6. Anywere (internet of Things)
 
-* Mudlet
+* Discord
 * iOS App
 * Android App
 * H5
 
-### 7. Digital Economy (Blockchain with Token)
+### 7. Digital Economy (Blockchain with token)
 
 * ERC20 Token/ERC1155
 * Market Room
@@ -77,7 +77,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 
-### 8. Civility (Social Technology)
+### 8. Civility (complex Network)
 
 * DAO
 
