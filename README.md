@@ -54,6 +54,9 @@
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
+#### Refs
+* [Linden Scripting Language](http://wiki.secondlife.com/wiki/LSL_Portal)
+
 ### 6. Anywere (internet of Things)
 
 * Discord
