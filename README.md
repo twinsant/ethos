@@ -66,7 +66,7 @@
 
 ### 7. Digital Economy (Blockchain with token)
 
-* ERC20 Token/ERC1155
+* WorkPoint: ERC20 Token/ERC1155
 * Market Room
 
 #### Ref books
