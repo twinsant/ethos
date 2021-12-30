@@ -79,6 +79,7 @@
 * The Great Game: The Emergence of Wall Street as a World Power
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
+* [工分制的制度经济学分析](https://www.cuhk.edu.hk/ics/21c/media/articles/c131-201104022.pdf)
 
 ### 8. Civility (complex Network)
 
