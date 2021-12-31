@@ -1,4 +1,4 @@
-# EthOS / Chinese Name: 灵境公社
+# EthOS / Chinese Name: 灵境公社(Meta Commune)
 [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3
 
 ## Architecture
@@ -54,6 +54,9 @@
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
   - [LPC tutorial(Chinese documents)](https://bbs.mud.ren/threads/3)
 
+#### Refs
+* [Linden Scripting Language](http://wiki.secondlife.com/wiki/LSL_Portal)
+
 ### 6. Anywere (internet of Things)
 
 * Discord
@@ -63,7 +66,7 @@
 
 ### 7. Digital Economy (Blockchain with token)
 
-* ERC20 Token/ERC1155
+* WorkPoint: ERC20 Token/ERC1155
 * Market Room
 
 #### Ref books
@@ -76,6 +79,7 @@
 * The Great Game: The Emergence of Wall Street as a World Power
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
+* [工分制的制度经济学分析](https://www.cuhk.edu.hk/ics/21c/media/articles/c131-201104022.pdf)
 
 ### 8. Civility (complex Network)
 
