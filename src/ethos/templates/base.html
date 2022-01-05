@@ -124,8 +124,8 @@
                 term.open(document.getElementById('terminal'));
                 term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
 
-                let ws = new WebSocket('wss://echo.websocket.events/.ws');
-                // let ws = new WebSocket('ws://127.0.0.1:4001');
+                // let ws = new WebSocket('wss://echo.websocket.events/.ws');
+                let ws = new WebSocket('ws://127.0.0.1:4001/', 'ascii');
                 const attachAddon = new AttachAddon.AttachAddon(ws);
                 term.loadAddon(attachAddon);
 
