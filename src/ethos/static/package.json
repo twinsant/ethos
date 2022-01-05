@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "xterm": "^4.16.0"
+    "xterm": "^4.16.0",
+    "xterm-addon-attach": "^0.6.0",
+    "xterm-addon-fit": "^0.5.0"
   }
 }

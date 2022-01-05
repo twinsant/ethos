@@ -11,9 +11,11 @@
         <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png')}}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/xterm/css/xterm.css')}}" />
         <script src="{{ url_for('static', filename='node_modules/xterm/lib/xterm.js')}}"></script>
+        <script src="{{ url_for('static', filename='node_modules/xterm-addon-attach/lib/xterm-addon-attach.js')}}"></script>
+        <script src="{{ url_for('static', filename='node_modules/xterm-addon-fit/lib/xterm-addon-fit.js')}}"></script>
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
+            content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4001 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
         />
     </head>
 
@@ -103,8 +105,32 @@
         <script>
             $(function() {
                 var term = new Terminal();
+
+                const fitAddon = new FitAddon.FitAddon();
+                term.loadAddon(fitAddon);
+                fitAddon.fit();
+
                 term.open(document.getElementById('terminal'));
-                term.write('Hello from \x1B[1;3;31mEthOS\x1B[0m \r\n$ ')
+                term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
+
+                // https://echo.websocket.events/.ws
+                let ws = new WebSocket('wss://echo.websocket.events/.ws');
+                const attachAddon = new AttachAddon.AttachAddon(ws);
+                term.loadAddon(attachAddon);
+
+                ws.onopen = function () {
+                    term.write('Connected.\r\n\r\n');
+                    ws.send('\r\nHello')
+                }
+                ws.onerror = function (err) {
+                    console.log(err);
+                }
+                ws.onclose = function () {
+                    term.write('\r\nDisconnected.\r\n');
+                }
+                ws.onmessage = function (data) {
+                    console.log(data);
+                }
             });
           </script>
     </body>
