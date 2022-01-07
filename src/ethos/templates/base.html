@@ -138,6 +138,20 @@
                 ws.onclose = function () {
                     term.write('\r\nDisconnected.\r\n');
                 }
+
+                term.focus();
+                var buffer = [];
+                term.onKey(function(key, e){
+                    term.write(key.key);
+                    buffer.push(key.key);
+                    // console.log(key, e);
+                    if (key.key == '\r') {
+                        term.write('\r\n');
+                        let cmd = buffer.join('');
+                        ws.send(cmd);
+                        buffer = [];
+                    }
+                })
             });
           </script>
     </body>
