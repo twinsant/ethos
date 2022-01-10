@@ -72,7 +72,7 @@
 #### Models
 
 * HP(Min-Max)
-* MP
+  - MP
 * Ability+EXP
   - Attack: strength
   - Defend: armor
