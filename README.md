@@ -73,8 +73,8 @@
 
 * Health Point(Min-Max)
   - Magic Point
-  - IQ
-  - EQ
+  - Intelligence quotient(IQ)
+  - Emotional intelligence(EQ)
 * Skill Point + Experience Point
   - Attack Point: Strength
   - Defence Point: Armor
