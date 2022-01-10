@@ -71,12 +71,12 @@
 
 #### Models
 
-* HP(Min-Max)
-  - MP
-* Ability+EXP
-  - Attack: strength
-  - Defend: armor
-* WorkPoint
+* Health Point(Min-Max)
+  - Magic Point
+* Skill Point + Experience Point
+  - Attack Point: Strength
+  - Defence Point: Armor
+* Work Point
 
 #### Ref books
 
