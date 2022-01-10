@@ -89,6 +89,7 @@
 * Money mischief
 * [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/en/bitcoin-paper)
 * [工分制的制度经济学分析](https://www.cuhk.edu.hk/ics/21c/media/articles/c131-201104022.pdf)
+* [A Guide to the Dungeons of Doom](https://docs.freebsd.org/44doc/usd/30.rogue/paper.pdf)
 
 ### 8. Civility (complex Network)
 
