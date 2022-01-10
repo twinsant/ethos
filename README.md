@@ -66,8 +66,17 @@
 
 ### 7. Digital Economy (Blockchain with token)
 
-* WorkPoint: ERC20 Token/ERC1155
+* ERC20 Token/ERC1155
 * Market Room
+
+#### Models
+
+* HP(Min-Max)
+* MP
+* Ability+EXP
+  - Attack
+  - Defend
+* WorkPoint
 
 #### Ref books
 
