@@ -74,8 +74,8 @@
 * HP(Min-Max)
 * MP
 * Ability+EXP
-  - Attack
-  - Defend
+  - Attack: strength
+  - Defend: armor
 * WorkPoint
 
 #### Ref books
