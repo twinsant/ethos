@@ -21,3 +21,9 @@ object connect(int port)
     debug_message("connect : " + port);
     return new (__DIR__"user.c");
 }
+
+string creator_file(string str)
+{
+    debug_message("creator_file : " + str);
+    return str;
+}
