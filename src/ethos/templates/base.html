@@ -16,7 +16,7 @@
         <script src="{{ url_for('static', filename='js/xterm-addon-unicode11.min.js')}}"></script>
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4001 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
+            content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4003 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
         />
     </head>
 
@@ -125,7 +125,7 @@
                 term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
 
                 // let ws = new WebSocket('wss://echo.websocket.events/.ws');
-                let ws = new WebSocket('ws://127.0.0.1:4001/ws', 'ascii');
+                let ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
                 const attachAddon = new AttachAddon.AttachAddon(ws);
                 term.loadAddon(attachAddon);
 
