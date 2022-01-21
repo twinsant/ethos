@@ -1,9 +1,18 @@
+import json
+
 import tornado.ioloop
 import tornado.web
 from tornado import websocket
 from tornado import gen
+from tornado.options import define, options, parse_command_line
 
 class MainHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        user_cookie = self.get_secure_cookie("user")
+        if user_cookie:
+            return json.loads(user_cookie)
+        return None
+
     def get(self):
         self.write("Hello, world")
 
@@ -32,13 +41,22 @@ class MudWebSocket(websocket.WebSocketHandler):
         self.mud.close()
         print("WebSocket closed")
 
+define("port", default=4003, help="port to listen on")
+define("static", default='./static', help="static files path")
+define("template", default='./templates', help="template files path")
+define("debug", default=False, type=bool, help="debug flag")
+define("secret", default='SET COOKIE SECRETE YOURSELF!', help="debug flag")
+
+parse_command_line()
+
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
         (r"/ws", MudWebSocket),
-    ])
+    ], debug=options.debug, cookie_secret=options.secret, static_path=options.static, template_path=options.template)
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(4003)
+    print(f'Listening {options.port} with debug mode is {options.debug}...')
+    app.listen(options.port)
     tornado.ioloop.IOLoop.current().start()
