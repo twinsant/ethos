@@ -27,26 +27,27 @@ class MudWebSocket(websocket.WebSocketHandler):
         else:
             return False
 
-    @gen.coroutine
-    def open(self):
+    async def open(self):
         self.closed = False
         def on_mud_message(message):
             if not self.closed:
                 self.write_message(message)
         # TODO: ws using options
-        self.mud = yield websocket.websocket_connect('ws://127.0.0.1:4001', on_message_callback=on_mud_message, subprotocols=["ascii"])
-        app_log.info('Mud connection established.')
+        try:
+            mud_ws = 'ws://127.0.0.1:4001'
+            self.mud = await websocket.websocket_connect(mud_ws, on_message_callback=on_mud_message, subprotocols=["ascii"])
+            app_log.info(f'Mud connection {mud_ws} established.')
+        except:
+            app_log.error(f'Mud connection {mud_ws} NOT established')
 
     def on_message(self, message):
         app_log.info(f'Sending command: {message}')
-        try:
-            self.mud.write_message(message)
-        except AssertionError:
-            app_log.warn('Mud connection maybe lost.')
+        self.mud.write_message(message)
 
     def on_close(self):
         self.closed = True
-        self.mud.close()
+        if self.mud:
+            self.mud.close()
 
 define("port", default=4003, help="port to listen on")
 define("static", default='./static', help="static files path")
