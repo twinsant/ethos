@@ -14,11 +14,12 @@ class MainHandler(tornado.web.RequestHandler):
         return None
 
     def get(self):
-        self.write("Hello, world")
+        self.render('index.html')
 
 class MudWebSocket(websocket.WebSocketHandler):
     def check_origin(self, origin: str) -> bool:
-        allowed = ["http://127.0.0.1:5000"]
+        # TODO: fix with options
+        allowed = ["http://127.0.0.1:4003"]
         if origin in allowed:
             return True
         else:
