@@ -39,7 +39,10 @@ class MudWebSocket(websocket.WebSocketHandler):
 
     def on_message(self, message):
         app_log.info(f'Sending command: {message}')
-        self.mud.write_message(message)
+        try:
+            self.mud.write_message(message)
+        except AssertionError:
+            app_log.warn('Mud connection maybe lost.')
 
     def on_close(self):
         self.closed = True
