@@ -5,6 +5,7 @@ import tornado.web
 from tornado import websocket
 from tornado import gen
 from tornado.options import define, options, parse_command_line
+from tornado.log import app_log
 
 class MainHandler(tornado.web.RequestHandler):
     def get_current_user(self):
@@ -18,6 +19,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 class MudWebSocket(websocket.WebSocketHandler):
     def check_origin(self, origin: str) -> bool:
+        app_log.info(f'Checking origin: {origin} ...')
         # TODO: fix with options
         allowed = ["http://127.0.0.1:4003"]
         if origin in allowed:
@@ -28,19 +30,20 @@ class MudWebSocket(websocket.WebSocketHandler):
     @gen.coroutine
     def open(self):
         self.closed = False
-        print("WebSocket opened")
         def on_mud_message(message):
             if not self.closed:
                 self.write_message(message)
+        # TODO: ws using options
         self.mud = yield websocket.websocket_connect('ws://127.0.0.1:4001', on_message_callback=on_mud_message, subprotocols=["ascii"])
+        app_log.info('Mud connection established.')
 
     def on_message(self, message):
+        app_log.info(f'Sending command: {message}')
         self.mud.write_message(message)
 
     def on_close(self):
         self.closed = True
         self.mud.close()
-        print("WebSocket closed")
 
 define("port", default=4003, help="port to listen on")
 define("static", default='./static', help="static files path")
@@ -58,6 +61,6 @@ def make_app():
 
 if __name__ == "__main__":
     app = make_app()
-    print(f'Listening {options.port} with debug mode is {options.debug}...')
+    app_log.info(f'Listening {options.port} with debug mode is {options.debug}...')
     app.listen(options.port)
     tornado.ioloop.IOLoop.current().start()
