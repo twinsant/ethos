@@ -26,10 +26,12 @@ class BaseHandler(tornado.web.RequestHandler):
     def validate_message(self, message):
         ret = False
 
-        message['chain_id'] = message['chainId']
-        del message['chainId']
-        message['issued_at'] = message['issuedAt']
-        del message['issuedAt']
+        if 'chainId' in message:
+            message['chain_id'] = message['chainId']
+            del message['chainId']
+        if 'issuedAt' in message:
+            message['issued_at'] = message['issuedAt']
+            del message['issuedAt']
         siwe_message = siwe.SiweMessage(message)
         try:
             siwe_message.validate()
