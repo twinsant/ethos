@@ -16,8 +16,28 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         user_cookie = self.get_secure_cookie(MYTOKEN)
         if user_cookie:
-            return json.loads(user_cookie)
+            message = json.loads(user_cookie)
+            if self.validate_message(message):
+                return message
+            else:
+                return None
         return None
+
+    def validate_message(self, message):
+        ret = False
+
+        message['chain_id'] = message['chainId']
+        del message['chainId']
+        message['issued_at'] = message['issuedAt']
+        del message['issuedAt']
+        siwe_message = siwe.SiweMessage(message)
+        try:
+            siwe_message.validate()
+            ret = True
+        except siwe.ValidationError:
+            app_log.warn(f'Address { message["address"] } sign in failed.')
+
+        return ret
 
 class MainHandler(BaseHandler):
     def get(self):
@@ -45,7 +65,7 @@ class SignoutHandler(tornado.web.RequestHandler):
     def post(self):
         self.clear_cookie(MYTOKEN)
 
-class SigninHandler(tornado.web.RequestHandler):
+class SigninHandler(BaseHandler):
     def post(self):
         '''
         {'domain': '127.0.0.1:4003',
@@ -64,22 +84,13 @@ class SigninHandler(tornado.web.RequestHandler):
 
         message = dict(data['message'])
         message['ens'] = data['ens']
-        message['chain_id'] = message['chainId']
-        del message['chainId']
-        message['issued_at'] = message['issuedAt']
-        del message['issuedAt']
-        siwe_message = siwe.SiweMessage(message)
-        try:
-            siwe_message.validate()
-            app_log.info(f'Address { message["address"] } signed in.')
-        except siwe.ValidationError:
-            app_log.warn(f'Address { message["address"] } sign in failed.')
 
-        del message['nonce']
-        del message['signature']
-        ret = message
-        self.set_secure_cookie(MYTOKEN, json.dumps(ret))
-        self.write(json.dumps(ret))
+        if self.validate_message(message):
+            ret = message
+            self.set_secure_cookie(MYTOKEN, json.dumps(ret))
+            self.write(json.dumps(ret))
+        else:
+            self.set_status(403)
 
 class MudWebSocket(websocket.WebSocketHandler):
     def check_origin(self, origin: str) -> bool:
