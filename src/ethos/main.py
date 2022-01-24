@@ -10,20 +10,40 @@ from tornado import gen
 from tornado.options import define, options, parse_command_line
 from tornado.log import app_log
 
-class MainHandler(tornado.web.RequestHandler):
+MYTOKEN = 'mytoken'
+
+class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
-        user_cookie = self.get_secure_cookie("user")
+        user_cookie = self.get_secure_cookie(MYTOKEN)
         if user_cookie:
             return json.loads(user_cookie)
         return None
 
+class MainHandler(BaseHandler):
     def get(self):
         self.render('index.html')
+
+class MeHandler(BaseHandler):
+    def get(self):
+        if self.current_user:
+            data = {
+                'text': 'TODO',
+                'address': self.current_user['address'],
+                'ens': self.current_user['ens'],
+            }
+            ret = json.dumps(data)
+            self.write(ret)
+        else:
+            self.set_status(404)
 
 class NonceHandler(tornado.web.RequestHandler):
     def get(self):
         n = secrets.token_urlsafe()
         self.write(n)
+
+class SignoutHandler(tornado.web.RequestHandler):
+    def post(self):
+        self.clear_cookie(MYTOKEN)
 
 class SigninHandler(tornado.web.RequestHandler):
     def post(self):
@@ -41,7 +61,9 @@ class SigninHandler(tornado.web.RequestHandler):
          }
         '''
         data = json.loads(self.request.body)
+
         message = dict(data['message'])
+        message['ens'] = data['ens']
         message['chain_id'] = message['chainId']
         del message['chainId']
         message['issued_at'] = message['issuedAt']
@@ -52,7 +74,11 @@ class SigninHandler(tornado.web.RequestHandler):
             app_log.info(f'Address { message["address"] } signed in.')
         except siwe.ValidationError:
             app_log.warn(f'Address { message["address"] } sign in failed.')
-        ret = {}
+
+        del message['nonce']
+        del message['signature']
+        ret = message
+        self.set_secure_cookie(MYTOKEN, json.dumps(ret))
         self.write(json.dumps(ret))
 
 class MudWebSocket(websocket.WebSocketHandler):
@@ -102,6 +128,8 @@ def make_app():
 
         (r"/api/nonce", NonceHandler),
         (r"/api/sign_in", SigninHandler),
+        (r"/api/sign_out", SignoutHandler),
+        (r"/api/me", MeHandler),
 
         (r"/ws", MudWebSocket),
     ], debug=options.debug, cookie_secret=options.secret, static_path=options.static, template_path=options.template)
