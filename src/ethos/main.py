@@ -1,4 +1,7 @@
+import secrets
 import json
+
+from siwe import siwe
 
 import tornado.ioloop
 import tornado.web
@@ -16,6 +19,41 @@ class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
         self.render('index.html')
+
+class NonceHandler(tornado.web.RequestHandler):
+    def get(self):
+        n = secrets.token_urlsafe()
+        self.write(n)
+
+class SigninHandler(tornado.web.RequestHandler):
+    def post(self):
+        '''
+        {'domain': '127.0.0.1:4003',
+         'address': '0x464eE0FF90B7aC76d3ec8D2a25E6926DeCC88f6d',
+         'chainId': '1',
+         'uri': 'http://127.0.0.1:4003',
+         'version': '1',
+         'statement': 'EthOS',
+         'type': 'Personal signature',
+         'nonce': '...',
+         'issuedAt': '2022-01-24T02:32:10.239Z',
+         'signature': '...'
+         }
+        '''
+        data = json.loads(self.request.body)
+        message = dict(data['message'])
+        message['chain_id'] = message['chainId']
+        del message['chainId']
+        message['issued_at'] = message['issuedAt']
+        del message['issuedAt']
+        siwe_message = siwe.SiweMessage(message)
+        try:
+            siwe_message.validate()
+            app_log.info(f'Address { message["address"] } signed in.')
+        except siwe.ValidationError:
+            app_log.warn(f'Address { message["address"] } sign in failed.')
+        ret = {}
+        self.write(json.dumps(ret))
 
 class MudWebSocket(websocket.WebSocketHandler):
     def check_origin(self, origin: str) -> bool:
@@ -38,6 +76,7 @@ class MudWebSocket(websocket.WebSocketHandler):
             self.mud = await websocket.websocket_connect(mud_ws, on_message_callback=on_mud_message, subprotocols=["ascii"])
             app_log.info(f'Mud connection {mud_ws} established.')
         except:
+            self.write_message('\x1B[1;3;31mMud proxy build faild: Please contact the DM.\x1B[0m ')
             app_log.error(f'Mud connection {mud_ws} NOT established')
 
     def on_message(self, message):
@@ -53,13 +92,17 @@ define("port", default=4003, help="port to listen on")
 define("static", default='./static', help="static files path")
 define("template", default='./templates', help="template files path")
 define("debug", default=False, type=bool, help="debug flag")
-define("secret", default='SET COOKIE SECRETE YOURSELF!', help="debug flag")
+define("secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="debug flag")
 
 parse_command_line()
 
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
+
+        (r"/api/nonce", NonceHandler),
+        (r"/api/sign_in", SigninHandler),
+
         (r"/ws", MudWebSocket),
     ], debug=options.debug, cookie_secret=options.secret, static_path=options.static, template_path=options.template)
 
