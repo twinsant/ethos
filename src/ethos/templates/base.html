@@ -165,8 +165,15 @@
                 var buffer = [];
                 term.onKey(function(key, e){
                     term.write(key.key);
-                    buffer.push(key.key);
-                    // console.log(key, e);
+                    // console.log(key);
+                    if (key.domEvent.code == 'Backspace') {
+                        if (buffer.length > 0) {
+                            buffer.pop();
+                            term.write('\b \b');
+                        }
+                    } else {
+                        buffer.push(key.key);
+                    }
                     if (key.key == '\r') {
                         term.write('\r\n');
                         let cmd = buffer.join('');
