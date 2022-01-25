@@ -10,6 +10,10 @@ from tornado import gen
 from tornado.options import define, options, parse_command_line
 from tornado.log import app_log
 
+from typing import (
+    Any,
+)
+
 MYTOKEN = 'mytoken'
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -94,7 +98,13 @@ class SigninHandler(BaseHandler):
         else:
             self.set_status(403)
 
-class MudWebSocket(websocket.WebSocketHandler):
+class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
+    async def get(self, *args: Any, **kwargs: Any) -> None:
+        if not self.get_current_user():
+            self.set_status(403)
+            return
+        await super(MudWebSocket, self).get(*args, **kwargs)
+
     def check_origin(self, origin: str) -> bool:
         app_log.info(f'Checking origin: {origin} ...')
         # TODO: fix with options
