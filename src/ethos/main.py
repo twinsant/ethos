@@ -114,13 +114,12 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
         else:
             return False
 
-    async def open(self):
-        self.closed = False
+    async def connect_mud(self):
         def on_mud_message(message):
             if not self.closed:
                 self.write_message(message)
-        # TODO: ws using options
         try:
+            # TODO: ws using options
             mud_ws = 'ws://127.0.0.1:4001'
             self.mud = await websocket.websocket_connect(mud_ws, on_message_callback=on_mud_message, subprotocols=["ascii"])
             app_log.info(f'Mud connection {mud_ws} established.')
@@ -128,9 +127,17 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
             self.write_message('\x1B[1;3;31mMud proxy build faild: Please contact the DM.\x1B[0m ')
             app_log.error(f'Mud connection {mud_ws} NOT established')
 
-    def on_message(self, message):
-        app_log.info(f'Sending command: {message}')
-        self.mud.write_message(message)
+    async def open(self):
+        self.closed = False
+        await self.connect_mud()
+
+    async def on_message(self, message):
+        try:
+            app_log.info(f'Sending command: {message}')
+            self.mud.write_message(message)
+        except websocket.WebSocketClosedError:
+            app_log.error(f'Mud connection lost!')
+            self.closed = True
 
     def on_close(self):
         self.closed = True

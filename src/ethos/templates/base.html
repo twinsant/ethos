@@ -122,18 +122,20 @@
             var ws;
 
             function connectWs(term) {
-                ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
-                const attachAddon = new AttachAddon.AttachAddon(ws);
-                term.loadAddon(attachAddon);
+                if (ws == undefined) {
+                    ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
+                    const attachAddon = new AttachAddon.AttachAddon(ws);
+                    term.loadAddon(attachAddon);
 
-                ws.onopen = function () {
-                    term.write('Connected.\r\n\r\n');
-                }
-                ws.onerror = function (err) {
-                    console.log(err);
-                }
-                ws.onclose = function () {
-                    term.write('\r\nDisconnected.\r\n');
+                    ws.onopen = function () {
+                        term.write('Connected.\r\n\r\n');
+                    }
+                    ws.onerror = function (err) {
+                        console.log(err);
+                    }
+                    ws.onclose = function () {
+                        term.write('\r\nDisconnected.\r\n');
+                    }
                 }
             }
 
@@ -159,7 +161,6 @@
                 term.open(document.getElementById('terminal'));
                 term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
 
-                // let ws = new WebSocket('wss://echo.websocket.events/.ws');
                 connectWs(term);
 
                 term.focus();
