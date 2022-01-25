@@ -145,6 +145,7 @@
 
             window.addEventListener('disconnectedState', function (e) {
                 ws.close();
+                ws = undefined;
                 term.clear();
             }, false);
 
@@ -168,7 +169,7 @@
                 term.onData(e => {
                     switch (e) {
                         case '\r': // Enter
-                            // term.write('\r\n');
+                            term.write('\r\n');
                             // console.log([command]);
                             // ws.send(command[0]);
                             command = '';
