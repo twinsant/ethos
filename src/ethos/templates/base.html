@@ -27,7 +27,7 @@
                     <div class="title-bar-text">
                         <div class="flex">
                             <img src="{{ static_url('img/favicon.png')}}" alt="Notepad icon" class="w-4 h-4 mr-1" />
-                            <p id="title">Untitled</p>
+                            <p class="title">Untitled</p>
                             &nbsp- Notepad&nbsp
                             <p id="unsaved"></p>
                         </div>
@@ -74,7 +74,14 @@
 
             <div class="window inline-block">
                 <div class="title-bar">
-                  <div class="title-bar-text">EthOS</div>
+                  <div class="title-bar-text">
+                        <div class="flex">
+                            <img src="{{ static_url('img/xterm.png')}}" alt="Notepad icon" class="w-4 h-4 mr-1" />
+                            <p class="title">Untitled</p>
+                            &nbsp- EthOS&nbsp
+                            <p id="unsaved"></p>
+                        </div>
+                  </div>
                   <div class="title-bar-controls">
                     <button aria-label="Close"></button>
                   </div>
@@ -104,28 +111,17 @@
             ></div>
         </div>
         <script>
-            $(function() {
-                var term = new Terminal({
-                    convertEol: true,
-                    disableStdin: true,
-                    scrollback: 1024,
-                    tabStopWidth: 4,
-                    fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace, "Microsoft YaHei", SimSun',
-                });
+            var term = new Terminal({
+                convertEol: true,
+                disableStdin: true,
+                scrollback: 1024,
+                tabStopWidth: 4,
+                fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace, "Microsoft YaHei", SimSun',
+            });
+            var ws;
 
-                const unicode11Addon = new Unicode11Addon.Unicode11Addon();
-                term.loadAddon(unicode11Addon);
-                term.unicode.activeVersion = '11';
-
-                const fitAddon = new FitAddon.FitAddon();
-                term.loadAddon(fitAddon);
-                fitAddon.fit();
-
-                term.open(document.getElementById('terminal'));
-                term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
-
-                // let ws = new WebSocket('wss://echo.websocket.events/.ws');
-                let ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
+            function connectWs(term) {
+                ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
                 const attachAddon = new AttachAddon.AttachAddon(ws);
                 term.loadAddon(attachAddon);
 
@@ -138,6 +134,32 @@
                 ws.onclose = function () {
                     term.write('\r\nDisconnected.\r\n');
                 }
+            }
+
+            window.addEventListener('connectedState', function (e) {
+                connectWs(term);
+            }, false);
+
+            window.addEventListener('disconnectedState', function (e) {
+                ws.close();
+                term.clear();
+            }, false);
+
+
+            $(function() {
+                const unicode11Addon = new Unicode11Addon.Unicode11Addon();
+                term.loadAddon(unicode11Addon);
+                term.unicode.activeVersion = '11';
+
+                const fitAddon = new FitAddon.FitAddon();
+                term.loadAddon(fitAddon);
+                fitAddon.fit();
+
+                term.open(document.getElementById('terminal'));
+                term.write('\x1B[1;3;31mEthOS v0.1\x1B[0m ')
+
+                // let ws = new WebSocket('wss://echo.websocket.events/.ws');
+                connectWs(term);
 
                 term.focus();
                 var buffer = [];
