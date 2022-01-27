@@ -14,6 +14,8 @@ from typing import (
     Any,
 )
 
+from slack import slack_message
+
 MYTOKEN = 'mytoken'
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -92,6 +94,7 @@ class SigninHandler(BaseHandler):
         message['ens'] = data['ens']
 
         if self.validate_message(message):
+            slack_message(options.slack_secret, options.channel, f'{message["address"]} signed in.')
             ret = message
             self.set_secure_cookie(MYTOKEN, json.dumps(ret))
             self.write(json.dumps(ret))
@@ -148,7 +151,10 @@ define("port", default=4003, help="port to listen on")
 define("static", default='./static', help="static files path")
 define("template", default='./templates', help="template files path")
 define("debug", default=False, type=bool, help="debug flag")
-define("secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="debug flag")
+define("secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="cookie secret")
+
+define("slack_secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="slack auth secret")
+define("channel", default='twinsant-com', help="slack bot channel")
 
 parse_command_line()
 

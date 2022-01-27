@@ -12,3 +12,5 @@ build/
 *.egg-info/
 
 node_modules
+
+dev.sh
