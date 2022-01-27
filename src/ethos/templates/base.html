@@ -4,11 +4,16 @@
         <title>EthOS</title>
         <link href="{{ static_url('css/tailwind.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ static_url('css/98.css') }}" />
+        <link rel="stylesheet" href="{{ static_url('jquery-ui-1.13.1/jquery-ui.min.css') }}" />
+
         <script src="{{ static_url('js/jquery.min.js') }} "></script>
+        <script src="{{ static_url('jquery-ui-1.13.1/jquery-ui.min.js') }} "></script>
+
         <link href="{{ static_url('style.css') }}" rel="stylesheet" />
         <script src="{{ static_url('js/bundle.js')}}"></script>
         <script src="{{ static_url('js/utils.js')}}"></script>
         <link rel="icon" type="image/png" href="{{ static_url('img/favicon.png')}}" />
+
         <link rel="stylesheet" href="{{ static_url('node_modules/xterm/css/xterm.css')}}" />
         <script src="{{ static_url('js/xterm.min.js')}}"></script>
         <script src="{{ static_url('js/xterm-addon-attach.min.js')}}"></script>
@@ -22,7 +27,7 @@
 
     <body class="h-screen w-screen flex flex-col">
         <div class="w-full h-full" id="desktop">
-            <div class="window inline-block select-none">
+            <div id="notepad" class="window inline-block select-none">
                 <div class="title-bar">
                     <div class="title-bar-text">
                         <div class="flex">
@@ -72,7 +77,7 @@
                 ></textarea>
             </div>
 
-            <div class="window inline-block">
+            <div id="xterm" class="window inline-block">
                 <div class="title-bar">
                   <div class="title-bar-text">
                         <div class="flex">
@@ -191,25 +196,8 @@
                     }
                 });
 
-                // var buffer = [];
-                // term.onData(function(e){
-                //     console.log(e);
-                    // term.write(e);
-                    // if (key.domEvent.code == 'Backspace') {
-                    //     if (buffer.length > 0) {
-                    //         buffer.pop();
-                    //         term.write('\b \b');
-                    //     }
-                    // } else {
-                    //     buffer.push(key.key);
-                    // }
-                    // if (key.key == '\r') {
-                    //     term.write('\r\n');
-                    //     let cmd = buffer.join('');
-                    //     ws.send(cmd);
-                    //     buffer = [];
-                    // }
-                // })
+                $('#notepad').draggable();
+                $('#xterm').draggable();
             });
           </script>
     </body>
