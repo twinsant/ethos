@@ -1,4 +1,7 @@
 # EthOS / Chinese Name: 灵境公社(Meta Commune)
+
+A framework for building metaverse together, based on LPmud driver and mudlibs.
+
 [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3
 
 ## Architecture
