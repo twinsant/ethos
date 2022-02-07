@@ -1,0 +1,3 @@
+[submodule "lib/mudcore"]
+	path = lib/mudcore
+	url = git@github.com:twinsant/mudcore.git
