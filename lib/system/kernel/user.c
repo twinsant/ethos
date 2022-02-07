@@ -1,4 +1,8 @@
 void logon()
 {
-    write("Hello, EthOS!\r\n");
+    mapping proto = ([
+        "message": "Hello, EthOS!"
+    ]);
+    string ret = json_encode(proto);
+    write(ret);
 }
