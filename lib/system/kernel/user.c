@@ -1,8 +1,13 @@
-void logon()
+string write_message(string msg)
 {
     mapping proto = ([
-        "message": "Hello, EthOS!"
+        "message": msg
     ]);
     string ret = json_encode(proto);
-    write(ret);
+    return ret;
+}
+
+void logon()
+{
+    write(write_message("Hello, EthOS!"));
 }
