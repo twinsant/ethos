@@ -196,8 +196,13 @@
                     }
                 });
 
-                $('#notepad').draggable();
-                $('#xterm').draggable({handle:'.title-bar'});
+                $('#notepad').draggable({
+                    stack: ".window"
+                });
+                $('#xterm').draggable({
+                    handle:'.title-bar',
+                    stack: ".window"
+                });
             });
           </script>
     </body>
