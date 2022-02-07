@@ -124,8 +124,16 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
 
     async def connect_mud(self):
         def on_mud_message(message):
-            if not self.closed:
-                self.write_message(message)
+            if not self.closed and message:
+                s = message.decode('utf8')
+                try:
+                    j = json.loads(s)
+                except json.decoder.JSONDecodeError:
+                    j = None
+                if j:
+                    self.write_message(message)
+                else:
+                    self.write_message(json.dumps({'message':s}))
         try:
             # TODO: ws using options
             mud_ws = 'ws://127.0.0.1:4001'

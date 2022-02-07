@@ -1,7 +1,8 @@
-string write_message(string msg)
+string get_write_message(string msg, string cmd)
 {
     mapping proto = ([
-        "message": msg
+        "message": msg,
+        "proxyCallback": cmd
     ]);
     string ret = json_encode(proto);
     return ret;
@@ -9,5 +10,5 @@ string write_message(string msg)
 
 void logon()
 {
-    write(write_message("Hello, EthOS!"));
+    write("Hello, EthOS!\r\n");
 }

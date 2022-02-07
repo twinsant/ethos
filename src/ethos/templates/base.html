@@ -134,7 +134,7 @@
                         term.write('Connected.\r\n\r\n');
                     }
                     ws.onmessage = function (message) {
-                        var ret = JSON.parse(message.data)
+                        var ret = JSON.parse(message.data);
                         term.write(ret.message);
                     }
                     ws.onerror = function (err) {
