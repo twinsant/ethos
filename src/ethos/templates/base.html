@@ -130,6 +130,9 @@
                 if (ws == undefined) {
                     ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
 
+                    // const attachAddon = new AttachAddon.AttachAddon(ws);
+                    // term.loadAddon(attachAddon);
+                    
                     ws.onopen = function () {
                         term.write('Connected.\r\n\r\n');
                     }
@@ -174,12 +177,13 @@
                 term.focus();
                 var command = '';
                 term.onData(e => {
+                    ws.send(e);
                     switch (e) {
                         case '\r': // Enter
                             term.write('\r\n');
                             // console.log([command]);
-                            // ws.send(command[0]);
-                            command = '';
+                            // ws.send(command[0] + '\r\n');
+                            // command = '';
                             break;
                         case '\u007F': // Backspace (DEL)
                             // Do not delete the prompt

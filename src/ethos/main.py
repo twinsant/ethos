@@ -131,6 +131,14 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                 except json.decoder.JSONDecodeError:
                     j = None
                 if j:
+                    if 'proxyCallback'in j:
+                        cmd = j['proxyCallback']
+                        if cmd == 'DID':
+                            address = self.current_user['address']
+                            ipt = json.dumps({'input':address})
+                            print(ipt)
+                            self.mud.write_message(ipt)
+                        del j['proxyCallback']
                     self.write_message(message)
                 else:
                     self.write_message(json.dumps({'message':s}))
@@ -139,6 +147,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
             mud_ws = 'ws://127.0.0.1:4001'
             self.mud = await websocket.websocket_connect(mud_ws, on_message_callback=on_mud_message, subprotocols=["ascii"])
             app_log.info(f'Mud connection {mud_ws} established.')
+            self.command = ''
         except:
             self.write_message('\x1B[1;3;31mMud proxy build faild: Please contact the DM.\x1B[0m ')
             app_log.error(f'Mud connection {mud_ws} NOT established')
@@ -148,9 +157,13 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
         await self.connect_mud()
 
     async def on_message(self, message):
+        print([message])
         try:
-            app_log.info(f'Sending command: {message}')
-            self.mud.write_message(message)
+            self.command += message
+            if '\r' in message:
+                app_log.info(f'Sending command: {self.command}')
+                self.mud.write_message(self.command)
+                self.command = ''
         except websocket.WebSocketClosedError:
             app_log.error(f'Mud connection lost!')
             self.closed = True
