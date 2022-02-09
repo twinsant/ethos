@@ -135,8 +135,12 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                     if 'proxyCallback'in j:
                         cmd = j['proxyCallback']
                         if cmd == 'DID':
-                            address = self.current_user['address']
-                            ipt = json.dumps({'input':address})
+                            ens = self.current_user['ens']
+                            if ens:
+                                input = ens
+                            else:
+                                input = self.current_user['address']
+                            ipt = json.dumps({'input':input})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)
