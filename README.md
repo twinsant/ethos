@@ -52,6 +52,7 @@ A framework for building metaverse together, based on LPmud driver and mudlibs.
 
 ### 5. Variety (AIGC+UGC+PGC)
 
+* https://www.lootproject.com/
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
   - [https://www.fluffos.info/concepts/general/preprocessor.html](https://www.fluffos.info/concepts/general/preprocessor.html)
