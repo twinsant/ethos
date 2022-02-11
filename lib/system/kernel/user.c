@@ -33,6 +33,7 @@ void get_did(string arg)
         return;
     }
 
+    color_cat(MOTD);
     write("Hello, " HIB + did + NOR + "! Welcome to a metaverse.\n");
 }
 
