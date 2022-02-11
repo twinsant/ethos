@@ -124,7 +124,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
 
     async def connect_mud(self):
         def on_mud_message(message):
-            print(message)
+            # print(message)
             if not self.closed and message:
                 s = message.decode('utf8')
                 try:
@@ -161,7 +161,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
         await self.connect_mud()
 
     async def on_message(self, message):
-        print([message])
+        # print([message])
         try:
             self.command += message
             if '\r' in message:
