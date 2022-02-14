@@ -13,13 +13,13 @@ void write_data(int fd)
 void receive_data(int fd, mixed result)
 {
     int n = strsrch(result, "{");
-    debug_message(result);
+    // debug_message(result);
 
 
     if (n > 0)
     {
+        debug_message(sprintf("%s", result[n..]));
         result = json_decode(trim(result[n..]));
-        debug_message(sprintf("%O", result));
     }
 
     socket_close(fd);
@@ -36,6 +36,11 @@ void socket_shutdown(int fd)
     socket_close(fd);
 }
 
+void resolve_callback(string address, string resolved, int key)
+{
+    debug_message(address + resolved);
+}
+
 void slack(string message)
 {
     int ret;
@@ -46,4 +51,6 @@ void slack(string message)
 
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
     ret = socket_connect(fd, addr, "receive_data", "write_data");
+
+    resolve(host, "resolve_callback");
 }
