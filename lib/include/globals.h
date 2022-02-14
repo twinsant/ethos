@@ -13,6 +13,8 @@
 #define USER_OB    "/system/kernel/user"
 #define VOID_OB    "/system/metaverse/void"
 
+#define SLACK_D "/system/daemons/slack_d"
+
 #include <mudcore.h>
 
 #ifdef MOTD
