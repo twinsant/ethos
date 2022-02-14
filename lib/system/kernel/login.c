@@ -36,11 +36,10 @@ void get_did(string arg)
     }
 
     color_cat(MOTD);
-    write("Hello, " HIB + did + NOR + "! Welcome to a metaverse.\n");
+    write("Hello, " HIB + did + NOR + "! Welcome to a metaverse.\n\n");
 
     debug_message("User object is " + USER_OB);
     user = new(USER_OB);
-    debug_message("Move to " + VOID_OB);
 
     user->set("id", did);
     user->set("name", did);
@@ -48,8 +47,9 @@ void get_did(string arg)
     exec(user, ob);
 
     user->setup();
-    user->move(VOID_OB);
 
+    debug_message("Move to " + VOID_OB);
+    user->move(VOID_OB);
     // tell_room(VOID_OB, user->short() + "joined.\n", ({user}));
 }
 
