@@ -87,6 +87,13 @@ class NonceHandler(tornado.web.RequestHandler):
         n = secrets.token_urlsafe()
         self.write(n)
 
+class SlackHandler(tornado.web.RequestHandler):
+    def post(self):
+        data = tornado.escape.json_decode(self.request.body)
+        print(data)
+        ret = {}
+        self.write(json.dumps(ret))
+
 class SignoutHandler(tornado.web.RequestHandler):
     def post(self):
         self.clear_cookie(MYTOKEN)
@@ -196,6 +203,8 @@ def make_app():
         (r"/api/sign_in", SigninHandler),
         (r"/api/sign_out", SignoutHandler),
         (r"/api/me", MeHandler),
+
+        (r"/mudapi/slack", SlackHandler),
 
         (r"/ws", MudWebSocket),
     ], debug=options.debug, cookie_secret=options.secret, static_path=options.static, template_path=options.template)

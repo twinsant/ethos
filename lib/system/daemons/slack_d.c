@@ -36,7 +36,7 @@ void slack(string message)
 {
     int fd;
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
-    string body = "";
+    string body = "{}";
     string path = "/mudapi/slack";
 
     status[fd] = ([]);
