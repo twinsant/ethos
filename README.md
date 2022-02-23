@@ -1,6 +1,6 @@
 # EthOS / Chinese Name: 灵境公社(Meta Commune)
 
-> Metaverse shall be a world of the people, **by the people** and for the people.
+> Metaverse shall be a world of the people, **by the people and for the people**.
 
 A framework for building metaverse together, based on LPmud driver and mudlibs.
 
