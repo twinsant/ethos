@@ -1,8 +1,4 @@
 #define STREAM 1
-
-nosave string host = env("HOST") || "postman-echo.com";
-nosave string addr = env("ADDR") || "34.233.143.14 80";
-nosave string path = env("PATH") || "/get";
 nosave mapping status = ([]);
 
 void write_data(int fd)
@@ -36,21 +32,17 @@ void socket_shutdown(int fd)
     socket_close(fd);
 }
 
-void resolve_callback(string address, string resolved, int key)
-{
-    debug_message(address + resolved);
-}
-
 void slack(string message)
 {
-    int ret;
-
-    int fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
-    status[fd] = ([]);
-    status[fd]["http"] = "GET " + path + " HTTP/1.1\nHost: " + host + "\nContent-Type: application/json;charset=UTF-8\nAuthorization: todo\r\n\r\n";
-
+    int fd;
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
-    ret = socket_connect(fd, addr, "receive_data", "write_data");
+    string body = "";
+    string path = "/mudapi/slack";
 
-    resolve(host, "resolve_callback");
+    status[fd] = ([]);
+
+    fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
+    status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
+
+    socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data");
 }
