@@ -89,8 +89,11 @@ class NonceHandler(tornado.web.RequestHandler):
 
 class SlackHandler(tornado.web.RequestHandler):
     def post(self):
+        # if not self.get_current_user():
+        #     self.set_status(403)
+        #     return
         data = tornado.escape.json_decode(self.request.body)
-        print(data)
+        slack_message(options.slack_secret, options.channel, data['message'])
         ret = {}
         self.write(json.dumps(ret))
 

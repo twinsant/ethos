@@ -35,13 +35,19 @@ void socket_shutdown(int fd)
 void slack(string message)
 {
     int fd;
+    mapping data;
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
-    string body = "{}";
+    string body;
     string path = "/mudapi/slack";
 
     status[fd] = ([]);
 
     fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
+
+    data = ([
+        "message": message
+    ]);
+    body = json_encode(data);
     status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
 
     socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data");
