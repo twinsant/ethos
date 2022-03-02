@@ -39,6 +39,9 @@ void slack(string message)
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
     string body;
     string path = "/mudapi/slack";
+    object player;
+    // mapping db;
+    string cookie;
 
     status[fd] = ([]);
 
@@ -48,7 +51,13 @@ void slack(string message)
         "message": message
     ]);
     body = json_encode(data);
-    status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
+
+    player = this_player(0);
+    // debug_message(debug_info(1, player));
+    // db = player->query_entire_dbase();
+    // debug_message(json_encode(db));
+    cookie = player->query("cookie", 1);
+    status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\n" + "Cookie: " + cookie + "\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
 
     socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data");
 }

@@ -1,3 +1,4 @@
+from base64 import decode
 import secrets
 import json
 
@@ -87,15 +88,19 @@ class NonceHandler(tornado.web.RequestHandler):
         n = secrets.token_urlsafe()
         self.write(n)
 
-class SlackHandler(tornado.web.RequestHandler):
+class SlackHandler(BaseHandler):
     def post(self):
-        # if not self.get_current_user():
-        #     self.set_status(403)
-        #     return
-        data = tornado.escape.json_decode(self.request.body)
-        slack_message(options.slack_secret, options.channel, data['message'])
-        ret = {}
-        self.write(json.dumps(ret))
+        if not self.get_current_user():
+            self.set_status(403)
+            return
+        try:
+            data = tornado.escape.json_decode(self.request.body)
+            slack_message(options.slack_secret, options.channel, data['message'])
+            ret = {}
+            self.write(json.dumps(ret))
+        except json.decoder.JSONDecodeError:
+            self.set_status(400)
+            return
 
 class SignoutHandler(tornado.web.RequestHandler):
     def post(self):
@@ -121,6 +126,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
         if not self.get_current_user():
             self.set_status(403)
             return
+        self.cookie = self.request.headers.get('COOKIE', '')
         await super(MudWebSocket, self).get(*args, **kwargs)
 
     def check_origin(self, origin: str) -> bool:
@@ -150,7 +156,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                                 input = ens
                             else:
                                 input = self.current_user['address']
-                            ipt = json.dumps({'input':input})
+                            ipt = json.dumps({'input':input, 'cookie':self.cookie})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)
