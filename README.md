@@ -13,9 +13,7 @@ Extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html
 
 ## Architecture
 
-<img width="797" alt="image" src="https://user-images.githubusercontent.com/299586/145743942-12e185c4-6f72-4ca4-8d01-c4976860608e.png">
-
-
+<img width="827" alt="image" src="https://user-images.githubusercontent.com/299586/156308820-82483660-df6a-4771-8e96-254890739bbf.png">
 
 ## Roadmap
 
