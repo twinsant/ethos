@@ -1,5 +1,6 @@
 #define STREAM 1
 nosave mapping status = ([]);
+nosave object cmd_obj;
 
 void write_data(int fd)
 {
@@ -8,14 +9,14 @@ void write_data(int fd)
 
 void receive_data(int fd, mixed result)
 {
-    int n = strsrch(result, "{");
-    // debug_message(result);
+    mapping data;
 
+    int n = strsrch(result, "{");
 
     if (n > 0)
     {
-        debug_message(sprintf("%s", result[n..]));
-        result = json_decode(trim(result[n..]));
+        data = json_decode(trim(result[n..]));
+        cmd_obj->on_data(data);
     }
 
     socket_close(fd);
@@ -32,17 +33,18 @@ void socket_shutdown(int fd)
     socket_close(fd);
 }
 
-void price(string symbol)
+void price(object cmd, string symbol)
 {
     int fd;
     mapping data;
     // https://github.com/Yuffster/fluffOS/blob/master/include/socket_err.h
     string body;
     string path = "/mudapi/crypto";
-    object player;
     // mapping db;
     string cookie;
+    object player;
 
+    cmd_obj = cmd;
     status[fd] = ([]);
 
     fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
