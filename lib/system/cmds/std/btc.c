@@ -4,7 +4,7 @@ int help(object me);
 
 int main(object me, string arg)
 {
-    debug_message("btc");
+    CRYPTO_D->price("BTC");
 
     return 1;
 }
