@@ -16,6 +16,7 @@ from typing import (
 )
 
 from slack import slack_message
+import requests
 
 MYTOKEN = 'mytoken'
 
@@ -109,8 +110,12 @@ class CryptoHandler(BaseHandler):
             return
         try:
             data = tornado.escape.json_decode(self.request.body)
+            # curl -X GET "https://api.blockchain.com/v3/exchange/tickers/BTC-USD" -H  "accept: application/json"
             print(data)
-            ret = {}
+            ret = requests.get('https://api.blockchain.com/v3/exchange/tickers/BTC-USD').json()
+            ret = {
+                'price': ret['last_trade_price']
+            }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:
             self.set_status(400)
