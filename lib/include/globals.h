@@ -16,6 +16,8 @@
 #define CMD_PATH_STD ({"/system/cmds/std/", "/mudcore/cmds/player/"})
 
 #define SLACK_D "/system/daemons/slack_d"
+#define CRYPTO_D "/system/daemons/crypto_d"
+#define LOOT_D "/system/daemons/loot_d"
 
 #include <mudcore.h>
 
