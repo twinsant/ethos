@@ -39,6 +39,8 @@ Extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html
 
 ### 3. Immersive (Interactive: NLP/AI+VR/AR/XR)
 
+* [MagicaVoxel](http://ephtracy.github.io/)
+
 #### Ref books
 
 * Hooked
