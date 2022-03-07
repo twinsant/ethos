@@ -1,4 +1,6 @@
-# EthOS / Chinese Name: 灵境公社(Meta Commune)
+# EthOS
+
+Chinese Name: 灵境公社(Meta Commune)
 
 > Metaverse shall be a world of the people, **by the people and for the people**.
 
@@ -38,6 +40,8 @@ Extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html
 * Human Evolution
 
 ### 3. Immersive (Interactive: NLP/AI+VR/AR/XR)
+
+* [MagicaVoxel](http://ephtracy.github.io/)
 
 #### Ref books
 
