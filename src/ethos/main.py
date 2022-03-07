@@ -17,6 +17,7 @@ from typing import (
 
 from slack import slack_message
 import requests
+from loot import MLoot
 
 MYTOKEN = 'mytoken'
 
@@ -123,11 +124,14 @@ class CryptoHandler(BaseHandler):
 
 class LootHandler(BaseHandler):
     def post(self):
-        if not self.get_current_user():
+        user = self.get_current_user()
+        if not user:
             self.set_status(403)
             return
         try:
+            mloot = MLoot(user['address'])
             ret = {
+                'head': mloot.getHead()
             }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:

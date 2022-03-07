@@ -15,7 +15,7 @@ int main(object me, string arg)
 
 void on_data(mapping data)
 {
-    string msg = sprintf("TODO");
+    string msg = sprintf(HIM "%s" NOR " on my head\n", data["head"]);
     // debug_message(msg);
     // debug_message(debug_info(1, player));
     tell_object(player, msg);
