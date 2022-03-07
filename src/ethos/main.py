@@ -121,6 +121,19 @@ class CryptoHandler(BaseHandler):
             self.set_status(400)
             return
 
+class LootHandler(BaseHandler):
+    def post(self):
+        if not self.get_current_user():
+            self.set_status(403)
+            return
+        try:
+            ret = {
+            }
+            self.write(json.dumps(ret))
+        except json.decoder.JSONDecodeError:
+            self.set_status(400)
+            return
+
 class SignoutHandler(tornado.web.RequestHandler):
     def post(self):
         self.clear_cookie(MYTOKEN)
@@ -234,6 +247,7 @@ def make_app():
 
         (r"/mudapi/slack", SlackHandler),
         (r"/mudapi/crypto", CryptoHandler),
+        (r"/mudapi/loot", LootHandler),
 
         (r"/ws", MudWebSocket),
     ], debug=options.debug, cookie_secret=options.secret, static_path=options.static, template_path=options.template)

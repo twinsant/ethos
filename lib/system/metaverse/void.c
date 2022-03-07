@@ -8,4 +8,7 @@ On January 3rd, 2009, an anonymous computer programmer (or programmers) going by
 LONG);
 
     // SLACK_D->slack("测试 from mudlib");
+    set("exits", ([
+        "nft": __DIR__ "loot.c",
+    ]));
 }

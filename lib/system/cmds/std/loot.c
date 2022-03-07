@@ -8,14 +8,14 @@ int main(object me, string arg)
 {
     player = me;
 
-    CRYPTO_D->price(this_object(), "BTC");
+    LOOT_D->loot(this_object());
 
     return 1;
 }
 
 void on_data(mapping data)
 {
-    string msg = sprintf("Current BTC price is " HIY "$%.2f" NOR "\r\n\r\n", data["price"]);
+    string msg = sprintf("TODO");
     // debug_message(msg);
     // debug_message(debug_info(1, player));
     tell_object(player, msg);
@@ -24,9 +24,9 @@ void on_data(mapping data)
 int help(object me)
 {
     write(@HELP
-Command : btc
+Command : loot
 
-Show current BTC price.
+View player's loot NFT.
 
 HELP );
     return 1;
