@@ -2,13 +2,27 @@ inherit CORE_STD_ROOM;
 
 private varargs void create(int x, int y, int z)
 {
-    set("short", "Satoshi Nakamoto Institute");
-    set("long", @LONG
-On January 3rd, 2009, an anonymous computer programmer (or programmers) going by the name Satoshi Nakamoto mined the first block of the Bitcoin blockchain, kickstarting the world's first fully realized crypto-currency.
-LONG);
+    string fn, json_fn, content, e, dir, dest;
+    mapping j;
+
+    fn = file_name();
+    json_fn = fn + ".json";
+    content = read_file(json_fn);
+    if (content) {
+        j = json_decode(content);
+        set("short", j["short"]);
+        set("long", j["long"]);
+        set("exits", ([
+        ]));
+        foreach(e in j["exists"]) {
+            foreach(dir, dest in e) {
+                dest = replace_string(dest, "./", __DIR__);
+                addExit(dir, dest);
+            }
+        }
+    }else{
+        debug_message(json_fn + " not exist!");
+    }
 
     // SLACK_D->slack("测试 from mudlib");
-    set("exits", ([
-        "nft": __DIR__ "loot.c",
-    ]));
 }

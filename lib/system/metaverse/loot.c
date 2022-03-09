@@ -10,6 +10,6 @@ LONG);
 
     // SLACK_D->slack("测试 from mudlib");
     set("exits", ([
-        "out": VOID_OB,
+        "east": VOID_OB,
     ]));
 }

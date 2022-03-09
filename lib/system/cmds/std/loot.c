@@ -15,6 +15,7 @@ int main(object me, string arg)
 
 void on_data(mapping data)
 {
+    // https://docs.loot.foundation/canonical-principles/loot/loot-classification-and-ratings-system
     string msg = "";
     string k, v;
 

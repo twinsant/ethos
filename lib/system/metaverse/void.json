@@ -1,0 +1,9 @@
+{
+  "short": "Satoshi Nakamoto Institute",
+  "long": "On January 3rd, 2009, an anonymous computer programmer (or programmers) going by the name Satoshi Nakamoto mined the first block of the Bitcoin blockchain, kickstarting the world's first fully realized crypto-currency.",
+  "exists": [
+    {
+      "west": "./loot"
+    }
+  ]
+}
