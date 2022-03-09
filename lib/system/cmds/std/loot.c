@@ -15,7 +15,12 @@ int main(object me, string arg)
 
 void on_data(mapping data)
 {
-    string msg = sprintf(HIM "%s" NOR " on my head\n", data["head"]);
+    string msg = "";
+    string k, v;
+
+    foreach(k, v in data) {
+        msg += sprintf("%s: %s\n", k, v);
+    }
     // debug_message(msg);
     // debug_message(debug_info(1, player));
     tell_object(player, msg);

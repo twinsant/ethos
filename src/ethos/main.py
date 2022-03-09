@@ -131,7 +131,14 @@ class LootHandler(BaseHandler):
         try:
             mloot = MLoot(user['address'])
             ret = {
-                'head': mloot.getHead()
+                'head': mloot.getHead(),
+                'neck': mloot.getNeck(),
+                'chest': mloot.getChest(),
+                'waist': mloot.getWaist(),
+                'foot': mloot.getFoot(),
+                'hand': mloot.getHand(),
+                'weapon': mloot.getWeapon(),
+                'ring': mloot.getRing(),
             }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:
