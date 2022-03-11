@@ -4,9 +4,14 @@ private varargs void create(int x, int y, int z)
 {
     string fn, json_fn, content, e, dir, dest;
     mapping j;
+    string lang = this_player()->query("lang");
 
     fn = file_name();
-    json_fn = fn + ".json";
+    if (lang && strcmp(lang, DEFAULT_LANG)) {
+        json_fn = sprintf("%s-%s.json", fn, lang);
+    } else {
+        json_fn = fn + ".json";
+    }
     content = read_file(json_fn);
     if (content) {
         j = json_decode(content);

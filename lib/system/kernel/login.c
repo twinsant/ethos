@@ -4,6 +4,8 @@ inherit CORE_SAVE;
 
 #include <ansi.h>
 
+#define IDS_HELLO 0
+
 string write_cmd(string msg, string cmd)
 {
     mapping proto = ([
@@ -21,12 +23,13 @@ void get_did(string arg)
     mapping input = json_decode(arg);
     string did = input["input"];
     string cookie = input["cookie"];
+    string lang = input["lang"];
     string ip_number = query_ip_number(this_object());
 
     if (interactive(this_object()))
         set_temp("ip_number", ip_number);
 
-    debug_message(did + " logon at " + ip_number);
+    debug_message(did +  "(" + lang + ")" + " logon at " + ip_number);
 
     if ((string)ob->set("id", arg) != arg)
     {
@@ -35,11 +38,12 @@ void get_did(string arg)
         return;
     }
 
-    color_cat(MOTD);
-    write("Hello, " HIB + did + NOR + "! Welcome to a metaverse.\n\n");
-
     debug_message("User object is " + USER_OB);
     user = new(USER_OB);
+    user->set("lang", lang);
+
+    user->i18n_color_cat(MOTD);
+    user->i18n_write(IDS_HELLO, did);
 
     user->set("id", did);
     user->set("name", did);

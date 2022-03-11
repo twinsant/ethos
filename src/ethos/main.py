@@ -164,12 +164,29 @@ class SigninHandler(BaseHandler):
         else:
             self.set_status(403)
 
+# https://siongui.github.io/2012/10/11/python-parse-accept-language-in-http-request-header/
+def parseAcceptLanguage(acceptLanguage):
+  languages = acceptLanguage.split(",")
+  locale_q_pairs = []
+
+  for language in languages:
+    if language.split(";")[0] == language:
+      # no q => q = 1
+      locale_q_pairs.append((language.strip(), "1"))
+    else:
+      locale = language.split(";")[0].strip()
+      q = language.split(";")[1].split("=")[1]
+      locale_q_pairs.append((locale, q))
+
+  return locale_q_pairs
+
 class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
     async def get(self, *args: Any, **kwargs: Any) -> None:
         if not self.get_current_user():
             self.set_status(403)
             return
         self.cookie = self.request.headers.get('COOKIE', '')
+        self.locale = parseAcceptLanguage(self.request.headers.get('Accept-Language', 'en-US'))
         await super(MudWebSocket, self).get(*args, **kwargs)
 
     def check_origin(self, origin: str) -> bool:
@@ -199,7 +216,9 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                                 input = ens
                             else:
                                 input = self.current_user['address']
-                            ipt = json.dumps({'input':input, 'cookie':self.cookie})
+                            # TODO: Validate lang here
+                            lang = self.locale[0][0]
+                            ipt = json.dumps({'input':input, 'cookie':self.cookie, 'lang':lang})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)
