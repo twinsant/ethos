@@ -5,6 +5,7 @@ inherit CORE_SAVE;
 #include <ansi.h>
 
 #define IDS_HELLO 0
+#define IDS_KICK 1
 
 string write_cmd(string msg, string cmd)
 {
@@ -18,38 +19,54 @@ string write_cmd(string msg, string cmd)
 
 void get_did(string arg)
 {
-    object user;
-    object ob = this_object();
+    object user, old, old_logon;
+    object logon = this_object();
     mapping input = json_decode(arg);
     string did = input["input"];
     string cookie = input["cookie"];
     string lang = input["lang"];
-    string ip_number = query_ip_number(this_object());
+    string ip_number = query_ip_number(logon);
 
-    if (interactive(this_object()))
+    debug_message(sprintf("Logon: %O", logon));
+    if (interactive(logon))
         set_temp("ip_number", ip_number);
 
     debug_message(did +  "(" + lang + ")" + " logon at " + ip_number);
 
-    if ((string)ob->set("id", arg) != arg)
+    if ((string)logon->set("id", arg) != arg)
     {
         write("Failed setting user name.\n");
-        destruct(ob);
+        destruct(logon);
         return;
     }
 
-    debug_message("User object is " + USER_OB);
-    user = new(USER_OB);
-    user->set("lang", lang);
+    user = find_player(did);
+
+    if (user) {
+        debug_message(sprintf("Old player found: %O", user));
+
+        old_logon = user->query_temp("logon");
+        debug_message(sprintf("Old logon: %O", old_logon));
+
+        tell_object(user, user->i18n(IDS_KICK));
+        exec(old_logon, user);
+        destruct(old_logon);
+    }else{
+        user = new(USER_OB);
+        debug_message(sprintf("New player %O", user));
+
+        user->set("lang", lang);
+
+        user->set("id", did);
+        user->set("name", did);
+        user->set("cookie", cookie);
+    }
+
+    exec(user, logon);
+    user->set_temp("logon", logon);
 
     user->i18n_color_cat(MOTD);
     user->i18n_write(IDS_HELLO, did);
-
-    user->set("id", did);
-    user->set("name", did);
-    user->set("cookie", cookie);
-
-    exec(user, ob);
 
     user->setup();
 

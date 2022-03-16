@@ -20,15 +20,25 @@ function i18n_color_cat(string motd)
 
 mapping i18n = ([
     "en-US": ({
-        "Hello, " HIB "%s" NOR "! Welcome to a metaverse.\n\n"
+        "Hello, " HIB "%s" NOR "! Welcome to a metaverse.\n\n",
+        "Someone kick you off.\n",
     }),
     "zh-CN": ({
-        "你好， " HIB "%s" NOR "! 欢迎来到元宇宙石器时代。\n\n"
+        "你好， " HIB "%s" NOR "! 欢迎来到元宇宙石器时代。\n\n",
+        "有人用你的账户在其他地方登录，你被迫退出\n",
     }),
 ]);
 
 function i18n_write(int ids, mixed args...)
 {
     string lang = query("lang");
+
     write(sprintf(i18n[lang][ids], args...));
+}
+
+string i18n(int ids, mixed args...)
+{
+    string lang = query("lang");
+
+    return sprintf(i18n[lang][ids], args...);
 }
