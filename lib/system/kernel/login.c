@@ -19,7 +19,7 @@ string write_cmd(string msg, string cmd)
 
 void get_did(string arg)
 {
-    object user, old, old_logon;
+    object user, old_logon;
     object logon = this_object();
     mapping input = json_decode(arg);
     string did = input["input"];
@@ -27,7 +27,7 @@ void get_did(string arg)
     string lang = input["lang"];
     string ip_number = query_ip_number(logon);
 
-    debug_message(sprintf("Logon: %O", logon));
+    debug_message(sprintf("\nLogon: %O", logon));
     if (interactive(logon))
         set_temp("ip_number", ip_number);
 
@@ -49,7 +49,9 @@ void get_did(string arg)
         debug_message(sprintf("Old logon: %O", old_logon));
 
         tell_object(user, user->i18n(IDS_KICK));
-        exec(old_logon, user);
+        if (interactive(user)) {
+            exec(old_logon, user);
+        }
         destruct(old_logon);
     }else{
         user = new(USER_OB);

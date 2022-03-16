@@ -42,3 +42,7 @@ string i18n(int ids, mixed args...)
 
     return sprintf(i18n[lang][ids], args...);
 }
+
+void net_dead()
+{
+}
