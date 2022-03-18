@@ -1,12 +1,10 @@
 # EthOS
 
-Chinese Name: 灵境公社(Meta Commune)
-
 > Metaverse shall be a world of the people, **by the people and for the people**.
 
-A framework for building metaverse together, based on LPmud driver and mudlibs.
+A framework for building text metaverse together, based on LPmud driver and mudlibs.
 
-Extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3
+This project extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3 #MudOS #FluffOS
 
 ## Screenshots
 
