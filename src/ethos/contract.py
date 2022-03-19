@@ -4,11 +4,18 @@ import json
 from web3 import Web3
 
 class ContractCall():
-    def __init__(self, method_to_call):
+    def __init__(self, w3, method_to_call):
+        self.w3 = w3
         self.method_to_call = method_to_call
 
     def __call__(self, *args, **kwargs):
-        return self.method_to_call(*args, **kwargs).call()
+        if 'view' in kwargs and kwargs['view'] == False:
+            del kwargs['view']
+            tx_hash = self.method_to_call(*args, **kwargs).transact()
+            tx_receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+            return tx_receipt
+        else:
+            return self.method_to_call(*args, **kwargs).call()
 
 class EthContract:
     def __init__(self, contract_address, abi_name, endpoint='https://mainnet.infura.io/v3/%s' % os.getenv('INFURA_PROJECT_ID', 'YOUR_INFURA_PROJECT_ID')):
@@ -26,5 +33,5 @@ class EthContract:
         for i in self.abi:
             if i['type'] == 'function' and name == i['name']:
                 method_to_call = getattr(self.contract.functions, name)
-                ret = ContractCall(method_to_call)
+                ret = ContractCall(self.web3, method_to_call)
         return ret
