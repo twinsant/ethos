@@ -9,8 +9,9 @@ class ContractCall():
         self.method_to_call = method_to_call
 
     def __call__(self, *args, **kwargs):
-        if 'view' in kwargs and kwargs['view'] == False:
-            del kwargs['view']
+        op = 'upate'
+        if op in kwargs and kwargs[op] == True:
+            del kwargs[op]
             tx_hash = self.method_to_call(*args, **kwargs).transact()
             tx_receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
             return tx_receipt
@@ -26,7 +27,7 @@ class EthContract:
         with open(fn) as f:
             c = f.read()
         self.abi = json.loads(c)
-        self.contract = self.web3.eth.contract(address=contract_address, abi=self.abi)
+        self.contract = self.web3.eth.contract(address=Web3.toChecksumAddress(contract_address), abi=self.abi)
 
     def __getattr__(self, name):
         ret = None

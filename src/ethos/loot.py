@@ -65,7 +65,7 @@ class MLoot:
         else:
             return None
 
-if __name__ == '__main__':
+def mainnet():
     # print(contract.totalSupply())
 
     address = '0x464eE0FF90B7aC76d3ec8D2a25E6926DeCC88f6d'
@@ -85,3 +85,10 @@ if __name__ == '__main__':
         idata = img.split(',')[1]
         s = base64.b64decode(idata)
         print(s)
+
+if __name__ == '__main__':
+    mloot_contract = '0xa513e6e4b8f2a923d98304ec87f64353c4d5c853'
+    contract = EthContract(mloot_contract, 'mLoot', endpoint='http://127.0.0.1:8545/')
+
+    print(contract.totalSupply())
+    contract.claim(0, update=True)
