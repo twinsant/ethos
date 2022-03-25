@@ -128,11 +128,10 @@
 
             function connectWs(term) {
                 if (ws == undefined) {
-                    ws = new WebSocket('ws://127.0.0.1:4003/ws', 'ascii');
+                    // Chrome will not accept ascii mode?
+                    ws = new WebSocket('ws://127.0.0.1:4003/ws');//, 'ascii');
 
-                    // const attachAddon = new AttachAddon.AttachAddon(ws);
-                    // term.loadAddon(attachAddon);
-                    
+                    // https://github.com/xtermjs/xterm.js/blob/a13f11adb4b04245684b24a5b33cbbc2351588d4/addons/xterm-addon-attach/src/AttachAddon.ts#L70
                     ws.onopen = function () {
                         term.write('Connected.\r\n\r\n');
                     }
