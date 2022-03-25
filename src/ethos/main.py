@@ -14,11 +14,10 @@ from typing import (
 )
 
 from slack import slack_message
-import requests
 
 from handlers.base import BaseHandler
 from handlers.auth import SigninHandler, SignoutHandler, MeHandler
-from handlers.w3 import LootHandler
+from handlers.w3 import LootHandler, CryptoHandler
 
 class MainHandler(BaseHandler):
     def get(self):
@@ -38,24 +37,6 @@ class SlackHandler(BaseHandler):
             data = tornado.escape.json_decode(self.request.body)
             slack_message(options.slack_secret, options.channel, data['message'])
             ret = {}
-            self.write(json.dumps(ret))
-        except json.decoder.JSONDecodeError:
-            self.set_status(400)
-            return
-
-class CryptoHandler(BaseHandler):
-    def post(self):
-        if not self.get_current_user():
-            self.set_status(403)
-            return
-        try:
-            data = tornado.escape.json_decode(self.request.body)
-            # curl -X GET "https://api.blockchain.com/v3/exchange/tickers/BTC-USD" -H  "accept: application/json"
-            print(data)
-            ret = requests.get('https://api.blockchain.com/v3/exchange/tickers/BTC-USD').json()
-            ret = {
-                'price': ret['last_trade_price']
-            }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:
             self.set_status(400)

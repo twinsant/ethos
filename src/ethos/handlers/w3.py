@@ -1,3 +1,8 @@
+import json
+
+import requests
+import tornado.web
+
 from handlers.base import BaseHandler
 from w3.loot import MLoot
 
@@ -18,6 +23,24 @@ class LootHandler(BaseHandler):
                 'hand': mloot.getHand(),
                 'weapon': mloot.getWeapon(),
                 'ring': mloot.getRing(),
+            }
+            self.write(json.dumps(ret))
+        except json.decoder.JSONDecodeError:
+            self.set_status(400)
+            return
+
+class CryptoHandler(BaseHandler):
+    def post(self):
+        if not self.get_current_user():
+            self.set_status(403)
+            return
+        try:
+            data = tornado.escape.json_decode(self.request.body)
+            # curl -X GET "https://api.blockchain.com/v3/exchange/tickers/BTC-USD" -H  "accept: application/json"
+            print(data)
+            ret = requests.get('https://api.blockchain.com/v3/exchange/tickers/BTC-USD').json()
+            ret = {
+                'price': ret['last_trade_price']
             }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:
