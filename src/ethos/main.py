@@ -16,8 +16,8 @@ from typing import (
 from slack import slack_message
 import requests
 
-from base import BaseHandler
-from auth import SigninHandler, SignoutHandler, MeHandler
+from handlers.base import BaseHandler
+from handlers.auth import SigninHandler, SignoutHandler, MeHandler
 from handlers.w3 import LootHandler
 
 class MainHandler(BaseHandler):

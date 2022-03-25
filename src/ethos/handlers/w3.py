@@ -1,5 +1,5 @@
-from base import BaseHandler
-from ethos.w3.loot import MLoot
+from handlers.base import BaseHandler
+from w3.loot import MLoot
 
 class LootHandler(BaseHandler):
     def post(self):

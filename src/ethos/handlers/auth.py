@@ -2,7 +2,7 @@ import json
 
 import tornado.web
 
-from base import BaseHandler, MYTOKEN
+from handlers.base import BaseHandler, MYTOKEN
 from slack import slack_message
 from tornado.options import options
 
