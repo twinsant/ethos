@@ -9,7 +9,7 @@ class ContractCall():
         self.method_to_call = method_to_call
 
     def __call__(self, *args, **kwargs):
-        op = 'upate'
+        op = 'update'
         if op in kwargs and kwargs[op] == True:
             del kwargs[op]
             tx_hash = self.method_to_call(*args, **kwargs).transact()

@@ -87,8 +87,15 @@ def mainnet():
         print(s)
 
 if __name__ == '__main__':
-    mloot_contract = '0xa513e6e4b8f2a923d98304ec87f64353c4d5c853'
+    mloot_contract = '0x610178dA211FEF7D417bC0e6FeD39F05609AD788'
     contract = EthContract(mloot_contract, 'mLoot', endpoint='http://127.0.0.1:8545/')
 
-    print(contract.totalSupply())
-    contract.claim(0, update=True)
+    address = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+    print('totalSupply: ', contract.totalSupply(), 'owner: ', contract.owner())
+    #contract.claim(0, update=True)
+    n = contract.balanceOf(address)
+    print('balanceOf: ', n)
+    if n > 0:
+        token_id = contract.tokenOfOwnerByIndex(address, 0)
+        print('Token ID: ', token_id)
+        print(contract.getHead(token_id))
