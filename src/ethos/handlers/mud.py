@@ -58,7 +58,8 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                                 input = self.current_user['address']
                             # TODO: Validate lang here
                             lang = self.locale[0][0]
-                            ipt = json.dumps({'input':input, 'cookie':self.cookie, 'lang':lang})
+                            name = ens and ens or f'{input[:5]}...{input[-4:]}'
+                            ipt = json.dumps({'input':input, 'name':name, 'cookie':self.cookie, 'lang':lang})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)

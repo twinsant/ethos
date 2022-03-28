@@ -23,6 +23,7 @@ void get_did(string arg)
     object logon = this_object();
     mapping input = json_decode(arg);
     string did = input["input"];
+    string name = input["name"];
     string cookie = input["cookie"];
     string lang = input["lang"];
     string ip_number = query_ip_number(logon);
@@ -60,7 +61,7 @@ void get_did(string arg)
         user->set("lang", lang);
 
         user->set("id", did);
-        user->set("name", did);
+        user->set("name", name);
         user->set("cookie", cookie);
     }
 
