@@ -22,7 +22,8 @@ void get_did(string arg)
     object user, old_logon;
     object logon = this_object();
     mapping input = json_decode(arg);
-    string did = input["input"];
+    string chain_id = input["chain_id"];
+    string did = chain_id + ":" + input["input"];
     string name = input["name"];
     string cookie = input["cookie"];
     string lang = input["lang"];

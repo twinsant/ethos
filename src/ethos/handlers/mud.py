@@ -51,15 +51,13 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                     if 'proxyCallback'in j:
                         cmd = j['proxyCallback']
                         if cmd == 'DID':
+                            chain_id = self.current_user['chain_id']
                             ens = self.current_user.get('ens', None)
-                            if ens:
-                                input = ens
-                            else:
-                                input = self.current_user['address']
+                            input = self.current_user['address']
                             # TODO: Validate lang here
                             lang = self.locale[0][0]
                             name = ens and ens or f'{input[:5]}...{input[-4:]}'
-                            ipt = json.dumps({'input':input, 'name':name, 'cookie':self.cookie, 'lang':lang})
+                            ipt = json.dumps({'chain_id':chain_id, 'input':input, 'name':name, 'cookie':self.cookie, 'lang':lang})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)
