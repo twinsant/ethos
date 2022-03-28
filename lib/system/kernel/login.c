@@ -70,13 +70,13 @@ void get_did(string arg)
     user->set_temp("logon", logon);
 
     user->i18n_color_cat(MOTD);
-    user->i18n_write(IDS_HELLO, did);
+    user->i18n_write(IDS_HELLO, name);
 
     user->setup();
 
     debug_message("Move to " + VOID_OB);
     user->move(VOID_OB);
-    // tell_room(VOID_OB, user->short() + "joined.\n", ({user}));
+    tell_room(VOID_OB, "\n" + HIR + user->name() + NOR " joined.\n", ({user}));
 }
 
 void logon()
