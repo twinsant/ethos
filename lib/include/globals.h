@@ -18,6 +18,7 @@
 #define SLACK_D "/system/daemons/slack_d"
 #define CRYPTO_D "/system/daemons/crypto_d"
 #define LOOT_D "/system/daemons/loot_d"
+#define WEB3_D "/system/daemons/web3_d"
 
 #define DEFAULT_LANG "en-US"
 

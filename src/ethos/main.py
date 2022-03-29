@@ -12,7 +12,7 @@ from slack import slack_message
 
 from handlers.base import BaseHandler
 from handlers.auth import SigninHandler, SignoutHandler, MeHandler
-from handlers.w3 import LootHandler, CryptoHandler
+from handlers.w3 import LootHandler, CryptoHandler, BalanceHandler
 from handlers.mud import MudWebSocket, EchoWebSocket
 
 class MainHandler(BaseHandler):
@@ -63,6 +63,7 @@ def make_app():
         (r"/mudapi/slack", SlackHandler),
         (r"/mudapi/crypto", CryptoHandler),
         (r"/mudapi/loot", LootHandler),
+        (r"/mudapi/balance", BalanceHandler),
 
         (r"/ws", MudWebSocket),
         (r"/echo", EchoWebSocket),
