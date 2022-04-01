@@ -5,6 +5,9 @@ inherit CORE_USER;
 void setup()
 {
     enable_living();
+    if (query("id") == WIZARD) {
+        enable_wizard();
+    }
 }
 
 function i18n_color_cat(string motd)

@@ -7,22 +7,13 @@ inherit CORE_SAVE;
 #define IDS_HELLO 0
 #define IDS_KICK 1
 
-string write_cmd(string msg, string cmd)
-{
-    mapping proto = ([
-        "message": msg,
-        "proxyCallback": cmd
-    ]);
-    string ret = json_encode(proto);
-    write(ret);
-}
-
 void get_did(string arg)
 {
     object user, old_logon;
     object logon = this_object();
     mapping input = json_decode(arg);
     string chain_id = input["chain_id"];
+    string address = input["input"];
     string did = chain_id + ":" + input["input"];
     string name = input["name"];
     string cookie = input["cookie"];
@@ -64,6 +55,7 @@ void get_did(string arg)
         user->set("id", did);
         user->set("name", name);
         user->set("cookie", cookie);
+        user->set("address", address);
     }
 
     exec(user, logon);
@@ -81,6 +73,6 @@ void get_did(string arg)
 
 void logon()
 {
-    write_cmd("Getting Web3 DID...\n\n", "DID");
+    write_cmd("Getting Web3 DID...\n\n", "proxyCallback", "DID");
     input_to("get_did");
 }

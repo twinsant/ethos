@@ -5,6 +5,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+#define DEV 1
+
 #define LOG_DIR "/log/"
 
 #define DATA_DIR "/data/"
@@ -21,6 +23,10 @@
 #define WEB3_D "/system/daemons/web3_d"
 
 #define DEFAULT_LANG "en-US"
+
+#ifdef DEV
+#define WIZARD "1337:0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+#endif
 
 #include <mudcore.h>
 
