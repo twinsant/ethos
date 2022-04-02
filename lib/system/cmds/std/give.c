@@ -26,7 +26,7 @@ int main(object me, string arg)
         foreach(i in ai) {
             if (strsrch(i->query("name"), prefix)!=-1) {
                 address = i->query("address");
-                tell_object(i, sprintf("\n%s is transfer %d ETH to you...\n", me->query("name"), amount));
+                tell_object(i, sprintf("\n%s is transfering %d ETH to you...\n", me->query("name"), amount));
                 transfer = ([
                     "cmd":"transfer",
                     "address": address,

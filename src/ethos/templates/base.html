@@ -20,6 +20,7 @@
         <script src="{{ static_url('js/xterm-addon-fit.min.js')}}"></script>
         <script src="{{ static_url('js/xterm-addon-unicode11.min.js')}}"></script>
         <script src="{{ static_url('js/ethers-5.2.umd.min.js')}}"></script>
+        <script src="{{ static_url('js/contracts.js')}}"></script>
         <meta
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4003 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
@@ -117,8 +118,22 @@
             ></div>
         </div>
         <script>
+            // Web3
             const provider = new ethers.providers.Web3Provider(window.ethereum);
 
+            // On hardhat network
+            // c = loadContract("0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0", "Greeter")
+            // await c.greet()
+            // 
+            // c = loadContract("0x5FC8d32690cc91D4c39d9d3abcBD16989F875707", "TemporalLoot")
+            // await c.claim(1)
+            function loadContract(contractAddress, contractName) {
+                let abi = contracts[contractName];
+                let contract = new ethers.Contract(contractAddress, abi, provider.getSigner());
+                return contract;
+            }
+
+            // xterm
             var term = new Terminal({
                 convertEol: true,
                 // disableStdin: true,
