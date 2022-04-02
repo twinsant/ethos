@@ -10,6 +10,7 @@ int main(object me, string arg)
     int amount, r;
     object e, i;
     object *ai;
+    mapping transfer;
 
     player = me;
 
@@ -26,7 +27,12 @@ int main(object me, string arg)
             if (strsrch(i->query("name"), prefix)!=-1) {
                 address = i->query("address");
                 tell_object(i, sprintf("\n%s is transfer %d ETH to you...\n", me->query("name"), amount));
-                write_cmd("Transfering...\n", "transfer", address);
+                transfer = ([
+                    "cmd":"transfer",
+                    "address": address,
+                    "amount":amount
+                ]);
+                write_cmd("Transfering...\n", "callback", transfer);
             }
         }
     } else {

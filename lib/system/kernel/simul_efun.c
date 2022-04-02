@@ -2,7 +2,7 @@
 
 inherit CORE_SIMUL_EFUN_OB;
 
-string write_cmd(string msg, string callback, string cmd)
+string write_cmd(string msg, string callback, mixed cmd)
 {
     mapping proto = ([
         "message": msg,

@@ -19,6 +19,7 @@
         <script src="{{ static_url('js/xterm-addon-attach.min.js')}}"></script>
         <script src="{{ static_url('js/xterm-addon-fit.min.js')}}"></script>
         <script src="{{ static_url('js/xterm-addon-unicode11.min.js')}}"></script>
+        <script src="{{ static_url('js/ethers-5.2.umd.min.js')}}"></script>
         <meta
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4003 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
@@ -116,6 +117,8 @@
             ></div>
         </div>
         <script>
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+
             var term = new Terminal({
                 convertEol: true,
                 // disableStdin: true,
@@ -137,19 +140,26 @@
                     }
                     ws.onmessage = function (message) {
                         var ret = JSON.parse(message.data);
-                        if (ret.transfer) {
-                            const transactionParameters = {
-                                to: ret.transfer, // Required except during contract publications.
-                                from: ethereum.selectedAddress, // must match user's active address.
-                                value: '0x56BC75E2D63100000', // Only required to send ether to the recipient from the initiating external account.
-                            };
+                        if (ret.callback) {
+                            switch (ret.callback.cmd) {
+                                case "transfer":
+                                    let wei = _ethers.utils.parseEther(`${ret.callback.amount}`).toHexString();
+                                    const transactionParameters = {
+                                        to: ret.callback.address, // Required except during contract publications.
+                                        from: ethereum.selectedAddress, // must match user's active address.
+                                        value: wei, // Only required to send ether to the recipient from the initiating external account.
+                                    };
 
-                            // txHash is a hex string
-                            // As with any RPC call, it may throw an error
-                            ethereum.request({
-                                method: 'eth_sendTransaction',
-                                params: [transactionParameters],
-                            });
+                                    // txHash is a hex string
+                                    // As with any RPC call, it may throw an error
+                                    ethereum.request({
+                                        method: 'eth_sendTransaction',
+                                        params: [transactionParameters],
+                                    });
+                                    break;
+                                default:
+                                    console.log("Unknown callback", ret.callback);
+                            }
 
                         }
                         term.write(ret.message + '> ');
