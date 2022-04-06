@@ -11,6 +11,6 @@ class Eth:
         return float(Web3.fromWei(wei_balance, unit='ether'))
 
 if __name__ == '__main__':
-    address = '0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e'
+    address = '0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82'
     eth = Eth(endpoint='http://127.0.0.1:8545')
     print(eth.balance(address))
