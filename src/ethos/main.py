@@ -1,6 +1,7 @@
 from base64 import decode
 import secrets
 import json
+import os
 
 import tornado.ioloop
 import tornado.web
@@ -40,9 +41,10 @@ class SlackHandler(BaseHandler):
 
 
 
+__DIR__ = os.path.dirname(__file__)
 define("port", default=4003, help="port to listen on")
-define("static", default='./static', help="static files path")
-define("template", default='./templates', help="template files path")
+define("static", default=os.path.join(__DIR__, './static'), help="static files path")
+define("template", default=os.path.join(__DIR__, './templates'), help="template files path")
 define("debug", default=False, type=bool, help="debug flag")
 define("secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="cookie secret")
 
