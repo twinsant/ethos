@@ -2,6 +2,7 @@ import json
 
 import requests
 import tornado.web
+from tornado.options import options
 
 from handlers.base import BaseHandler
 from w3.loot import MLoot
@@ -55,11 +56,16 @@ class BalanceHandler(BaseHandler):
             self.set_status(403)
             return
         try:
-            eth = Eth(endpoint='http://127.0.0.1:8545/')
-            balance = eth.balance(user['address'])
-            ret = {
-                'balance': balance,
-            }
+            eth = Eth(endpoint=options.endpoint)
+            try:
+                balance = eth.balance(user['address'])
+                ret = {
+                    'balance': balance,
+                }
+            except requests.exceptions.ConnectionError:
+                ret = {
+                    'error': True,
+                }
             self.write(json.dumps(ret))
         except json.decoder.JSONDecodeError:
             self.set_status(400)

@@ -49,6 +49,7 @@ define("debug", default=False, type=bool, help="debug flag")
 define("secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="cookie secret")
 
 define("slack_secret", default='__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__', help="slack auth secret")
+define("endpoint", default='http://127.0.0.1:8545/', help="Ethereum endpoint")
 define("channel", default='twinsant-com', help="slack bot channel")
 
 parse_command_line()
