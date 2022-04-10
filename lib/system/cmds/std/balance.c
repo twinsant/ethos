@@ -19,8 +19,12 @@ void on_data(mapping data)
     string msg = "";
     string k, v;
 
-    msg = sprintf("Your balance is " HIY "%.08f" NOR " ETH\n", data["balance"]);
-    // debug_message(debug_info(1, player));
+    if (data["error"]) {
+        msg = sprintf(HIR "Web3 endpoint error!\n" NOR);
+    } else {
+        msg = sprintf("Your balance is " HIY "%.08f" NOR " ETH\n", data["balance"]);
+        // debug_message(debug_info(1, player));
+    }
     tell_object(player, msg);
 }
 
