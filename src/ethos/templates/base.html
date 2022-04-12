@@ -127,6 +127,12 @@
             // 
             // c = loadContract("0x5FC8d32690cc91D4c39d9d3abcBD16989F875707", "TemporalLoot")
             // await c.claim(1)
+            //
+            // c =  loadContract("0x610178dA211FEF7D417bC0e6FeD39F05609AD788", "PaidGreeter")
+            // await c.setGreeting("Paid", overrides={value: _ethers.utils.parseEther("0.01")})
+            function getOverrides(value) {
+                return {value: _ethers.utils.parseEther(`${value}`)};
+            }
             function loadContract(contractAddress, contractName) {
                 let abi = contracts[contractName];
                 let contract = new ethers.Contract(contractAddress, abi, provider.getSigner());

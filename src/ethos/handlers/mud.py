@@ -70,7 +70,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
             app_log.info(f'Mud connection {mud_ws} established.')
             self.command = ''
         except:
-            self.write_message('\x1B[1;3;31mMud proxy build faild: Please contact the DM.\x1B[0m ')
+            self.write_message(json.dumps({'message':'\x1B[1;3;31mMud proxy build faild: Please contact the DM.\x1B[0m \n'}))
             app_log.error(f'Mud connection {mud_ws} NOT established')
 
     async def open(self):
