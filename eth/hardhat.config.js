@@ -10,6 +10,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+task("balance", "Prints an account's balance")
+  .addParam("account", "The account's address")
+  .setAction(async (taskArgs, hre) => {
+    const balance = await hre.ethers.provider.getBalance(taskArgs.account);
+    console.log(`${taskArgs.account} : ${hre.ethers.utils.formatEther(balance)} ETH`)
+});
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
@@ -17,7 +24,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.7",
   networks: {
     hardhat: {
       chainId: 1337
