@@ -133,9 +133,12 @@
             function getOverrides(value) {
                 return {value: _ethers.utils.parseEther(`${value}`)};
             }
-            function loadContract(contractAddress, contractName) {
-                let abi = contracts[contractName];
-                let contract = new ethers.Contract(contractAddress, abi, provider.getSigner());
+            async function loadContract(contractName) {
+                let network = await provider.getNetwork();
+                const r = await fetch(`/static/abi/${network.chainId}/${contractName}.json`);
+                let j = await r.json();
+                let abi = j['abi'];
+                let contract = new ethers.Contract(j['address'], abi, provider.getSigner());
                 return contract;
             }
 
