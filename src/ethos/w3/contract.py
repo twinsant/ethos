@@ -23,10 +23,11 @@ class EthContract:
         self.web3 = Web3(Web3.HTTPProvider(endpoint))
         # web3 = Web3(Web3.IPCProvider("~/Library/Ethereum/geth.ipc"))
 
-        fn = os.path.join(os.path.dirname(__file__), f'abi/{abi_name}.json')
+        fn = os.path.abspath(os.path.join(os.path.dirname(__file__), f'../../../eth/artifacts/contracts/{abi_name}.sol/{abi_name}.json'))
         with open(fn) as f:
             c = f.read()
-        self.abi = json.loads(c)
+        j = json.loads(c)
+        self.abi = j['abi']
         self.contract = self.web3.eth.contract(address=Web3.toChecksumAddress(contract_address), abi=self.abi)
 
     def __getattr__(self, name):
