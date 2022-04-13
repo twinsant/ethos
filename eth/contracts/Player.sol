@@ -42,3 +42,5 @@ contract Player is Ownable {
         require(success, "Failed to send Ether");
     }
 }
+
+// (base) ➜  eth git:(main) ✗ hh --network localhost deploy --contract Player

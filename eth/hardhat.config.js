@@ -1,3 +1,5 @@
+const { task } = require("hardhat/config");
+
 require("@nomiclabs/hardhat-waffle");
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -16,6 +18,18 @@ task("balance", "Prints an account's balance")
     const balance = await hre.ethers.provider.getBalance(taskArgs.account);
     console.log(`${taskArgs.account} : ${hre.ethers.utils.formatEther(balance)} ETH`)
 });
+
+task("deploy", "Deploy contract")
+  .addParam("contract", "The contract name")
+  .setAction(async (taskArgs, hre) => {
+    const name = taskArgs.contract;
+
+    const cf = await hre.ethers.getContractFactory(name);
+    const c = await cf.deploy();
+    await c.deployed();
+
+    console.log(`${name} deployed to:`, c.address);
+  });
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
