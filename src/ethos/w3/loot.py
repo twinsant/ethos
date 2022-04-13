@@ -6,7 +6,7 @@ from w3.contract import EthContract
 # https://etherscan.io/address/0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF
 MLOOT_CONTRACT = '0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF'
 
-contract = EthContract(MLOOT_CONTRACT, 'mLoot')
+contract = EthContract(MLOOT_CONTRACT, 'TemporalLoot')
 
 class MLoot:
     def __init__(self, address) -> None:
