@@ -1,3 +1,6 @@
+[submodule "lib/--force"]
+	path = lib/--force
+	url = https://github.com/twinsant/mudcore.git
 [submodule "lib/mudcore"]
 	path = lib/mudcore
-	url = git@github.com:twinsant/mudcore.git
+	url = https://github.com/twinsant/mudcore.git
