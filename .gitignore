@@ -1,2 +1,2 @@
-run-server.sh
-development.sh
+*.sh
+src/ethos/static/abi/
