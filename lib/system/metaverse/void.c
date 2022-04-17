@@ -1,12 +1,15 @@
 inherit CORE_STD_ROOM;
 
-private varargs void create(int x, int y, int z)
+private varargs void create_json(string dest_name)
 {
     string fn, json_fn, content, e, dir, dest;
     mapping j;
     string lang = this_player()->query("lang");
 
-    fn = file_name();
+    if (!dest_name)
+        fn = file_name();
+    else
+        fn = dest_name;
     if (lang && strcmp(lang, DEFAULT_LANG)) {
         json_fn = sprintf("%s-%s.json", fn, lang);
     } else {
@@ -28,6 +31,10 @@ private varargs void create(int x, int y, int z)
     }else{
         debug_message(json_fn + " not exist!");
     }
+}
 
-    // SLACK_D->slack("测试 from mudlib");
+private varargs void create(string dest_name)
+{
+    debug_message(sprintf("void dest: %s", dest_name));
+    create_json();
 }

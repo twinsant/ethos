@@ -6,3 +6,7 @@
 
 (base) ➜  ethos git:(main) ✗ ./bin/driver lib/config.ini
 ```
+
+# Ref
+
+* https://git-scm.com/book/en/v2/Git-Tools-Submodules

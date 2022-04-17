@@ -14,6 +14,7 @@
 #define LOGIN_OB    "/system/kernel/login"
 #define USER_OB    "/system/kernel/user"
 #define VOID_OB    "/system/metaverse/void"
+#define WORLD_DIR   "/system/metaverse"
 
 #define CMD_PATH_STD ({"/system/cmds/std/", "/mudcore/cmds/player/"})
 
