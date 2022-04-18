@@ -4,9 +4,24 @@ inherit CORE_USER;
 
 void setup()
 {
+    set("hp", 100);
+    set("str", 100);
+    set("def", 100);
+    set("agi", 100);
+
+    set_heart_beat(1);
+
     enable_living();
     if (query("id") == WIZARD) {
         enable_wizard();
+    }
+}
+
+void heart_beat()
+{
+    if (is_fighting())
+    {
+        attack();
     }
 }
 

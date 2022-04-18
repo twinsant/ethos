@@ -22,6 +22,7 @@
 #define CRYPTO_D "/system/daemons/crypto_d"
 #define LOOT_D "/system/daemons/loot_d"
 #define WEB3_D "/system/daemons/web3_d"
+#define COMBAT_D "/system/daemons/combat_d"
 
 #define DEFAULT_LANG "en-US"
 

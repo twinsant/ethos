@@ -19,4 +19,7 @@ private varargs void create(int x, int y, int z)
     set("long", "这是一片郁郁葱葱的森林，林间有不少小动物跑来跑去。");
 
     setArea("forest", x, y, z);
+
+    set("objects", ([__DIR__ "npc/rabbit.c": random(3)]));
+    setup();
 }
