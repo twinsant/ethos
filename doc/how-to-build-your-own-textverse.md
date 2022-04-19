@@ -40,8 +40,17 @@
 + 登录后随机成为Mongo或者Touch，出生在小木屋，随身携带斧头（弓箭）和水囊。
 + 有一片森林，有木头和兔子，你需要砍木头，维修小木屋以及其他用途，需要狩猎兔子作为食物。
 + 木头多了，可以卖给系统（报亭？），兔子也也一样；你还需要用木头换兔子，或者兔子换木头（Mongo和Touch之间交换）。
-+ 每4小时消耗一只兔子，每8小时，消耗4个木头，否则进入判定资源不足，生命值减少，死亡。
-+ 售卖木头或者兔子或者其他任何东西，都有AMM系统价格，收到的是金币，目前没用途。
++ NFT的设定方案需要确认：
++ NFT(Meta Angle,721)-->Contract(Textverse)-->Mapping+Setting-->
++ ERC1155(ERC721s+ERC20s(30Gold+20wood))-->Login(Verify owner NFT)-->
++ Play(实时Web3？)
++ Mapping：Community support, convert into attributes(Open settings)
++ Loot copy(basic)：6属性？，customer define，control 12？total
++ Setting： God setting(Lord),World setting（基础属性+jifen）？
++ Game settings:
++ Web3 interaction：主动触发，存储属性到链上NFT更新
++ （每4小时消耗一只兔子，每8小时，消耗4个木头，否则进入判定资源不足，生命值减少，死亡。）
++ （售卖木头或者兔子或者其他任何东西，都有AMM系统价格，收到的是金币，目前没用途。）
 + 其他设定跟随God Setting.
 
 ### Step2.测试流程
@@ -66,7 +75,8 @@
 + 1.使用积分，选择God setting 模板，生成自己的元宇宙合约，例如生成唯一神器、七大奇迹、故事主线等等。
 + 2.未购买元宇宙蛋NFT也可以创建自己的元宇宙，只是无法使用我们的模板+机制配置化创建，需要基于模板写合约细节，积分购买或捐赠获得。
 + 3.社区故事设定，需要结合购买的宇宙蛋种类设定，例如Comicverse，一个布满青山绿水的世界，默认设定越多，随机分越多。
-+ 4.Lord进入元宇宙创建合约的界面，进行God setting设定，选择一些模板（社区贡献），创建自己的传奇宇宙和无数Hero角色。
++ 4.Lord进入元宇宙创建合约的界面，进行God setting设定，选择一些模板（社区贡献），创建自己的传奇宇宙和Hero，孵化成功！
++ 5.通过Entrance Transport Protocol, 社区成员拥有社区发行的NFT的，可以自行Mint，进入社区元宇宙，还有集体穿梭~！
 ### 
 ### Step5 Walker进入
 + 下载App（官方版和开源版，都基于DAO组织提供的去中心化运营服务）
@@ -77,11 +87,16 @@
 ### Step6 好玩
 + 以下都是购买道具NFT来合成到自己NFT上的玩法。
 + Twine NFT：设定自己的TID后可购买，不同安全层级，不同设置，现实世界的你助力数字世界的你，有许多互动和好玩的。
-+ Couple NFT：一个Walker，拥有两倍活力（行动力），比普通Walker贵，比两个Walker便宜，但只能一个人上号操作。
++ Couple NFT：一个Walker，拥有两倍活力（行动力），比普通Walker贵，比两个Walker便宜，但只能一个人上号操作，可变装！。
 + Reputation NFT: 10个层级，1-5全球限制数量，6-10不限数量，Reputation有Tverse和
++ 所有NFT套装，为所有Verse提供合约支持，以及各种合作支持，销售收入，20%归协议财库。
 
-### 
-### 
+### Step7
++ IRL Mod，Friend Mod，hacker can make mods for our protocol, but it must obey the rules.
++ If you create a funny mod for public, which will produces more and more stable benefits.
++ It will built on the basement of our smart contracts.
+### Step8
++ Trade and exchange with Tverse or anybody, hold more VGT(V Governance Token)
 ## EIP/ERC7211
 + ERC7211协议是TextverseDAO发起，联合PlankerDAO、DAppLearningDAO共同参与和建设的开放协议。
 + ERC7211协议是一个合成资产Token协议，为孤立的NFT进入和穿梭于不同元宇宙提供可互操作资产转化。
@@ -89,13 +104,20 @@
 + 协议定义了不同NFT设定的统一化互操作性的理论模型和建议实现标准。
 + 符合ERC721协议NFT经过ERC7211协议Mint合成后，生成的7211协议标准资产NFT，具备一下特性，为所有NFT插上了翅膀。
 + 协议价值
+### 0.公共用品
++ NFT资产需要具备一定的属性抽象和再定义，才可以在特定元宇宙成为映射资产，对于每个社区来说，都是巨大的工作量
++ 更何况如果各自为政，则得到的结果是资产孤岛，每次获取NFT在元宇宙间的流动性，都需要付出巨大成本，人力和时间。
++ EIP7211提供了类似于Web服务的Http协议，让你的NFT资产在得到保障的同时，获得了统一的对外互操作接口。
++ 赋予所有NFT映射元宇宙以及不同元宇宙穿行的的统一标准，丝绸一般顺滑。
 ### 1.开放性
 + 接受所有ERC721 NFT资产合成，ERC7211协议产品是去中心DApp，基于Ehtereum社区开放开源。
 ### 2.唯一性
 + 通过7211协议确保某个NFT是唯一的被Mint合成为可互操作资产NFT，通过Stake来保障唯一映射。
 ### 3.互操作性
++ 统一的资产管理和属性映射和能力赋能，帮助NFT快速进入和穿行于元宇宙。
+### 4.合成资产
 + 提供从多样性的NFT中创造互操作性的能力赋能，即资产合成Mint。
-### 4.DAO
+### 5.协议DAO
 + 本协议由一个协议DAO来负责维护和升级以及日常运营，从而保障所有Mint合成的元宇宙具有可交互性。
 
 
