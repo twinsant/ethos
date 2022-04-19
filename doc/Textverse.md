@@ -124,6 +124,8 @@
 + [Lord如何参与和开启元宇宙](Beginner-Lord.md)
 + [Story talker用户手册](Beginner-Talker.md)
 + [Walker如何穿行于元宇宙](Beginner-Walker.md)
++ [Tokenomics-draft](Tokenomics.md)
++ + [Game-settings.md](Game-settings.md)
 
 ## 3.如何参与
 

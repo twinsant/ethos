@@ -40,18 +40,7 @@
 + 登录后随机成为Mongo或者Touch，出生在小木屋，随身携带斧头（弓箭）和水囊。
 + 有一片森林，有木头和兔子，你需要砍木头，维修小木屋以及其他用途，需要狩猎兔子作为食物。
 + 木头多了，可以卖给系统（报亭？），兔子也也一样；你还需要用木头换兔子，或者兔子换木头（Mongo和Touch之间交换）。
-+ NFT的设定方案需要确认：
-+ NFT(Meta Angle,721)-->Contract(Textverse)-->Mapping+Setting-->
-+ ERC1155(ERC721s+ERC20s(30Gold+20wood))-->Login(Verify owner NFT)-->
-+ Play(实时Web3？)
-+ Mapping：Community support, convert into attributes(Open settings)
-+ Loot copy(basic)：6属性？，customer define，control 12？total
-+ Setting： God setting(Lord),World setting（基础属性+jifen）？
-+ Game settings:
-+ Web3 interaction：主动触发，存储属性到链上NFT更新
-+ （每4小时消耗一只兔子，每8小时，消耗4个木头，否则进入判定资源不足，生命值减少，死亡。）
-+ （售卖木头或者兔子或者其他任何东西，都有AMM系统价格，收到的是金币，目前没用途。）
-+ 其他设定跟随God Setting.
+
 
 ### Step2.测试流程
 + 例如此[NFT合约例子]()，进行测试。
