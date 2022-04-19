@@ -14,6 +14,7 @@
 #define LOGIN_OB    "/system/kernel/login"
 #define USER_OB    "/system/kernel/user"
 #define VOID_OB    "/system/metaverse/void"
+#define WORLD_DIR   "/system/metaverse"
 
 #define CMD_PATH_STD ({"/system/cmds/std/", "/mudcore/cmds/player/"})
 
@@ -21,6 +22,7 @@
 #define CRYPTO_D "/system/daemons/crypto_d"
 #define LOOT_D "/system/daemons/loot_d"
 #define WEB3_D "/system/daemons/web3_d"
+#define COMBAT_D "/system/daemons/combat_d"
 
 #define DEFAULT_LANG "en-US"
 
