@@ -11,9 +11,23 @@
 + Play(实时Web3？)
 ### World settings
 + Mapping：Community support, convert into attributes(Open settings)
-+ Loot (basic)：6属性
+
+#### World
++ Climate
+
+#### Hero
++ World seal，世界印记，是在不同Verse都生效的属性
+| Attribute    | Zh  | Value|
+| ----------- | -------- | ---- |
+| Name        | 昵称      | MoonGirl |
+| OID         | 来源社区ID | 382     |
+| TID         | T社区ID   | 19      |
+| OAdd        | Owner Add | ETH Add |
+| Cus         | 预留 | 3    |
+| Cus         | 预留 | 3    |
 
 
++ Basic 6属性,所有NFT和Metaverse都必须支持，如果场景上无用，则设置为0
 | Attribute    | Zh  | Value|
 | ------------ | ----| ---- |
 | Strength     | 力量 | 3    |
@@ -24,8 +38,9 @@
 | Lucky        | 幸运 | 4    |
 + 
 ### God settings
-+ Setting： God setting(Lord),World setting（基础属性+jifen）？
-+ Game settings:
++ Setting： God setting(Lord)
+
+### Game settings
 + Web3 interaction：主动触发，存储属性到链上NFT更新
 + （每4小时消耗一只兔子，每8小时，消耗4个木头，否则进入判定资源不足，生命值减少，死亡。）
 + （售卖木头或者兔子或者其他任何东西，都有AMM系统价格，收到的是金币，目前没用途。）
