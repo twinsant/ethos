@@ -124,13 +124,15 @@
 + [Lord如何参与和开启元宇宙](Beginner-Lord.md)
 + [Story talker用户手册](Beginner-Talker.md)
 + [Walker如何穿行于元宇宙](Beginner-Walker.md)
++ [Tokenomics-draft](Tokenomics.md)
++ + [Game-settings.md](Game-settings.md)
 
 ## 3.如何参与
 
 + 无论你作为何种角色来参与，我们都欢迎，但请**表明来意**，以及参与的方式。
 + 作为一个Web3项目，我们判断有以下角色在Web3领域:
 + ![](https://tva1.sinaimg.cn/large/e6c9d24ely1h15jhb44q9j20vp0u00ww.jpg)
-+ 例如
++ [discord](https://discord.gg/Qj9ChuSdAt)
 
 
 
