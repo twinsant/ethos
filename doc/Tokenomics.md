@@ -7,9 +7,10 @@
 + We don't want much more Tokens to be capitalism.
 + So we need tokenomics article to show the plan clearly.
 + The tokens list: 
++ 0. Member NFTs, owned by every player or any DAO member.
 + 1. NFT Velo eggs, 1024 with 10 B ERC20 token.
 + 2. 22 B ERC20 tokens for governance.
-  3. 1 T ERC20 tokens for liquidity. 
+  3. 1 T ERC20 tokens for liquidity(part of them binding with member NFT). 
 
 ## Content
 
@@ -70,7 +71,15 @@
 
 
 
-### conclusion
+### Conclusion
++ Build by Community, for Community.
++ ERC20 token won't be individually sold out of any Metaverse.
++ All NFTs(member NFT or Velo NFT) will benefits from the TextverseDAO Vaults.
++ 20% liquidity token will distribute to Genesis, Advisor, Early Investor.
++ 80% belongs to the DAO vaults to sustain the developing.
++ The vote rights depends on the NFTs, not the Governance Token numbers.
++ The benefits will distribute to Governance Token holders.
++ 
 
 
 
