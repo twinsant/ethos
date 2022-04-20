@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-20T04:21:37.247Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="GFjFSClLnKu-goxiGZRg" version="17.4.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-20T07:37:13.593Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="sYQTwDYWyBSbAb3PPUzI" version="17.4.3" type="github">
   <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
-    <mxGraphModel dx="1251" dy="683" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1055" dy="519" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,25 +8,22 @@
           <mxGeometry x="236" y="236" width="110" height="90" as="geometry" />
         </mxCell>
         <mxCell id="3" value="Chain A&#xa;NFT A" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
-          <mxGeometry x="246" y="126" width="90" height="60" as="geometry" />
+          <mxGeometry x="246" y="117" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4" value="Chain A&#xa;NFT B" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
-          <mxGeometry x="40" y="251" width="90" height="60" as="geometry" />
+          <mxGeometry x="54" y="251" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5" value="Asset Lock + Sythetic Mint / Asset Burn+ Unlock" style="shape=process;whiteSpace=wrap;align=center;verticalAlign=middle;size=0.0475;fontStyle=1;strokeWidth=3;fillColor=#cdeb8b;strokeColor=#36393d;" parent="1" vertex="1">
           <mxGeometry x="200.99999999999991" y="391" width="400" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="6" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Tranport&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="390" y="146" width="110" height="90" as="geometry" />
-        </mxCell>
         <mxCell id="8" value="&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;&lt;strong&gt;Process&lt;/strong&gt; 4&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;&lt;hr /&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;Detail Chosen&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;Solution&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
           <mxGeometry x="560" y="241" width="110" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="Pm17_dy2hLIByxs-vz6J-101" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1" source="12" target="6">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="12" value="Chain A&#xa;NFT C" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
-          <mxGeometry x="691" y="60.00000000000002" width="90" height="60" as="geometry" />
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-101" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="691" y="90" as="sourcePoint" />
+            <mxPoint x="485" y="161" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="Pm17_dy2hLIByxs-vz6J-96" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1" source="14" target="8">
           <mxGeometry relative="1" as="geometry" />
@@ -76,18 +73,18 @@
         <mxCell id="57" value="Elaborate&#xa;cost/benefit&#xa;ratio" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
           <mxGeometry x="306" y="341" width="30" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="58" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="5" target="6" edge="1">
+        <mxCell id="58" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="5" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="380" y="370" as="sourcePoint" />
-            <mxPoint x="480" y="270" as="targetPoint" />
+            <mxPoint x="440" y="251" as="targetPoint" />
             <Array as="points">
               <mxPoint x="440" y="310" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="59" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="6" target="5" edge="1">
+        <mxCell id="59" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" target="5" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="350" y="370" as="sourcePoint" />
+            <mxPoint x="460" y="251" as="sourcePoint" />
             <mxPoint x="450" y="270" as="targetPoint" />
             <Array as="points">
               <mxPoint x="460" y="320" />
@@ -106,10 +103,10 @@
         <mxCell id="63" value="Progress&#xa;reports" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
           <mxGeometry x="640" y="146.0000000000001" width="30" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="66" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;entryX=0.25;entryY=1;strokeColor=#990000;strokeWidth=2" parent="1" source="8" target="12" edge="1">
+        <mxCell id="66" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;entryX=0.25;entryY=1;strokeColor=#990000;strokeWidth=2" parent="1" source="8" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="530" y="250" as="sourcePoint" />
-            <mxPoint x="630" y="150" as="targetPoint" />
+            <mxPoint x="713.5" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="68" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="8" target="5" edge="1">
@@ -216,6 +213,40 @@
         </mxCell>
         <mxCell id="Pm17_dy2hLIByxs-vz6J-98" value="Transport&#xa;leave&#xa;KOW" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
           <mxGeometry x="585" y="450.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-102" value="Chain A&#xa;NFT C&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" vertex="1" parent="1">
+          <mxGeometry x="165" y="740" width="120" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-103" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Tranport&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="340" y="670" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-106" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-102" target="JD0MNydFnICZmIE2qPw0-100">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="216" y="688" as="sourcePoint" />
+            <mxPoint x="270" y="670" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="216" y="727" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-107" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-102" target="Pm17_dy2hLIByxs-vz6J-103">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="235" y="750" as="sourcePoint" />
+            <mxPoint x="255" y="638" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="840" />
+              <mxPoint x="400" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-108" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-103" target="JD0MNydFnICZmIE2qPw0-101">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="515" y="730" as="sourcePoint" />
+            <mxPoint x="515" y="799" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="515" y="769" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
