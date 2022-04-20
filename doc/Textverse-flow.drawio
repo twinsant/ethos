@@ -1,9 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2022-04-20T07:52:31.043Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="b2wS9gKSwqdTXAk3Qzlv" version="17.4.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-20T08:01:56.217Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="zcXSFIQbyQ-_6Z8X-Fvh" version="17.4.3" type="github">
   <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
     <mxGraphModel dx="1055" dy="519" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-102" value="Chain A&#xa;NFT B&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="165" y="740" width="120" height="68" as="geometry" />
+        </mxCell>
         <mxCell id="2" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Transfer1-x&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="236" y="236" width="110" height="90" as="geometry" />
         </mxCell>
@@ -142,9 +145,6 @@
         <mxCell id="Pm17_dy2hLIByxs-vz6J-98" value="Transport&#xa;leave&#xa;KOW" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
           <mxGeometry x="585" y="450.0000000000002" width="30" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Pm17_dy2hLIByxs-vz6J-102" value="Chain A&#xa;NFT C&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
-          <mxGeometry x="165" y="740" width="120" height="68" as="geometry" />
-        </mxCell>
         <mxCell id="Pm17_dy2hLIByxs-vz6J-103" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Tranport1-x&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="340" y="670" width="110" height="90" as="geometry" />
         </mxCell>
@@ -176,7 +176,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pm17_dy2hLIByxs-vz6J-109" value="Chain A&#xa;NFT C&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-109" value="Chain A&#xa;NFT B&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
           <mxGeometry x="515" y="750" width="120" height="68" as="geometry" />
         </mxCell>
         <mxCell id="Pm17_dy2hLIByxs-vz6J-110" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-109" target="JD0MNydFnICZmIE2qPw0-101">
@@ -226,6 +226,12 @@
               <mxPoint x="650" y="560" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-117" value="ERC721" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="80" y="326.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-118" value="ERC1155" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="110" y="760.0000000000002" width="30" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
