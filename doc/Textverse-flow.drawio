@@ -1,0 +1,239 @@
+<mxfile host="app.diagrams.net" modified="2022-04-20T09:54:19.823Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="KMX5Xtx9rx0E-h3imXAu" version="17.4.3" type="github">
+  <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
+    <mxGraphModel dx="1055" dy="519" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-102" value="Chain A&#xa;NFT B&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="165" y="740" width="120" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="2" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Transfer1-x&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="236" y="236" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Chain A&#xa;NFT A" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="246" y="117" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Chain A&#xa;NFT B" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="54" y="251" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Asset Lock + Sythetic Mint / Asset Burn+ Unlock" style="shape=process;whiteSpace=wrap;align=center;verticalAlign=middle;size=0.0475;fontStyle=1;strokeWidth=3;fillColor=#cdeb8b;strokeColor=#36393d;" parent="1" vertex="1">
+          <mxGeometry x="200.99999999999991" y="391" width="400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Tranfer-multi&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;Sythetic Transfer&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="453.5" y="236" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-96" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1" source="14" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Chain B&#xa;NFT C" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="690" y="231" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="" style="edgeStyle=none;noEdgeStyle=1;strokeColor=#990000;strokeWidth=2" parent="1" source="3" target="2" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="20" y="250" as="sourcePoint" />
+            <mxPoint x="120" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="edgeStyle=none;noEdgeStyle=1;strokeColor=#990000;strokeWidth=2" parent="1" source="4" target="2" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="280" y="190" as="sourcePoint" />
+            <mxPoint x="380" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="52" value="Enter" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="165" y="251" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="Enter" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="241" y="196" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="55" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="279" y="391" as="sourcePoint" />
+            <mxPoint x="279" y="326" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="279" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="56" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="299" y="326" as="sourcePoint" />
+            <mxPoint x="299" y="391" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="299" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" target="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="570" y="510" as="sourcePoint" />
+            <mxPoint x="520" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="570" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="77" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="400" y="590" as="sourcePoint" />
+            <mxPoint x="560" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="88" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="50" y="500" as="sourcePoint" />
+            <mxPoint x="390" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="89" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" target="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="410" y="510" as="sourcePoint" />
+            <mxPoint x="159.9999999999999" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="90" value="Transfer&#xa;into&#xa;BKS" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="261" y="461" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="91" value="Transfer&#xa;leave&#xa;BKS" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="180" y="461.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="92" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="30.000000000000114" y="500" as="sourcePoint" />
+            <mxPoint x="250" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="250" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="93" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" target="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="230" y="510" as="sourcePoint" />
+            <mxPoint x="140" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="95" value="Transport&#xa;leave&#xa;MOR" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="423.49999999999994" y="461.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="96" value="Transport&#xa;into&#xa;MOR" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="350.9999999999998" y="461" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="JD0MNydFnICZmIE2qPw0-99" value="&lt;p style=&quot;font-weight: 700 ; margin: 4px 0px 0px&quot;&gt;&lt;strong&gt;Metaverse&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;Magic of Ring&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=1;shadow=1;glass=0;sketch=1;" parent="1" vertex="1">
+          <mxGeometry x="336" y="510" width="124" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="JD0MNydFnICZmIE2qPw0-100" value="&lt;p style=&quot;font-weight: 700 ; margin: 4px 0px 0px&quot;&gt;&lt;strong&gt;Metaverse&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;BKS&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=1;shadow=1;glass=0;sketch=1;" parent="1" vertex="1">
+          <mxGeometry x="186" y="510" width="118" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="JD0MNydFnICZmIE2qPw0-101" value="&lt;p style=&quot;font-weight: 700 ; margin: 4px 0px 0px&quot;&gt;&lt;strong&gt;Metaverse&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;Kongfu of World&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: 700 ; margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=1;shadow=1;glass=0;sketch=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="514" width="118" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-97" value="Transport&#xa;into&#xa;KOW" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="514.9999999999998" y="450" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-98" value="Transport&#xa;leave&#xa;KOW" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="585" y="450.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-103" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;Tranport1-x&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;Smart Contract&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;on Different Chain&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="340" y="670" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-106" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-102" target="JD0MNydFnICZmIE2qPw0-100">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="216" y="688" as="sourcePoint" />
+            <mxPoint x="270" y="670" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="216" y="727" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-107" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-102" target="Pm17_dy2hLIByxs-vz6J-103">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="235" y="750" as="sourcePoint" />
+            <mxPoint x="255" y="638" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="840" />
+              <mxPoint x="400" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-108" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-103" target="Pm17_dy2hLIByxs-vz6J-109">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="515" y="730" as="sourcePoint" />
+            <mxPoint x="515" y="799" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="470" y="790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-109" value="Chain A&#xa;NFT B&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="515" y="750" width="120" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-110" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pm17_dy2hLIByxs-vz6J-109" target="JD0MNydFnICZmIE2qPw0-101">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="460" y="725" as="sourcePoint" />
+            <mxPoint x="525" y="794" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="620" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-111" value="Chain A&#xa;NFT D" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" vertex="1" parent="1">
+          <mxGeometry x="472" y="115" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-112" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="499" y="391" as="sourcePoint" />
+            <mxPoint x="499" y="326" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="499" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-113" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="520" y="326" as="sourcePoint" />
+            <mxPoint x="520" y="391" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-114" value="" style="edgeStyle=none;noEdgeStyle=1;strokeColor=#990000;strokeWidth=2" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="515" y="177" as="sourcePoint" />
+            <mxPoint x="515" y="236" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-115" value="Chain B(A)&#xa;NFT C+D=E&#xa;In&#xa;Metaverse&#xa;BKS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="675" y="536" width="120" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-116" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JD0MNydFnICZmIE2qPw0-101" target="Pm17_dy2hLIByxs-vz6J-115">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="580" y="520" as="sourcePoint" />
+            <mxPoint x="580" y="451" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-117" value="ERC721" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="80" y="326.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pm17_dy2hLIByxs-vz6J-118" value="ERC1155" style="text;spacingTop=-5;align=center" vertex="1" parent="1">
+          <mxGeometry x="110" y="760.0000000000002" width="30" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
