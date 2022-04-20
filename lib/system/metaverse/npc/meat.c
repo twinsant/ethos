@@ -1,13 +1,5 @@
 inherit CORE_LIVING;
 
-int id(string arg)
-{
-    if (strcmp(capitalize(arg), query("id")) == 0){
-        return 1;
-    }
-    return 0;
-}
-
 string get_id()
 {
     string _id = "";
@@ -23,13 +15,7 @@ string get_id()
 void create()
 {
     set("id", get_id());
-    set("name", "兔子");
-    set("unit", "只");
 
-    set("hp", 100);
-}
-
-string dead()
-{
-    return __DIR__ "meat";
+    set("name", "兔肉");
+    set("unit", "块");
 }
