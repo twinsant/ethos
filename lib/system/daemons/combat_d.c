@@ -62,6 +62,7 @@ void do_attack(object me, object victim)
  * [实际伤害值]=[伤害计算值]±[伤害波动]
  */
     int attack, damage, defense, random, attack_type = TYPE_N;
+    string die_file;
 
     attack = me->query("str");
     defense = me->query("def");
@@ -96,6 +97,8 @@ void do_attack(object me, object victim)
 
     victim->set("hp", victim->query("hp") - damage);
     if (victim->query("hp")<=0) {
+        die_file = victim->dead();
+        environment(victim)->make_inventory(die_file);
         me->remove_enemy(victim);
         destruct(victim);
     }
