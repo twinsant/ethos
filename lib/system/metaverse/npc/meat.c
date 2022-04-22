@@ -1,5 +1,13 @@
 inherit CORE_LIVING;
 
+int id(string arg)
+{
+    if (strcmp(capitalize(arg), query("id")) == 0){
+        return 1;
+    }
+    return 0;
+}
+
 string get_id()
 {
     string _id = "";

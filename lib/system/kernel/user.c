@@ -25,6 +25,13 @@ void heart_beat()
     }
 }
 
+void pick_ob(object obj)
+{
+    write(sprintf("你捡起了%s\n", obj->short()));
+    // Remove ob from room
+    obj->move(this_object());
+}
+
 function i18n_color_cat(string motd)
 {
     string lang = query("lang");
