@@ -43,3 +43,18 @@
 + We need BD roles to help us to run cooperations with DAOs to make this product be used.
 + We need low cost contract audit to guarantee the security.
 + We need more developers to accelerate the building speed, or more money to recruit.
+
+## Team
+Full Name: Atman An
+Role: Architecture, Fullstack Engineer
+Background: See linkedin
+GitHub profile link: https://github.com/twinsant
+LinkedIn profile link: https://www.linkedin.com/in/yantongan/
+Twitter handle: https://twitter.com/twinsant
+---
+Full Name: Nicolas(Huifeng.jiao)
+Role: full stack developer, product design, operation strategy, find money, community cooperation
+Background: senior expert in Web2, pre e-Commerce and SAAS builder, in charge 100+ R&D team, ZJU MBA.
+GitHub profile link:https://github.com/jhfnetboy
+LinkedIn profile link:https://www.linkedin.cn/incareer/in/%E4%BC%9A%E5%B3%B0-%E7%84%A6-a3483393
+Twitter handle: https://twitter.com/jhfnetboy
