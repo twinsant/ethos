@@ -1,6 +1,6 @@
 ## Abstract
 + This version is for grant.
-+ Build by community, for community.
++ Build by community, for community(Public goods).
 + Textverse is a Text Metaverse(Game) Engine in Web3.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
