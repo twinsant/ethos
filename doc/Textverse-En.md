@@ -5,7 +5,7 @@
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
 ## Benefits
-+ We will gain many users to join and play in **a very easy mode**: just typing on any screen.
++ We will gain many users to join and play in **a very easy mode**: just **typing on any screen**.
 + We will publish NFTs to help players to own their value and assets in Web3.
 + We will be the DAO2DAO mode supplier in Web3 Text game area.
 + The DAOs will open their Text games with many topics, they are **all the users of us**.
