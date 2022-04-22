@@ -31,7 +31,7 @@ class BaseHandler(tornado.web.RequestHandler):
          }
         '''
         ret = False
-
+        
         if 'chainId' in message:
             message['chain_id'] = message['chainId']
             del message['chainId']
@@ -44,8 +44,9 @@ class BaseHandler(tornado.web.RequestHandler):
                 app_log.warn(f'Message filed invalid: {k}!')
                 return False
         siwe_message = siwe.SiweMessage(message)
+        _signature = message['signature']
         try:
-            siwe_message.validate()
+            siwe_message.validate(_signature)
             ret = True
         except siwe.ValidationError:
             app_log.warn(f'Address { message["address"] } sign in failed.')
