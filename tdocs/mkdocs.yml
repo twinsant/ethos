@@ -1,0 +1,6 @@
+site_name: Textverse -- the Engine of Text Metaverse 
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - License: license.md
