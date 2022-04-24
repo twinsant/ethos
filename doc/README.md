@@ -1,6 +1,6 @@
 # Welcome to Textverse
 + Build by Community, for Community(Public goods).
-+ Textverse is a Text Metaverse(Game) Engine in Web3.
++ Textverse is a Text Metaverse(Game) Engine for Web3.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
 ## Overview
@@ -16,13 +16,17 @@
 + We mint tokens to record who give us the early resource to the **early bird**.
 + We provide to many users to join and play in **a very easy mode**: just **typing on any screen**.
 + We will publish NFTs to help players to **own their value and assets** in Web3.
-+ We will be the **DAO2DAO mode** supplier in Web3 Text game area.
++ We will be a **DAO2DAO mode** supplier in Web3 Text Metaverse building area.
 + The DAOs will open their Text games with many topics, they are **all the stake-holders of us**.
-+ It can **help any communities,DAOs** run their story within a text game.
++ Textverse can **help any communities,DAOs** run their story within a Text Metaverse.
 + Also, we build a series of tools and smart contracts to **solve the engineering problems**.
 + So the communities can **focus on** the Creative and Imaginations on their Metaverse. 
 
 ## Mission
++ Literal is the basic and essence of the Human Civilization.
++ We have Colorful world, good music, and pretty or handsome Stars.
++ But we must trust, the Power of Text is Strong.
++ So our mission is **Simple Text Records Power Imaginations**.
 
 ### What are Interoperability and Composability?
 
