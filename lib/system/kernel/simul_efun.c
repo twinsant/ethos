@@ -18,7 +18,7 @@ object load_object(string filename)
     return efun::load_object(filename);
 }
 
-object find_player(object e, string prefix)
+object find_player_by_prefix(object e, string prefix)
 {
     object *ai;
 

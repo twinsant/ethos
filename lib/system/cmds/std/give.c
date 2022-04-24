@@ -21,7 +21,7 @@ int main(object me, string arg)
     r = sscanf(arg, "%s %s", prefix, oid);
     if (r==2 && oid) {
         e = environment(me);
-        someone = find_player(e, prefix);
+        someone = find_player_by_prefix(e, prefix);
         if (someone)
         {
             object *i = all_inventory(me);

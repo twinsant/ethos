@@ -22,7 +22,7 @@ int main(object me, string arg)
 
     if (r==2 && prefix && strlen(prefix)>4 && amount) {
         e = environment(me);
-        someone = find_player(e, prefix);
+        someone = find_player_by_prefix(e, prefix);
         if (someone)
         {
             address = someone->query("address");
