@@ -31,9 +31,10 @@
 ### Textverse Solution
 
 ### Protocol 7211
-+ Transfer
-+ Transport
-+ Metaverse Registry
++ 1. Transfer
++ 2. Transport
++ 3. Metaverse Registry
++ ![NFT-flow](static/nft-flow.png)
 + 
 ### TID
 + If you have any PFP NFT, **transfer** into the community Metaverse or jump into Public Text Metaverses.
