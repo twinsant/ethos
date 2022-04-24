@@ -1,10 +1,7 @@
-![clipart874506](https://aws1.discourse-cdn.com/business7/uploads/harmony1/original/2X/9/9ae3f5238bcbe8a27baed8d2484dbedf39bf8ad5.png)
+![Deck](https://github.com/DAO-SX/ethos/blob/main/doc/static/printer.gif)
 
-## TextverseDAO
-
-Boring-Killing-Saving. BKS
-
-New version  on GitHub of ethos.
+## Textverse
++ 
 
 ## Application type
 
