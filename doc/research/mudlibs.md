@@ -1,12 +1,12 @@
 # Opensource Mudlibs
 
-| Name | Repository | Select? |
-| --- | --- | --- |
-| Nightmare Residuum | https://github.com/michaelprograms/nightmare-residuum | x |
-| **RealmsMUD** | https://github.com/realms-mud/core-lib |
-| **The Dead Souls 2 Mud Library** | https://github.com/quixadhal/deadsouls |
-| **Discworld** | https://github.com/Yuffster/discworld_distribution_mudlib |
-| LIMA | https://github.com/quixadhal/lima | x |
+| Name | Repository | Select? | License |
+| --- | --- | --- | --- |
+| Nightmare Residuum | https://github.com/michaelprograms/nightmare-residuum | x | - |
+| **RealmsMUD** | https://github.com/realms-mud/core-lib | https://github.com/realms-mud/core-lib/blob/master/LICENSE |
+| **The Dead Souls 2 Mud Library** | https://github.com/quixadhal/deadsouls | https://github.com/quixadhal/deadsouls/blob/master/License.txt |
+| Discworld | https://github.com/Yuffster/discworld_distribution_mudlib | NC |
+| LIMA | https://github.com/quixadhal/lima | x | - |
 
 ## RealmsMUD
 
