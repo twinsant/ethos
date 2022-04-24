@@ -17,3 +17,17 @@ object load_object(string filename)
     debug_message((sprintf("Load object: %s", filename)));
     return efun::load_object(filename);
 }
+
+object find_player(object e, string prefix)
+{
+    object *ai;
+
+    if (prefix && strlen(prefix)>4) {
+        ai = all_inventory(e);
+        foreach(object i in ai) {
+            if (strsrch(i->query("name"), prefix)!=-1) {
+                return i;
+            }
+        }
+    }
+}
