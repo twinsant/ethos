@@ -20,6 +20,9 @@ private varargs void create(int x, int y, int z)
 
     setArea("forest", x, y, z);
 
-    set("objects", ([__DIR__ "npc/rabbit.c": random(3)]));
+    set("objects", ([
+        __DIR__ "npc/rabbit.c": random(3), 
+        __DIR__ "npc/tree.c": 1, 
+        ]));
     setup();
 }
