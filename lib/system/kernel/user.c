@@ -27,9 +27,13 @@ void heart_beat()
 
 void pick_ob(object obj)
 {
-    write(sprintf("你捡起了%s\n", obj->short()));
-    // Remove ob from room
-    obj->move(this_object());
+    if (obj->reaction("pick")) {
+        write(sprintf("你捡起了%s\n", obj->short()));
+        // Remove ob from room
+        obj->move(this_object());
+    } else {
+        write(sprintf("你不能捡%s\n", obj->short()));
+    }
 }
 
 function i18n_color_cat(string motd)

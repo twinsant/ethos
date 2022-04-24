@@ -7,3 +7,8 @@ void create()
     set("name", "木头");
     set("unit", "块");
 }
+
+int reaction(string action)
+{
+    return 1;
+}
