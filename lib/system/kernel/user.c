@@ -29,12 +29,19 @@ void pick_ob(object obj)
 {
     // https://www.fluffos.info/efun/interactive/commands.html ?
     if (obj->reaction("pick")) {
-        write(sprintf("你捡起了%s\n", obj->short()));
         // Remove ob from room
         obj->move(this_object());
+        write(sprintf("你捡起了%s\n", obj->short()));
     } else {
         write(sprintf("你不能捡%s\n", obj->short()));
     }
+}
+
+void give(object someone, object ob)
+{
+    ob->move(someone);
+    write(sprintf("你把%s给了%s\n", ob->short(), someone->name()));
+    tell_object(someone, sprintf("%s把%s给了你\n", someone->name(), ob->short()));
 }
 
 function i18n_color_cat(string motd)

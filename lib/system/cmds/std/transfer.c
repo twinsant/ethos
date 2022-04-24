@@ -19,7 +19,6 @@ int main(object me, string arg)
 
     // TODO: use regex
     r = sscanf(arg, "%s %d", prefix, amount);
-    debug_message(sprintf("%d", r));
 
     if (r==2 && prefix && strlen(prefix)>4 && amount) {
         e = environment(me);
