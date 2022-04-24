@@ -20,7 +20,7 @@ int main(object me, string arg)
     // TODO: use regex
     r = sscanf(arg, "%s %d", prefix, amount);
 
-    if (r && prefix && strlen(prefix)>4 && amount) {
+    if (r==2 && prefix && strlen(prefix)>4 && amount) {
         e = environment(me);
         ai = all_inventory(e);
         foreach(i in ai) {
@@ -45,9 +45,9 @@ int main(object me, string arg)
 int help(object me)
 {
     write(@HELP
-Command : give [someone] [amount]
+Command : transfer [someone] [amount]
 
-Give someone amount ETH.
+Transfer someone amount ETH.
 
 HELP );
     return 1;
