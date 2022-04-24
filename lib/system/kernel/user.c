@@ -27,6 +27,7 @@ void heart_beat()
 
 void pick_ob(object obj)
 {
+    // https://www.fluffos.info/efun/interactive/commands.html ?
     if (obj->reaction("pick")) {
         write(sprintf("你捡起了%s\n", obj->short()));
         // Remove ob from room

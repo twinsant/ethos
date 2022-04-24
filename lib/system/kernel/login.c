@@ -68,7 +68,7 @@ void get_did(string arg)
 
     debug_message("Move to " + VOID_OB);
     user->move(VOID_OB);
-    tell_room(VOID_OB, "\n" + HIR + user->name() + NOR " joined.\n", ({user}));
+    tell_room(VOID_OB, "\n" + HIR + user->name() + NOR " 进来了\n", ({user}));
 }
 
 void logon()
