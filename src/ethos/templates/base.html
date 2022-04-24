@@ -224,16 +224,33 @@
 
                 term.focus();
                 var command = '';
+                const history = [];
                 term.onData(e => {
-                    ws.send(e);
                     switch (e) {
+                        // https://www.novell.com/documentation/extend52/Docs/help/Composer/books/TelnetAppendixB.html
+                        case '\u001b[A': // Up
+                            // console.log(history);
+                            idx = history.length - 1;
+                            if (idx >= 0)
+                            {
+                                term.write(history[idx]);
+                                command = history[idx];
+                            }
+                            break;
                         case '\r': // Enter
+                            // ws.send(e);
                             term.write('\r\n');
-                            // console.log([command]);
-                            // ws.send(command[0] + '\r\n');
-                            // command = '';
+                            command = command.trim();
+
+                            // console.log(command);
+
+                            ws.send(command + '\r');
+                            history.push(command);
+                            command = '';
+
                             break;
                         case '\u007F': // Backspace (DEL)
+                            // ws.send(e);
                             // Do not delete the prompt
                             if (term._core.buffer.x > 2) {
                                 term.write('\b \b');
@@ -243,6 +260,7 @@
                             }
                             break;
                         default: // Print all other characters for demo
+                            // ws.send(e);
                             if (e >= String.fromCharCode(0x20) && e <= String.fromCharCode(0x7B) || e >= '\u00a0') {
                                 command += e;
                                 term.write(e);

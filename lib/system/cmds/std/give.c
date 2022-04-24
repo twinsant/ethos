@@ -6,48 +6,51 @@ int help(object me);
 
 int main(object me, string arg)
 {
-    string prefix, address;
-    int amount, r;
-    object e, i;
-    object *ai;
-    mapping transfer;
+    string prefix;
+    string oid;
+    int r;
+    object e;
+    object ob;
+    object someone;
 
     player = me;
 
     if (!arg)
         return help(this_object());
 
-    // TODO: use regex
-    r = sscanf(arg, "%s %d", prefix, amount);
-
-    if (r && prefix && strlen(prefix)>4 && amount) {
+    r = sscanf(arg, "%s %s", prefix, oid);
+    if (r==2 && oid) {
         e = environment(me);
-        ai = all_inventory(e);
-        foreach(i in ai) {
-            if (strsrch(i->query("name"), prefix)!=-1) {
-                address = i->query("address");
-                tell_object(i, sprintf("\n%s is transfering %d ETH to you...\n", me->query("name"), amount));
-                transfer = ([
-                    "cmd":"transfer",
-                    "address": address,
-                    "amount":amount
-                ]);
-                write_cmd("Transfering...\n", "callback", transfer);
+        someone = find_player_by_prefix(e, prefix);
+        if (someone)
+        {
+            object *i = all_inventory(me);
+            if (sizeof(i) > 0) {
+                if (!objectp(ob = present(oid, me))) {
+                    write("你想给什么？\n");
+                }
+                else
+                {
+                    me->give(someone, ob);
+                }
+            } else {
+                write("你一贫如洗，没什么可给的。\n");
             }
+        }else{
+            write(sprintf("%s不在房间里\n", prefix));
         }
-    } else {
+    }else{
         return help(this_object());
     }
-
     return 1;
 }
 
 int help(object me)
 {
     write(@HELP
-Command : give [someone] [amount]
+命令 : give [someone] [oid]
 
-Give someone amount ETH.
+给someone（例如0xf39）ID为oid的物品。
 
 HELP );
     return 1;

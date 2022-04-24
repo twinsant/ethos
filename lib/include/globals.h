@@ -16,6 +16,8 @@
 #define VOID_OB    "/system/metaverse/void"
 #define WORLD_DIR   "/system/metaverse"
 
+#define CORE_NPC "/system/metaverse/npc/object"
+
 #define CMD_PATH_STD ({"/system/cmds/std/", "/mudcore/cmds/player/"})
 
 #define SLACK_D "/system/daemons/slack_d"
