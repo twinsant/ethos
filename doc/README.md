@@ -81,6 +81,7 @@ flowchart TD
 + We will mint Crypto Tokens to record who support us, the **Early Bird**.
 + So The Text Metaverse Registry will give you a **TID** record on the chain and backup in IPFS and Arweave.
 + It can involve all your assets in the Metaverse with Hash link.
++ Maybe in 20 years later, the DIGI DID(TID) will be your most of your life: work, credit, friends, community and fun.
 
 
 ## Join Textverse Community
@@ -88,5 +89,5 @@ flowchart TD
 + [Discord](https://discord.com/invite/Qj9ChuSdAt)
 + [Twitter](https://twitter.com/TextverseApp)
 + Business Cooperation: jhfnetboy#gmail.com
-+ [DAOs see here]()
-+ [Players see here]()
++ [DAOs see here](DAOs-build-your-Metaverse.md)
++ [Players see here](How-to-play.md)
