@@ -64,16 +64,16 @@ flowchart TD
 ```
 
 ### Protocol 7211
-+ 1. Metaverse Registry
++ **Metaverse Registry**
 + We may have many Metaverse, so we must have a **Metaverse list registry**.
 + We define the basic meta data of Metaverse, special for Text Metaverse.
-+ 2. Transfer
++ **Transfer**
 + If you have any PFP NFTs, you can **Transfer** into Any (Text) Metaverses.
 + Now you can make your NFT assets be Interoperated by your will.
-+ 3. Transport
++ **Transport**
 + After playing in the Jurassic park, you can **Transport** to the Ocean World in seconds.
 + Just type the screen and switch channel like TV.
-+ 4. Flow
++ **Flow**
 + ![NFT-flow](static/nft-flow.png)
 
 ### TID
