@@ -1,11 +1,19 @@
 ## Abstract
-+ This version is for grant.
 + Build by community, for community(Public goods).
 + Textverse is a Text Metaverse(Game) Engine in Web3.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
+## Motivations and Problems
++ More and more communities are telling their story on Web3. But they can't expand their vibe or culture quickly because of most DAOs are not Developers.
++ We provide the mode DAO2DAO, to make a Engine of Web3 Text Game and a Demo Game to show.
++ Also we provide the Protocol to Transfer and Tranport between Text Metaverse(same engine, same mechanism).
++ So DAOs can focus on the story, not the Infra, this is the Value.
++ We will build a platform for all Text Metaverse.
+
 ## Benefits
-+ We will gain many users to join and play in **a very easy mode**: just typing on any screen.
++ We need resource to develop the Public goods: Textverse, for Community.
++ We mint tokens to record who give us the early resource to the **early bird**.
++ We will gain many users to join and play in **a very easy mode**: just **typing on any screen**.
 + We will publish NFTs to help players to own their value and assets in Web3.
 + We will be the DAO2DAO mode supplier in Web3 Text game area.
 + The DAOs will open their Text games with many topics, they are **all the users of us**.
@@ -15,12 +23,16 @@
 + So the community can **focus on** the Creative and Imaginations on their Metaverse. 
 + We output the **components of the Web3** with Interoperability and Composability.
 
-## Progress
+## Roadmap and progress
 + On developing.
 + [Our github](https://github.com/twinsant/ethos).
 + It was merged from two projects of the two genesis member:[jhfnetboy](https://github.com/jhfnetboy), and [twinsant](https://github.com/twinsant).
-+ We will run the MVP in this week.
-+ We will run the Demo on Harmony Test Network after 3-4 weeks.
++ Build Engine:
++ MVP in 4-6 weeks, We will run the MVP on Testnet(EVM chain).
++ Assembly Velo:
++ We will run the RealGameDemo on Test Network after 3-4 weeks(need recruit).
++ Push Online:
++ Operations are running and Product v0.12 online(D2D and D2C Demo)in 4 weeks.
 + We have't deploy on any chain.
 
 ## User acquisition and market
@@ -53,8 +65,8 @@ LinkedIn profile link: https://www.linkedin.com/in/yantongan/
 Twitter handle: https://twitter.com/twinsant
 ---
 Full Name: Nicolas(Huifeng.jiao)
-Role: full stack developer, product design, operation strategy, find money, community cooperation
-Background: senior expert in Web2, pre e-Commerce and SAAS builder, in charge 100+ R&D team, ZJU MBA.
+Role: Fullstack developer, Product designer, Operations (strategy, money, community)
+Background: Senior expert in Web2, pre e-Commerce and SAAS builder, Team Player, ZJU MBA.
 GitHub profile link:https://github.com/jhfnetboy
 LinkedIn profile link:https://www.linkedin.cn/incareer/in/%E4%BC%9A%E5%B3%B0-%E7%84%A6-a3483393
 Twitter handle: https://twitter.com/jhfnetboy

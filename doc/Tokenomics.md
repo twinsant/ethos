@@ -1,7 +1,6 @@
 # Textverse Tokenomics draft 0.1
 
 ## Preface
-
 + We need resource to develop the Public goods: Textverse.
 + We mint tokens to record who give us the early resource.
 + We don't want much more Tokens to be capitalism.
