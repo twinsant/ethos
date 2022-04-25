@@ -38,3 +38,23 @@ private varargs void create(string dest_name)
     debug_message(sprintf("void dest: %s", dest_name));
     create_json();
 }
+
+int denied(string verb)
+{
+    // allowed commands
+    if (strcmp(verb, "l") == 0)
+        return 0;
+    if (strcmp(verb, "look") == 0)
+        return 0;
+    if (strcmp(verb, "g") == 0)
+        return 0;
+    if (strcmp(verb, "go") == 0)
+        return 0;
+    if (strcmp(verb, "help") == 0)
+        return 0;
+    if (strcmp(verb, "i") == 0)
+        return 0;
+    if (strcmp(verb, "inventory") == 0)
+        return 0;
+    return 1;
+}
