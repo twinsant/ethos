@@ -1,0 +1,5 @@
+_book/
+book.js
+node_modules/
+*.sh
+gh_pages/
