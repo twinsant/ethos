@@ -2,6 +2,7 @@
 + Textverse is a Text Metaverse(Game) Engine for Web3.
 + Build by Community, for Community. We build Public Goods.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
++ ![Deck](https://github.com/DAO-SX/ethos/blob/main/doc/static/printer.gif)
 
 ## Overview
 + We are Textverse, build **Web3 Infrastructure**, A Text Metaverse Engine Category Primitives.
