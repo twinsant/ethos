@@ -66,7 +66,7 @@
 + 4. Member and Player NFT, 8.88 M, limited.
 + 5. LToken inflation rate controlled by Community Governance, default is 4.5%.
 + Price:
-+ Phase 1: Publish Pubulic Metaverse BKS
++ Phase 1: Publish Pubulic Metaverse BKS 
 + Phase 2: Build 3 DAOs Metaverse
 + Phase 3: Set price for Egg(binding LToken) and free mint Member NFT, sold on Opensea and other platform.
 + Activities:
