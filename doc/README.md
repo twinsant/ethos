@@ -91,3 +91,5 @@ flowchart TD
 + Business Cooperation: jhfnetboy#gmail.com
 + [DAOs see here](DAOs-build-your-Metaverse.md)
 + [Players see here](How-to-play.md)
++ [Our github](https://github.com/twinsant/ethos).
++ It was merged from two projects of the two genesis member:[jhfnetboy](https://github.com/jhfnetboy), and [twinsant](https://github.com/twinsant).
