@@ -53,10 +53,18 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                         if cmd == 'DID':
                             chain_id = self.current_user['chain_id']
                             ens = self.current_user.get('ens', None)
+                            mud_name = self.current_user.get('name', None)
                             input = self.current_user['address']
                             # TODO: Validate lang here
                             lang = self.locale[0][0]
-                            name = ens and ens or f'{input[:5]}...{input[-4:]}'
+
+                            if ens:
+                                name = ens
+                            elif mud_name:
+                                name = mud_name
+                            else:
+                                name = f'{input[:5]}...{input[-4:]}'
+
                             ipt = json.dumps({'chain_id':chain_id, 'input':input, 'name':name, 'cookie':self.cookie, 'lang':lang})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']

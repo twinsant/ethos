@@ -2,6 +2,7 @@ import json
 
 import tornado.web
 from siwe import siwe
+import w3.player as player
 
 MYTOKEN = 'mytoken'
 
@@ -11,6 +12,9 @@ class BaseHandler(tornado.web.RequestHandler):
         if user_cookie:
             message = json.loads(user_cookie)
             if self.validate_message(message):
+                name = player.contract.names(message['address'])
+                if name:
+                    message['name'] = name
                 return message
             else:
                 return None

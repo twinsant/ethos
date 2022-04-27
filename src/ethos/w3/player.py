@@ -2,7 +2,7 @@ import os
 from web3 import Web3
 
 from eth_typing import ContractName
-from contract import EthContract
+from w3.contract import EthContract
 
 contract = EthContract('Player', endpoint=os.environ.get('ENDPOINT', 'http://127.0.0.1:8545/'))
 
