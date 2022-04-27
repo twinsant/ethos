@@ -1,4 +1,4 @@
-# Textverse Tokenomics draft 0.1
+# Textverse Tokenomics draft 0.11
 
 ## Preface
 + We need resource to develop the Public goods: Textverse.
@@ -6,10 +6,10 @@
 + We don't want much more Tokens to be capitalism.
 + So we need tokenomics article to show the plan clearly.
 + The tokens list: 
-+ 0. Member NFTs, owned by every player or any DAO member.
-+ 1. NFT Velo eggs, 1024 with 10 B ERC20 token.
-+ 2. 22 B ERC20 tokens for governance.
-  3. 1 T ERC20 tokens for liquidity(part of them binding with member NFT). 
++ 1) Member NFTs, owned by every early player or any DAO member(Limited 8.88 M).
++ 2) NFT Velo eggs, 1024 with 10 B ERC20 token(80%->Community,20%->Team & advisor and Investor).
++ 3) 22 M ERC20 tokens for governance(binding with Member NFT for airdrop).
+  4) 1 T ERC20 tokens for liquidity(binding with egg NFT). 
 
 ## Content
 
@@ -59,8 +59,18 @@
 
 ### Supply+Price Stable Mechanism
 
-+ 
-
++ Token list summary: 
++ 1. Governance Token, ERC20, 22 M, limited.
++ 2. Liquidity Token, ERC20, 1.024 B, limited.
++ 3. Egg NFT, 1024, biding with LToken 10 M.
++ 4. Member and Player NFT, 8.88 M, limited.
++ 5. LToken inflation rate controlled by Community Governance, default is 4.5%.
++ Price:
++ Phase 1: Publish Pubulic Metaverse BKS 
++ Phase 2: Build 3 DAOs Metaverse
++ Phase 3: Set price for Egg(binding LToken) and free mint Member NFT, sold on Opensea and other platform.
++ Activities:
++ Creative and Mint: we airdrop to the FUN NFT design(Utility), for example: A box produces one Hamburger everyday.
 ### Distribution
 
 + 20% belongs to Genesis, 
