@@ -7,7 +7,7 @@ from w3.contract import EthContract
 # https://etherscan.io/address/0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF
 MLOOT_CONTRACT = '0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF'
 
-contract = EthContract(MLOOT_CONTRACT, 'TemporalLoot', endpoint=os.environ.get('ENDPOINT', 'http://127.0.0.1:8545/'))
+contract = EthContract('TemporalLoot', endpoint=os.environ.get('ENDPOINT', 'http://127.0.0.1:8545/'))
 
 class MLoot:
     def __init__(self, address) -> None:
