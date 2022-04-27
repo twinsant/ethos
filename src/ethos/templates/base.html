@@ -135,7 +135,8 @@
             }
             async function loadContract(contractName) {
                 let network = await provider.getNetwork();
-                const r = await fetch(`/static/abi/${network.chainId}/${contractName}.json`);
+                const ms = Date.now();
+                const r = await fetch(`/static/abi/${network.chainId}/${contractName}.json?dummy=${ms}`);
                 let j = await r.json();
                 let abi = j['abi'];
                 let contract = new ethers.Contract(j['address'], abi, provider.getSigner());
