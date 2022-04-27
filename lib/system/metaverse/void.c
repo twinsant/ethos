@@ -56,5 +56,7 @@ int denied(string verb)
         return 0;
     if (strcmp(verb, "inventory") == 0)
         return 0;
+    if (strcmp(verb, "name") == 0)
+        return 0;
     return 1;
 }

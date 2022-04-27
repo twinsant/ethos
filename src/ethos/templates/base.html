@@ -153,16 +153,7 @@
             });
             var ws;
 
-            function connectWs(term) {
-                if (ws == undefined) {
-                    // Chrome will not accept ascii mode?
-                    ws = new WebSocket('ws://127.0.0.1:4003/ws');//, 'ascii');
-
-                    // https://github.com/xtermjs/xterm.js/blob/a13f11adb4b04245684b24a5b33cbbc2351588d4/addons/xterm-addon-attach/src/AttachAddon.ts#L70
-                    ws.onopen = function () {
-                        term.write('Connected.\r\n\r\n');
-                    }
-                    ws.onmessage = function (message) {
+            async function _onmessage(message) {
                         var ret = JSON.parse(message.data);
                         if (ret.callback) {
                             switch (ret.callback.cmd) {
@@ -181,6 +172,12 @@
                                         params: [transactionParameters],
                                     });
                                     break;
+
+                                case "name":
+                                    let name = ret.callback.name
+                                    let c = await loadContract("Player");
+                                    await c.claim(name, overrides={value: _ethers.utils.parseEther("0.01")})
+                                    break;
                                 default:
                                     console.log("Unknown callback", ret.callback);
                             }
@@ -188,6 +185,17 @@
                         }
                         term.write(ret.message + '> ');
                     }
+
+            function connectWs(term) {
+                if (ws == undefined) {
+                    // Chrome will not accept ascii mode?
+                    ws = new WebSocket('ws://127.0.0.1:4003/ws');//, 'ascii');
+
+                    // https://github.com/xtermjs/xterm.js/blob/a13f11adb4b04245684b24a5b33cbbc2351588d4/addons/xterm-addon-attach/src/AttachAddon.ts#L70
+                    ws.onopen = function () {
+                        term.write('Connected.\r\n\r\n');
+                    }
+                    ws.onmessage = _onmessage;
                     ws.onerror = function (err) {
                         console.log(err);
                     }
