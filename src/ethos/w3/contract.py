@@ -19,7 +19,7 @@ class ContractCall():
             return self.method_to_call(*args, **kwargs).call()
 
 class EthContract:
-    def __init__(self, contract_address, abi_name, endpoint='https://mainnet.infura.io/v3/%s' % os.getenv('INFURA_PROJECT_ID', 'YOUR_INFURA_PROJECT_ID')):
+    def __init__(self, abi_name, endpoint='https://mainnet.infura.io/v3/%s' % os.getenv('INFURA_PROJECT_ID', 'YOUR_INFURA_PROJECT_ID')):
         self.web3 = Web3(Web3.HTTPProvider(endpoint))
         # web3 = Web3(Web3.IPCProvider("~/Library/Ethereum/geth.ipc"))
         chain_id = self.web3.eth.chainId

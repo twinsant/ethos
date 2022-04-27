@@ -6,6 +6,8 @@ from handlers.base import BaseHandler, MYTOKEN
 from slack import slack_message
 from tornado.options import options
 
+import w3.player as player
+
 class SignoutHandler(tornado.web.RequestHandler):
     def post(self):
         self.clear_cookie(MYTOKEN)
@@ -21,8 +23,13 @@ class SigninHandler(BaseHandler):
 
         if self.validate_message(message):
             slack_message(options.slack_secret, options.channel, f'{message["address"]} signed in.')
+            self.set_secure_cookie(MYTOKEN, json.dumps(message))
+
             ret = message
-            self.set_secure_cookie(MYTOKEN, json.dumps(ret))
+            name = player.contract.names(message['address'])
+            if name:
+                ret['name'] = name
+
             self.write(json.dumps(ret))
         else:
             self.set_status(403)
