@@ -60,11 +60,11 @@
 ### Supply+Price Stable Mechanism
 
 + Token list summary: 
-+ 1. Governance Token, ERC20, 22 M, limited.
-+ 2. Liquidity Token, ERC20, 1.024 B, limited.
-+ 3. Egg NFT, 1024, biding with LToken 10 M.
-+ 4. Member and Player NFT, 8.88 M, limited.
-+ 5. LToken inflation rate controlled by Community Governance, default is 4.5%.
++ 1) Governance Token, ERC20, 22 M, limited.
++ 2) Liquidity Token, ERC20, 1.024 B, limited.
++ 3) Egg NFT, 1024, biding with LToken 10 M.
++ 4) Member and Player NFT, 8.88 M, limited.
++ 5) LToken inflation rate controlled by Community Governance, default is 4.5%.
 + Price:
 + Phase 1: Publish Pubulic Metaverse BKS 
 + Phase 2: Build 3 DAOs Metaverse
@@ -77,7 +77,9 @@
 + 80% belongs to TextverseDAO, to maintain and develop the protocol.
 
 ### Governance
-
++ Community Governance: 80% GToken will be distributed to the Community.
++ One NFT (member NFT) one vote.
++ If you have 
 
 
 ### Conclusion
