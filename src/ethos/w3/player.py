@@ -1,12 +1,10 @@
 import os
-from datetime import datetime
+from web3 import Web3
 
 from eth_typing import ContractName
-from contract import EthContract
+from w3.contract import EthContract
 
-CONTRACT_ADDRESS = '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9'
-
-contract = EthContract(CONTRACT_ADDRESS, 'Player', endpoint=os.environ.get('ENDPOINT', 'http://127.0.0.1:8545/'))
+contract = EthContract('Player', endpoint=os.environ.get('ENDPOINT', 'http://127.0.0.1:8545/'))
 
 if __name__ == '__main__':
-    print(contract.whoami())
+    print(contract.names(Web3.toChecksumAddress('0x70997970C51812dc3A010C7d01b50e0d17dc79C8')))
