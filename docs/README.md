@@ -4,6 +4,10 @@
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 + ![Deck](https://github.com/DAO-SX/ethos/blob/main/doc/static/printer.gif)
 
+## **Mission: Simple Text Records Power Imaginations!**
+## **Vision: Building, Walking, Living in Your Imagination Metaverses.**
+## **Value: Talk is Cheap, Show me the Contribution, We are Web3 Builder.**
+
 ## Overview
 + We are Textverse, build **Web3 Infrastructure**, A Text Metaverse Engine Category Primitives.
 + We build Public Goods for Web3 with **Interoperability and Composability**.
@@ -24,8 +28,9 @@
 ## Mission
 + Literal is the basic and essence of the Human Civilization.
 + We have Colorful world, good music, and pretty or handsome Stars.
-+ But we must trust, the Power of Text is Strong.
++ But we still need, the Power of Text, or Language Writing, the instinct of Express and Communication.
 + So our mission is **Simple Text Records Power Imaginations**.
++ Be the basement of the Metaverse Creation and Innovation.
 
 ### What are Interoperability and Composability?
 + NFT is great but we can only show by PFP avatar, and nothing else can do.
@@ -88,10 +93,11 @@ flowchart TD
 ## Join Textverse Community
 + Welcome to everyone to join, free to play.
 + [Discord](https://discord.com/invite/Qj9ChuSdAt)
-+ [Twitter](https://twitter.com/TextverseApp)
++ [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
-+ [DAOs see here](DAOs-build-your-Metaverse.md)
++ [DAOs see here: Zh](DAOs-build-your-Metaverse.md)
++ + [DAOs see here: EN](how-to-build-your-own-textverse.md)
 + [Players see here](How-to-play.md)
 + [Our github](https://github.com/twinsant/ethos).
 + [Docs](https://dao-sx.github.io/ethos/)
-+ It was merged from two projects of the two genesis member:[jhfnetboy](https://github.com/jhfnetboy), and [twinsant](https://github.com/twinsant).
++ It was merged from two projects of the two genesis founder:[jhfnetboy](https://github.com/jhfnetboy), and [twinsant](https://github.com/twinsant).
