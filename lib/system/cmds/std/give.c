@@ -6,7 +6,7 @@ int help(object me);
 
 int main(object me, string arg)
 {
-    string prefix;
+    string name;
     string oid;
     int r;
     object e;
@@ -18,10 +18,17 @@ int main(object me, string arg)
     if (!arg)
         return help(this_object());
 
-    r = sscanf(arg, "%s %s", prefix, oid);
+    if (!player->reaction("give"))
+    {
+
+        write("你不能使用这个命令。\n");
+        return 1;
+    }
+
+    r = sscanf(arg, "%s %s", name, oid);
     if (r==2 && oid) {
         e = environment(me);
-        someone = find_player_by_prefix(e, prefix);
+        someone = find_player_by_name(e, name);
         if (someone)
         {
             object *i = all_inventory(me);
@@ -37,7 +44,7 @@ int main(object me, string arg)
                 write("你一贫如洗，没什么可给的。\n");
             }
         }else{
-            write(sprintf("%s不在房间里\n", prefix));
+            write(sprintf("%s不在房间里\n", name));
         }
     }else{
         return help(this_object());

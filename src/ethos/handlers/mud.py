@@ -51,6 +51,7 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
                     if 'proxyCallback'in j:
                         cmd = j['proxyCallback']
                         if cmd == 'DID':
+                            # TODO: Refactoring duplicated code on base.py, auth.py
                             chain_id = self.current_user['chain_id']
                             ens = self.current_user.get('ens', None)
                             mud_name = self.current_user.get('name', None)
@@ -60,12 +61,15 @@ class MudWebSocket(websocket.WebSocketHandler, BaseHandler):
 
                             if ens:
                                 name = ens
+                                nameClaimed = 0
                             elif mud_name:
                                 name = mud_name
+                                nameClaimed = 1
                             else:
                                 name = f'{input[:5]}...{input[-4:]}'
+                                nameClaimed = 0
 
-                            ipt = json.dumps({'chain_id':chain_id, 'input':input, 'name':name, 'cookie':self.cookie, 'lang':lang})
+                            ipt = json.dumps({'chain_id':chain_id, 'input':input, 'name':name, 'nameClaimed':nameClaimed, 'cookie':self.cookie, 'lang':lang})
                             self.mud.write_message(ipt + '\r\n')
                         del j['proxyCallback']
                     self.write_message(message)

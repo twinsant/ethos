@@ -31,3 +31,15 @@ object find_player_by_prefix(object e, string prefix)
         }
     }
 }
+
+object find_player_by_name(object e, string name)
+{
+    object *ai;
+
+    ai = all_inventory(e);
+    foreach(object i in ai) {
+        if (strcmp(i->query("name"), name)==0) {
+            return i;
+        }
+    }
+}
