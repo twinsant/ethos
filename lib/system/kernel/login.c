@@ -11,15 +11,18 @@ void get_did(string arg)
 {
     object user, old_logon;
     object logon = this_object();
-    mapping input = json_decode(arg);
-    string chain_id = input["chain_id"];
-    string address = input["input"];
-    string did = chain_id + ":" + input["input"];
-    string name = input["name"];
-    string cookie = input["cookie"];
-    string lang = input["lang"];
+    mapping j = json_decode(arg);
+
+    string chain_id = j["chain_id"];
+    string address = j["input"];
+    string did = chain_id + ":" + j["input"];
+    string name = j["name"];
+    string nameClaimed = j["nameClaimed"];
+    string cookie = j["cookie"];
+    string lang = j["lang"];
     string ip_number = query_ip_number(logon);
 
+    // debug_message(sprintf("%O", j));
     debug_message(sprintf("\nLogon: %O", logon));
     if (interactive(logon))
         set_temp("ip_number", ip_number);
@@ -54,6 +57,7 @@ void get_did(string arg)
 
         user->set("id", did);
         user->set("name", name);
+        user->set("nameClaimed", nameClaimed);
         user->set("cookie", cookie);
         user->set("address", address);
     }

@@ -25,6 +25,18 @@ void heart_beat()
     }
 }
 
+int reaction(string cmd)
+{
+    if (strcmp(cmd, "give") == 0) {
+        if (query("nameClaimed")) {
+            return 1;
+        } else {
+            write("你还没起名字：");
+        }
+    }
+    return 0;
+}
+
 void pick_ob(object obj)
 {
     // https://www.fluffos.info/efun/interactive/commands.html ?
