@@ -90,18 +90,18 @@ journey
 ### Wizard
 ```mermaid
 journey
-    title Create a Metaverse of Text
-    section Buy the Metaverse Egg NFT
+    title Get the Wizard NFT
+    section Buy the Wizard NFT with ETH
       Go to DApp homepage: 5: Me
-      Click one of Market lists: 3: Me
-      Enter and buy : 2: Me, Market
-    section Verify and Mint
+      Click one of NFT(Market) lists: 3: Me
+      Enter and buy : 2: Me, Wizard NFT
+      Enter Metaverse and Buy a Land: 5: Me, LToken NFT
+    section Create and Earn
       Go back DApp: 5: Me
       Connect Metamask and approve signature(only once): 5: Me
-      Click Create my Metaverse: 3: Me, Egg
-      Revoke the Metamask to verify and approve: 5: Me, Egg
-      Enter Hatch the Egg page and setting: 5: Me
-      Click Hatch, approve the Metamask and pay gas: 5: Me, Egg
-      Finished,dashboard to manage the Metaverse: 5: Me, Metaverse
-
+      Click Manage my Land: 3: Me, Wizard NFT
+      Revoke the Metamask to verify and approve: 5: Me, Wizard NFT
+      Enter Dashboard and setting and Design Land: 5: Me, Land
+      Click Audit Story, verified the Story(Invest): 5: Me, Land
+      Published,dashboard to manage the income: 5: Me, Land
 ```
