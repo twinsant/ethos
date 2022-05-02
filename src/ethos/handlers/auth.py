@@ -29,6 +29,9 @@ class SigninHandler(BaseHandler):
             name = player.contract.names(message['address'])
             if name:
                 ret['name'] = name
+                ret['nameClaimed'] = 1
+            else:
+                ret['nameClaimed'] = 0
 
             self.write(json.dumps(ret))
         else:

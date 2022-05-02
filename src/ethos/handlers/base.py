@@ -15,6 +15,9 @@ class BaseHandler(tornado.web.RequestHandler):
                 name = player.contract.names(message['address'])
                 if name:
                     message['name'] = name
+                    message['nameClaimed'] = 1
+                else:
+                    message['nameClaimed'] = 0
                 return message
             else:
                 return None
