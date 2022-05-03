@@ -105,3 +105,12 @@ journey
       Click Audit Story, verified the Story(Invest): 5: Me, Land
       Published,dashboard to manage the income: 5: Me, Land
 ```
+
+Plain Player
+Long time to dev personal ability
+Metaverse Walker
+Depend on the Equipment and Weapons
+Story Talker
+Get power from the story and land after invest
+Wizard
+Must buy Magic books to level up, leave land down level 2

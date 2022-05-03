@@ -92,7 +92,7 @@ flowchart TD
 
 ## Join Textverse Community
 + Welcome to everyone to join, free to play.
-+ [Discord](https://discord.com/invite/Qj9ChuSdAt)
++ [Discord](https://discord.gg/BSqnVqZTgs)
 + [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
 + [DAOs see here: Zh](DAOs-build-your-Metaverse.md)
