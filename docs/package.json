@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "gitbook-plugin-mermaid": "^0.0.9"
+  }
+}

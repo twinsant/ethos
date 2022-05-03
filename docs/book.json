@@ -1,0 +1,18 @@
+
+{
+  "title": "Textverse Documents",
+  "description": "Textverse Docs",
+  "author": "jhfnetboy",
+  "lang": "en",
+
+  "plugins": ["mermaid-gb3","-lunr", "-search"],
+
+  "pluginsConfig": {
+    "intopic-toc": {
+      "label": "Directory"
+    }
+  },
+
+  "variables": {
+  }
+}
