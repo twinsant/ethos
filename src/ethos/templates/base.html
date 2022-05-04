@@ -179,6 +179,12 @@
                                     let c = await loadContract("Player");
                                     await c.claim(name, overrides={value: _ethers.utils.parseEther("0.01")})
                                     break;
+                                case "save":
+                                    let save = ret.callback.save
+                                    // let c = await loadContract("Player");
+                                    // await c.claim(name, overrides={value: _ethers.utils.parseEther("0.01")})
+                                    break;   
+
                                 default:
                                     console.log("Unknown callback", ret.callback);
                             }

@@ -71,3 +71,8 @@ https://open.harmony.one/300m-on-bounties-grants-daos#051a5e67cbb94cc190e1c3e57e
 
     100 个端口（2000 万美元）。每笔移植补助金的接受者必须实现产品与市场的契合。Harmony 帮助将这些蓬勃发展的项目扩展到我们的主网。我们建议在 4 到 8 周内每次花费 50-25 万美元，用于已经拥有 1 万活跃用户的项目，并让他们的团队参与公共论坛。市场增长的主要领域是 Play-to-Earn 游戏、音乐家粉丝俱乐部、投资 DAO、投资组合仪表板以及活动和收藏品策展人。
 
+# resoure
++ https://talk.harmony.one/t/moon-robots-nft-powered-economy-game-with-strategy-rpg-elements/16773
++ 
+
+

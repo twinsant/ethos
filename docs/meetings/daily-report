@@ -1,0 +1,66 @@
+# Daily report of Web3
+
+## Doing and Achivement
++ 参加了Gitcoin的黑客松：
++ https://gitcoin.co/hackathon-list，Rollathon
++ 5-2---5-22
++ 申请了gitcoin的grant：https://gitcoin.co/grants/5758/textverse-a-text-metaversegame-engine-for-web3
++ 还没开放
++ 最近的几个重心
++ 1） Engine
++ 2） Protocol
++ 3)  Funding--目前我们基于MVP-->黑客松+申请各种grant-->初步扩1-2开发+1全球运营-->产品0.1-->社区运营起来
+
+----
++ 以下重要不紧急
++ 4)  Tokenomics
++ 5)  Site： 
++ https://moonrobots.one/
++ https://docs.moonrobots.one/partnerships/nft-marketplaces
++ https://moonrobots.one/my-tickets/
++ 
+## Base
++ 沟通机制
++ 1.notion 汇集所有运营和产品规划以及里程碑和产品todo
+
++ https://www.notion.so/xstack/Textverse-Product-Design-8d51c1b6491a4c4fab37e5998e33cec5
+
++ 发我notion的email加你(目前暂停)
+
++ 2.github, 研发根据地
+
++ https://github.com/twinsant/ethos
+
++ 3.discord:
+
++ https://discord.gg/BSqnVqZTgs, Textverse, 元宇宙Discord
+
++ 4.对外官方docs
+
++ https://dao-sx.github.io/ethos/
+
+### 对外介绍（craft）
++ Hey guys! 
+nice to meet you all!
+We are new here and want to build a Text Metaverse Engine, we (two full-stack members) are working on it for months. We decide to join the Gitcoin grant and Hackathon.
+If anyone is interested in the NFT protocols and Text Game(someone calls it MUD), you can join us.
+The Textverse Engine we are building is based on Fluff0s2019(which is based on MudOS), with Python, C, and React Solidity.  It is open-source and built for Community!
+Our team is an "Old" team in Web2 and a newbie to Web3.
+Anything you want to know, glad to touch, just at me, build the Web3 together.
+Welcome anyone who is familiar with React, Solidity, and Go or Python to join us!
+
++ Our temp site: https://textverse.super.site
+
+----
+5-2
+1. add user journey
+ 90%
+2. eip part finish part
+ https://github.com/jhfnetboy/EIPs/blob/master/EIPS/eip-7211.md
+3. tokenomics craft
+   on paper
+
+5-3
+1.user journey finished
+2.eip go on
+3. add community begin doc

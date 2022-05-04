@@ -2,21 +2,13 @@
 + Textverse is a Text Metaverse(Game) Engine for Web3.
 + Build by Community, for Community. We build Public Goods.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
-+ ![Deck](https://github.com/DAO-SX/ethos/blob/main/doc/static/printer.gif)
 
-## **Mission: Simple Text Records Power Imaginations!**
-## **Vision: Building, Walking, Living in Your Imagination Metaverses.**
-## **Value: Talk is Cheap, Show me the Contribution, We are Web3 Builder.**
+#### **M: Build a Prototype Metaverse to accelerate the Exploration of the Metaverse.**
+#### **V: Low cost, No barrier, Fast access for Everyone to jump into the Metaverse.**
+#### **V: Simple Text Records Power Imaginations with Civilizations.**
 
-## Overview
-+ We are Textverse, build **Web3 Infrastructure**, A Text Metaverse Engine Category Primitives.
-+ We build Public Goods for Web3 with **Interoperability and Composability**.
-+ Textverse has **three parts**: 
-+ **Open NFT Transfer Protocol** with series of Smart contract, maintained by the **Protocol DAO**.
-+ **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
-+ **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
-### Value for Web3
+## Our Mission: Build for Web3
 + Textverse is **Public goods** for Community.
 + Providing to plain users to join and play in **a very Easy Mode**: just **Typing on any screen**.
 + Mint NFTs to help players to **own their value and assets** in Web3.
@@ -24,13 +16,33 @@
 + Textverse can **help any communities,DAOs** extend their story within a Text Metaverse.
 + Also, we build a series of tools and smart contracts to **solve the engineering problems**.
 + So the communities can **focus on** the Creative and Imaginations on their Metaverse. 
++ Cornerstone of the Web3.
 
-## Mission
+
+## Our Vision: Everyone Jump into Metaverse
++ We are Textverse, build **Web3 Infrastructure**, A Text Metaverse Engine Category Primitives.
++ We build Public Goods for Web3 with **Interoperability and Composability**.
++ Textverse has **three parts**: 
++ **Open NFT Transfer Protocol** with series of Smart contract, maintained by the **Protocol DAO**.
++ **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
++ **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
+
+## Our Value: Text is Civilization.
 + Literal is the basic and essence of the Human Civilization.
 + We have Colorful world, good music, and pretty or handsome Stars.
 + But we still need, the Power of Text, or Language Writing, the instinct of Express and Communication.
 + So our mission is **Simple Text Records Power Imaginations**.
-+ Be the basement of the Metaverse Creation and Innovation.
++ Be the basement of the Metaverse Creation and Innovation. 
+
+### Problems with current 
++ As you know, we have many many Pixels and JPGs or 3Ds NFTs on the market.
++ We call the NFT the entrance of the Metaverse. It will be multi Metaverse in the future.
++ But no one gives a rule or protocol to connect the isolated NFTs and Metaverses.
++ So we must build individual programs for different. 
++ And it will produce Value Isolation with different rules.
++ Just like I have 500$ and saved in different banks, if you want to operate it, transfer or gather the assets, you can’t. 
++ Cause different banks have a variety of complex principles to save and withdraw.
++ We need **Interoperability and Composability for NFT in Metaverse.**
 
 ### What are Interoperability and Composability?
 + NFT is great but we can only show by PFP avatar, and nothing else can do.
@@ -44,15 +56,6 @@
 + **Cross Area**: Walk through the Metaverse with Composable DID and TID can make you be Individual.
 + **Creator = Player = Beneficiary**: Create and Earn, Play and Earn, we are stake-holder.
 
-### Problems with current 
-+ As you know, we have many many Pixels and JPGs or 3Ds NFTs on the market.
-+ We call the NFT the entrance of the Metaverse. It will be multi Metaverse in the future.
-+ But no one gives a rule or protocol to connect the isolated NFTs and Metaverses.
-+ So we must build individual programs for different. 
-+ And it will produce Value Isolation with different rules.
-+ Just like I have 500$ and saved in different banks, if you want to operate it, transfer or gather the assets, you can’t. 
-+ Cause different banks have a variety of complex principles to save and withdraw.
-
 ### Textverse Solution
 + We have a basic idea called NFT Interoperability **Standard**.
 + It can give abilities to NFT holders to INTERACTION with their NFTs, the strength of Interoperation. 
@@ -62,7 +65,7 @@
 + Yes, Transport your NFT to Metaverse with ONE **Standard** protocol and Play with it!
 + Basic progress:
 ```mermaid
-flowchart TD
+flowchart TDcat 
    DAOs --> B[Google-Apply-Form] --> C[Check the Form] --> D[Gnerate JSON] 
    D --> E[(Run script)] --> F[Generate Docker] --> G[/Design the story/] --> H[Distribution run Docker,3 at least] 
    H --> I[Load game test] --> J[Open for Community]
@@ -92,12 +95,9 @@ flowchart TD
 
 ## Join Textverse Community
 + Welcome to everyone to join, free to play.
-+ [Discord](https://discord.com/invite/Qj9ChuSdAt)
++ [Discord](https://discord.gg/BSqnVqZTgs)
 + [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
-+ [DAOs see here: Zh](DAOs-build-your-Metaverse.md)
-+ + [DAOs see here: EN](how-to-build-your-own-textverse.md)
-+ [Players see here](How-to-play.md)
 + [Our github](https://github.com/twinsant/ethos).
-+ [Docs](https://dao-sx.github.io/ethos/)
-+ It was merged from two projects of the two genesis founder:[jhfnetboy](https://github.com/jhfnetboy), and [twinsant](https://github.com/twinsant).
++ [This page(Docs)](https://dao-sx.github.io/ethos/)
++ Merged from two projects of the two genesis founder:[jhfnetboy](https://github.com/jhfnetboy), into [twinsant](https://github.com/twinsant).

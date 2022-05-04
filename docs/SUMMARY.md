@@ -3,9 +3,10 @@
 * [Introduction](README.md)
 
 * [Draft]
-    * [Tokenomics](Tokenomics.md)
+    * [Tokenomics](tokenomics/Tokenomics.md)
     * [Roadmap2022-Textverse](https://kdocs.cn/l/cuFbU4wjIS2A)
-* [Meetings](meetings/4-22.md)
-* [DAOs see here](DAOs-build-your-Metaverse.md)
-* [Players see here](How-to-play.md)
+* [Developer Meetings](meetings/4-22.md)
+* [DAO Partners see here](product/how-to-build-your-own-textverse-En.md)
+* [Players see here](product/user-journey.md)
+* [Textverse Community see here](community/community-beginner-start.md)
 
