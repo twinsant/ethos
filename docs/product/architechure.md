@@ -64,7 +64,7 @@ flowchart TB
     end
 ```
 ### Docker image
-+ It contains of the Core Engine and Bridge.
++ It contains of the Core Interaction Engine and Bridge.
 + E.g. : look, fight, pick, give...
 + It will transfer from centralized to decentralized.
 

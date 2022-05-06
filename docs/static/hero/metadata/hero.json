@@ -1,0 +1,47 @@
+
+{
+    "replaces": [],
+    "hides": [],
+    "tags": [],
+    "category": "upper_body",
+    "representations": [
+      {
+        "bodyShapes": [
+          "urn:decentraland:off-chain:base-avatars:BaseMale"
+        ],
+        "mainFile": "male/Look6_Tshirt_A.glb",
+        "contents": [
+          {
+            "key": "male/Look6_Tshirt_A.glb",
+            "url": "https://peer-ec2.decentraland.org/content/contents/QmX3yMhmx4AvGmyF3CM5ycSQB4F99zXh9rL5GvdxTTcoCR"
+          }
+        ],
+        "overrideHides": [],
+        "overrideReplaces": []
+      },
+      {
+        "bodyShapes": [
+          "urn:decentraland:off-chain:base-avatars:BaseFemale"
+        ],
+        "mainFile": "female/Look6_Tshirt_B (1).glb",
+        "contents": [
+          {
+            "key": "female/Look6_Tshirt_B (1).glb",
+            "url": "https://peer-ec2.decentraland.org/content/contents/QmcgddP4L8CEKfpJ4cSZhswKownnYnpwEP4eYgTxmFdav8"
+          }
+        ],
+        "overrideHides": [],
+        "overrideReplaces": []
+      }
+    ]
+  },
+  "image": "https://peer-ec2.decentraland.org/content/contents/QmPnzQZWAMP4Grnq6phVteLzHeNxdmbRhKuFKqhHyVMqrK",
+  "thumbnail": "https://peer-ec2.decentraland.org/content/contents/QmcnBFjhyFShGo9gWk2ETbMRDudiX7yjn282djYCAjoMuL",
+  "metrics": {
+    "triangles": 3400,
+    "materials": 2,
+    "textures": 2,
+    "meshes": 2,
+    "bodies": 2,
+    "entities": 1
+  }
