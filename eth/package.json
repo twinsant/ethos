@@ -13,6 +13,9 @@
     "web3": "^1.7.3"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.6.0"
+    "@openzeppelin/contracts": "^4.6.0",
+    "ipfs": "^0.62.3",
+    "mime": "^3.0.0",
+    "nft.storage": "^6.2.0"
   }
 }
