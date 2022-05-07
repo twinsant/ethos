@@ -41,7 +41,11 @@
 + It will be build with Ethereum or Blockchain Tech and Smart Contract.
 
 #### Save Command
-+ Save can be executed manually or automated.
-+ Save command will do these things:
-+ 1> get the status of hero now and generate a json file.
++ Save command is a asset action.
++ Save command can be executed manually or automated.
++ Save command will do these actions:
++ 1> get the status of playing hero now and generate a json file.
 + 2> get the assets of inventory and generate a json file.
++ 3> store the json file to IPFS (will save redundantly in Arweave later) and get a CID
++ 4> save the CID to vNFT's(playing hero) storage to keep tracking the hero or artifact's changing.
+

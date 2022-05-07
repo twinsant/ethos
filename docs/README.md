@@ -3,13 +3,14 @@
 + Build by Community, for Community. We build Public Goods.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
-#### **M: Build a Prototype Metaverse to accelerate the Exploration of the Metaverse.**
+#### **M: Build a Metaverse Prototype to accelerate the Exploration of the Metaverse.**
 #### **V: Low cost, No barrier, Fast access for Everyone to jump into the Metaverse.**
 #### **V: Simple Text Records Power Imaginations with Civilizations.**
 
 
-## Our Mission: Build for Web3
+## Our Mission: Build for Community
 + Textverse is **Public goods** for Community.
++ It is a prototype of Metaverse for Community to Explore something interesting.
 + Providing to plain users to join and play in **a very Easy Mode**: just **Typing on any screen**.
 + Mint NFTs to help players to **own their value and assets** in Web3.
 + Build relations with the DAOs by **Tokens Exchange Stake**, they are **all the stake-holders of us**.
@@ -95,6 +96,7 @@ flowchart TDcat
 
 ## Join Textverse Community
 + Welcome to everyone to join, free to play.
++ [Q&A](q&a.md)
 + [Discord](https://discord.gg/BSqnVqZTgs)
 + [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
