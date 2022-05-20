@@ -66,7 +66,7 @@
 + Yes, Transport your NFT to Metaverse with ONE **Standard** protocol and Play with it!
 + Basic progress:
 ```mermaid
-flowchart TDcat 
+flowchart TD 
    DAOs --> B[Google-Apply-Form] --> C[Check the Form] --> D[Gnerate JSON] 
    D --> E[(Run script)] --> F[Generate Docker] --> G[/Design the story/] --> H[Distribution run Docker,3 at least] 
    H --> I[Load game test] --> J[Open for Community]
