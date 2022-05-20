@@ -4,7 +4,7 @@
 (base) ➜  ethos git:(main) ✗ pwd
 /Users/ant/GitHub/ethos
 
-(base) ➜  ethos git:(main) ✗ ./bin/driver lib/config.ini
+(base) ➜  ethos git:(main) ✗ ./bin/driver.mac lib/config.ini
 ```
 
 # Ref
