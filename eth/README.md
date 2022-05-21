@@ -10,6 +10,8 @@ hh='npx hardhat'
 (base) ➜  eth git:(main) ✗ hh node
 
 (base) ➜  eth git:(main) ✗ hh run scripts/MUDName.js --network localhost
+
+(base) ➜  eth git:(main) ✗ hh deploy --network localhost --contract Player
 ```
 
 # Basic Sample Hardhat Project

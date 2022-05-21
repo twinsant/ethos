@@ -178,6 +178,7 @@
                                     let name = ret.callback.name
                                     let c = await loadContract("Player");
                                     await c.claim(name, overrides={value: _ethers.utils.parseEther("0.01")})
+                                    ws.send('renamed\r\n');
                                     break;
                                 case "save":
                                     let save = ret.callback.save

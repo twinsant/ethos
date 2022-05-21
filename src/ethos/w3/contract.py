@@ -29,7 +29,9 @@ class EthContract:
             c = f.read()
         j = json.loads(c)
         self.abi = j['abi']
-        self.contract = self.web3.eth.contract(address=Web3.toChecksumAddress(j['address']), abi=self.abi)
+        self.contract_address = Web3.toChecksumAddress(j['address'])
+        # print(self.contract_address)
+        self.contract = self.web3.eth.contract(address=self.contract_address, abi=self.abi)
 
     def __getattr__(self, name):
         ret = None
