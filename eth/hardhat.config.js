@@ -63,12 +63,23 @@ task("deploy", "Deploy contract")
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
+ * read from env by process
+ * const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
  */
+const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
 module.exports = {
   solidity: "0.8.7",
   networks: {
     hardhat: {
       chainId: 1337
     },
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    },
+    Mumbai: {
+      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    }
   }
 };
