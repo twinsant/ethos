@@ -2,3 +2,4 @@
 .env
 src/ethos/static/abi/1337/
 lib/log
+node_modules/

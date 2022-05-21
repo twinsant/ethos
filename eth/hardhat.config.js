@@ -66,7 +66,8 @@ task("deploy", "Deploy contract")
  * read from env by process
  * const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
  */
-const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+// const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+const ALCHEMY_MUMBAI_API_URL = process.env.ALCHEMY_MUMBAI_API_URL;
 module.exports = {
   solidity: "0.8.7",
   networks: {
@@ -78,8 +79,12 @@ module.exports = {
       accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
     },
     Mumbai: {
-      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      url: `${ALCHEMY_MUMBAI_API_URL}`,
       accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    },
+    rinkeby: {
+      url: `${ALCHEMY_RINKEBY_API_URL}`,
+      accounts:[`${ALCHEMY_PRIVATE_KEY}`]
     }
   }
 };
