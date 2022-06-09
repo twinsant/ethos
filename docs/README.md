@@ -5,7 +5,7 @@
 
 #### **M: Build a Metaverse Prototype to accelerate the Exploration of the Metaverse.**
 #### **V: Low cost, No barrier, Fast access for Everyone to jump into the Metaverse.**
-#### **V: Languages, literal words, text, can release the Power of Imaginations without any limitation.**
+#### **V: Literal Words, release the Power of Imaginations without any limitation.**
 
 
 ## Our Mission: Build for Community
