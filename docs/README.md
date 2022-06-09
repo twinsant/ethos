@@ -73,6 +73,7 @@ flowchart TD
 
 ```
 + Above graph is build by Markdown mermaid engine, maybe unvisible for gitbook.
++ ![graph](static/graph-git.png)
 
 ### Protocol 7211
 + **Metaverse Registry**
