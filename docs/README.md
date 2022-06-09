@@ -5,7 +5,7 @@
 
 #### **M: Build a Metaverse Prototype to accelerate the Exploration of the Metaverse.**
 #### **V: Low cost, No barrier, Fast access for Everyone to jump into the Metaverse.**
-#### **V: Simple Text Records Power Imaginations with Civilizations.**
+#### **V: Languages, literal words, text, can release the Power of Imaginations without any limitation.**
 
 
 ## Our Mission: Build for Community
@@ -28,11 +28,11 @@
 + **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
 + **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
-## Our Value: Text is Civilization.
-+ Literal is the basic and essence of the Human Civilization.
+## Our Value: Language is Human Natural Ability.
++ Literal is the natural ability and basic and essence of the Human Civilization.
 + We have Colorful world, good music, and pretty or handsome Stars.
-+ But we still need, the Power of Text, or Language Writing, the instinct of Express and Communication.
-+ So our mission is **Simple Text Records Power Imaginations**.
++ But we still need, the Power of Text, or Literal Writing, the instinct of Express and Communication.
++ So our value is **Release the Natural Ability to Create**.
 + Be the basement of the Metaverse Creation and Innovation. 
 
 ### Problems with current 
@@ -69,9 +69,10 @@
 flowchart TD 
    DAOs --> B[Google-Apply-Form] --> C[Check the Form] --> D[Gnerate JSON] 
    D --> E[(Run script)] --> F[Generate Docker] --> G[/Design the story/] --> H[Distribution run Docker,3 at least] 
-   H --> I[Load game test] --> J[Open for Community]
+   H --> I[Load Metaverse test] --> J[Open for Community]
 
 ```
++ Above graph is build by Markdown mermaid engine, maybe unvisible for gitbook.
 
 ### Protocol 7211
 + **Metaverse Registry**
