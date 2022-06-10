@@ -1,5 +1,5 @@
 # Welcome to Textverse
-+ Textverse is a Text Metaverse(Game) Engine for Web3.
++ Textverse is a Text Metaverse Engine for Web3.
 + Build by Community, for Community. We build Public Goods.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
@@ -25,7 +25,7 @@
 + We build Public Goods for Web3 with **Interoperability and Composability**.
 + Textverse has **three parts**: 
 + **Open NFT Transfer Protocol** with series of Smart contract, maintained by the **Protocol DAO**.
-+ **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
++ **Text Metaverse Engine** with Web3 TID for any communities, free to use, maintained by the real company.
 + **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
 ## Our Value: Literal Words have Powers.
