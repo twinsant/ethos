@@ -28,7 +28,7 @@
 + **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
 + **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
-## Our Value: Language is Human Natural Ability.
+## Our Value: Literal Words have Powers.
 + Literal is the natural ability and basic and essence of the Human Civilization.
 + We have Colorful world, good music, and pretty or handsome Stars.
 + But we still need, the Power of Text, or Literal Writing, the instinct of Express and Communication.
