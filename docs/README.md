@@ -8,12 +8,11 @@
 #### **V: Literal Words, release the Power of Imaginations without any limitation.**
 
 
-## Our Mission: Build for Community
+## Our Mission: Metaverse prototype for Community
 + Textverse is **Public goods** for Community.
 + It is a prototype of Metaverse for Community to Explore something interesting.
 + Providing to plain users to join and play in **a very Easy Mode**: just **Typing on any screen**.
 + Mint NFTs to help players to **own their value and assets** in Web3.
-+ Build relations with the DAOs by **Tokens Exchange Stake**, they are **all the stake-holders of us**.
 + Textverse can **help any communities,DAOs** extend their story within a Text Metaverse.
 + Also, we build a series of tools and smart contracts to **solve the engineering problems**.
 + So the communities can **focus on** the Creative and Imaginations on their Metaverse. 
@@ -25,7 +24,7 @@
 + We build Public Goods for Web3 with **Interoperability and Composability**.
 + Textverse has **three parts**: 
 + **Open NFT Transfer Protocol** with series of Smart contract, maintained by the **Protocol DAO**.
-+ **Text Metaverse Engine** with Web3 TID for any communities, free to use, maintained by the real company.
++ **Text Metaverse Engine** with Web3 TID for any communities, free to use, maintained by Textverse team.
 + **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
 ## Our Value: Literal Words have Powers.
@@ -73,7 +72,7 @@ flowchart TD
 
 ```
 + Above graph is build by Markdown mermaid engine, maybe unvisible for gitbook.
-+ ![graph](static/graph-git.png)
++ ![graph](static/graph-git.png){:height="50%" width="50%"}
 
 ### Protocol 7211
 + **Metaverse Registry**
