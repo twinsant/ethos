@@ -97,10 +97,8 @@ flowchart TD
 
 ## Join Textverse Community
 + Welcome to everyone to join, free to play.
-+ [Q&A](q&a.md)
 + [Discord](https://discord.gg/BSqnVqZTgs)
 + [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
-+ [Our github](https://github.com/twinsant/ethos).
-+ [This page(Docs)](https://dao-sx.github.io/ethos/)
++ [Our github](https://github.com/textverse).
 + Merged from two projects of the two genesis founder:[jhfnetboy](https://github.com/jhfnetboy), into [twinsant](https://github.com/twinsant).
