@@ -63,12 +63,28 @@ task("deploy", "Deploy contract")
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
+ * read from env by process
+ * const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
  */
+// const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+const ALCHEMY_MUMBAI_API_URL = process.env.ALCHEMY_MUMBAI_API_URL;
 module.exports = {
   solidity: "0.8.7",
   networks: {
     hardhat: {
       chainId: 1337
     },
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    },
+    Mumbai: {
+      url: `${ALCHEMY_MUMBAI_API_URL}`,
+      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    },
+    rinkeby: {
+      url: `${ALCHEMY_RINKEBY_API_URL}`,
+      accounts:[`${ALCHEMY_PRIVATE_KEY}`]
+    }
   }
 };

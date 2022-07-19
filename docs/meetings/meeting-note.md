@@ -76,4 +76,20 @@ flowchart LR
    gh-pages
 
 
-# 4-25? meeting notes
+# 4-25 meeting notes
++ Engine
++ Save contract
+
+# 5-10
+## Milestone
+1.5-15,base demo
+```mermaind
+flowchart TB
+Entrance page --> mint a nft
+tNFT --> join game(metamask)
+Play in the game --> Change attributes/materials
+Save --> exit
+Enter --> load game
+```
+
+

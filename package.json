@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mime": "^3.0.0",
+    "nft.storage": "^6.3.0"
+  }
+}

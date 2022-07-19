@@ -121,3 +121,4 @@ This project extend [LPmud driver](https://www.fluffos.info/concepts/general/Mud
 
 ## License
 See: [https://github.com/fluffos/fluffos/blob/master/Copyright](https://github.com/fluffos/fluffos/blob/master/Copyright)
+LPC: https://en.wikipedia.org/wiki/LPMud

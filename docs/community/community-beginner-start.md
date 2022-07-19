@@ -1,7 +1,6 @@
 # Community beginner start 社区参与者开始指南
 + version: 0.0.1 2022-5-3
 + As your know, I am a technical writer on Crypto area that accumulating some readers and friends who are eager to join and learn something from some Crypto projects.
-+ Also, everyone want **to be rich**. If the project run fluently, it will!
 + What amazing of Crypto or Web3 is equivalence to everyone.
 + Cold start: it means one project find some early users, then he find the early investors to support to grow.
 + Fair Launch: if we run a public goods for Web3, we will share the token as fairly as we can to smooth the inequity.
@@ -67,7 +66,7 @@
 ### Why I join?
 + We are a Community that Project Leading Style, based on the full time Web3 builders.
 + We will build something fun and interesting, and Public Goods for Web3.
-+ Any of projects be successful, 80% will belongs to Community, early users and Community members will get money or tokens.
++ Any of projects be successful, 80% will belongs to Community, early users and Community members will get tokens.
 + More detail can see the [Tokenomics](../tokenomics/Tokenomics.md).
 + Web3 mode is depend on the early users who was also early investors to support and run the product, which called Cold Launch.
 
