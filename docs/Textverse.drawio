@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-07-26T06:36:37.986Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="MF4zFeMHEKJhV2TH6Nmc" version="20.2.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-07-26T06:57:51.878Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="e1qAHAOX0AZmcGUzm966" version="20.2.0" type="github" pages="2">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="page1">
     <mxGraphModel dx="1055" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -155,7 +155,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ZPrXvu3ny6-cdOO1tg5V-1" value="Docker image" style="swimlane;" parent="1" vertex="1">
+        <mxCell id="ZPrXvu3ny6-cdOO1tg5V-1" value="Textverse Docker image" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="110" y="45" width="730" height="265" as="geometry" />
         </mxCell>
         <mxCell id="ZPrXvu3ny6-cdOO1tg5V-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="ZPrXvu3ny6-cdOO1tg5V-1" source="ZPrXvu3ny6-cdOO1tg5V-2" target="ZPrXvu3ny6-cdOO1tg5V-3" edge="1">
@@ -169,6 +169,14 @@
         </mxCell>
         <mxCell id="ZPrXvu3ny6-cdOO1tg5V-3" value="LPC Libs" style="rounded=1;whiteSpace=wrap;html=1;" parent="ZPrXvu3ny6-cdOO1tg5V-1" vertex="1">
           <mxGeometry x="360" y="76" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iRsEt2cPoexq2Gtf76o--27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="ZPrXvu3ny6-cdOO1tg5V-1" source="ZPrXvu3ny6-cdOO1tg5V-4" target="ZPrXvu3ny6-cdOO1tg5V-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iRsEt2cPoexq2Gtf76o--28" value="WS API" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iRsEt2cPoexq2Gtf76o--27">
+          <mxGeometry x="-0.2857" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="ZPrXvu3ny6-cdOO1tg5V-4" value="WS&lt;br&gt;Interface" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="ZPrXvu3ny6-cdOO1tg5V-1" vertex="1">
           <mxGeometry x="551" y="66" width="80" height="80" as="geometry" />
