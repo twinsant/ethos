@@ -1,18 +1,18 @@
 # Welcome to Textverse
-+ Textverse is a Text Metaverse(Game) Engine for Web3.
++ Textverse is a Text Metaverse Engine for Web3.
 + Build by Community, for Community. We build Public Goods.
 + WE ARE THE FULL TIME WEB3 BUILDER, NOT OTHERS.
 
-#### **M: Build a Prototype Metaverse to accelerate the Exploration of the Metaverse.**
+#### **M: Build a Metaverse Prototype to accelerate the Exploration of the Metaverse.**
 #### **V: Low cost, No barrier, Fast access for Everyone to jump into the Metaverse.**
-#### **V: Simple Text Records Power Imaginations with Civilizations.**
+#### **V: Literal Words, release the Power of Imaginations without any limitation.**
 
 
-## Our Mission: Build for Web3
+## Our Mission: Metaverse prototype for Community
 + Textverse is **Public goods** for Community.
++ It is a prototype of Metaverse for Community to Explore something interesting.
 + Providing to plain users to join and play in **a very Easy Mode**: just **Typing on any screen**.
 + Mint NFTs to help players to **own their value and assets** in Web3.
-+ Build relations with the DAOs by **Tokens Exchange Stake**, they are **all the stake-holders of us**.
 + Textverse can **help any communities,DAOs** extend their story within a Text Metaverse.
 + Also, we build a series of tools and smart contracts to **solve the engineering problems**.
 + So the communities can **focus on** the Creative and Imaginations on their Metaverse. 
@@ -24,14 +24,14 @@
 + We build Public Goods for Web3 with **Interoperability and Composability**.
 + Textverse has **three parts**: 
 + **Open NFT Transfer Protocol** with series of Smart contract, maintained by the **Protocol DAO**.
-+ **Text Metaverse(Game) Engine** with Web3 TID for any communities, free to use, maintained by the real company.
++ **Text Metaverse Engine** with Web3 TID for any communities, free to use, maintained by Textverse team.
 + **DAO2DAO service mode**(D2D,we create this first？) with ReGenEconomics is our long time service.
 
-## Our Value: Text is Civilization.
-+ Literal is the basic and essence of the Human Civilization.
+## Our Value: Literal Words have Powers.
++ Literal is the natural ability and basic and essence of the Human Civilization.
 + We have Colorful world, good music, and pretty or handsome Stars.
-+ But we still need, the Power of Text, or Language Writing, the instinct of Express and Communication.
-+ So our mission is **Simple Text Records Power Imaginations**.
++ But we still need, the Power of Text, or Literal Writing, the instinct of Express and Communication.
++ So our value is **Release the Natural Ability to Create**.
 + Be the basement of the Metaverse Creation and Innovation. 
 
 ### Problems with current 
@@ -65,12 +65,14 @@
 + Yes, Transport your NFT to Metaverse with ONE **Standard** protocol and Play with it!
 + Basic progress:
 ```mermaid
-flowchart TDcat 
+flowchart TD 
    DAOs --> B[Google-Apply-Form] --> C[Check the Form] --> D[Gnerate JSON] 
    D --> E[(Run script)] --> F[Generate Docker] --> G[/Design the story/] --> H[Distribution run Docker,3 at least] 
-   H --> I[Load game test] --> J[Open for Community]
+   H --> I[Load Metaverse test] --> J[Open for Community]
 
 ```
++ Above graph is build by Markdown mermaid engine, maybe unvisible for gitbook.
++ <img src="static/graph-git.png" width="40%" height="40%">
 
 ### Protocol 7211
 + **Metaverse Registry**
@@ -98,6 +100,5 @@ flowchart TDcat
 + [Discord](https://discord.gg/BSqnVqZTgs)
 + [Twitter](https://twitter.com/jhfnetboy)
 + Business Cooperation: jhfnetboy#gmail.com
-+ [Our github](https://github.com/twinsant/ethos).
-+ [This page(Docs)](https://dao-sx.github.io/ethos/)
++ [Our github](https://github.com/textverse).
 + Merged from two projects of the two genesis founder:[jhfnetboy](https://github.com/jhfnetboy), into [twinsant](https://github.com/twinsant).
