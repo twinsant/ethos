@@ -53,7 +53,7 @@ This project extend [LPmud driver](https://www.fluffos.info/concepts/general/Mud
 * 5G/6G market shares
   * 202102: China Mobile 18%, China Telecom 29.3%, China Unicom 27.6%
   * 2022
-  * 2023
+  * 2023: 33.3%
   * 2024
   * 2025: 50% Tipping Point
 
