@@ -4,7 +4,7 @@
 
 A framework for building text metaverse together, based on LPmud driver and mudlibs.
 
-This project extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3 #MudOS #FluffOS
+This project extend [LPmud driver](https://www.fluffos.info/concepts/general/MudOSdriver.html) on [Ethereum](https://ethereum.org/en/). #Metaverse #Web3 #MudOS #FluffOS #AIGC #chatGPT
 
 ## Screenshots
 
@@ -59,6 +59,7 @@ This project extend [LPmud driver](https://www.fluffos.info/concepts/general/Mud
 
 ### 5. Variety (AIGC+UGC+PGC)
 
+* [ai.com](https://ai.com)
 * https://docs.loot.foundation/
 * Wizard Role
 * [LPC](https://www.fluffos.info/concepts/general/lpc.html) Editor
