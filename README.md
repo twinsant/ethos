@@ -24,6 +24,7 @@ This project extend [LPmud driver](https://www.fluffos.info/concepts/general/Mud
 ### 1. Identity (Blockchain NFT) 2022.1 ✅
 
 * [SIWE/EIP-4361](https://login.xyz/)
+* [Particle Auth](https://particle.network/auth-introduction.html)
 * ENS
   - [https://www.fluffos.info/concepts/general/socket_efuns.html](https://www.fluffos.info/concepts/general/socket_efuns.html)
 * [ENS Profile](https://medium.com/the-ethereum-name-service/step-by-step-guide-to-setting-an-nft-as-your-ens-profile-avatar-3562d39567fc)
