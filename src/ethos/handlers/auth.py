@@ -50,4 +50,4 @@ class MeHandler(BaseHandler):
             ret = json.dumps(data)
             self.write(ret)
         else:
-            self.set_status(404)
+            self.set_status(204)

@@ -1,11 +1,25 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
 textarea {
     resize: both;
     cursor: auto;
-    overflow: scroll;
-    min-width: 660px;
-    min-height: 380px;
-    max-width: 99.7vw;
-    max-height: 91.7vh;
+    overflow: auto;
+    width: 100%;
+    height: 380px;
+    min-width: 0;
+    min-height: 120px;
+    max-width: 100%;
+    max-height: calc(100dvh - 120px);
     white-space: pre;
     padding: 0.25rem;
     font-size: 14px;
@@ -26,9 +40,44 @@ div [disabled], div [disabled]:hover {
 
 #desktop {
     background-color: #018080;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 12px;
+    min-height: 0;
+    padding: 8px;
+    overflow: auto;
+}
+
+#desktop > .window {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 666px;
+    max-width: 100%;
+    min-width: 0;
+}
+
+#xterm {
+    height: min(430px, calc(100dvh - 80px));
+}
+
+#xterm .window-body {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#terminal {
+    height: 100%;
+    margin: 0;
 }
 
 .menu-bar {
+    flex-shrink: 0;
     background-color: silver;
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
 }
