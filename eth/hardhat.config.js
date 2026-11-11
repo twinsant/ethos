@@ -25,6 +25,8 @@ task("balance", "Prints an account's balance")
 task("deploy", "Deploy contract")
   .addParam("contract", "The contract name")
   .setAction(async (taskArgs, hre) => {
+    await hre.run("compile");
+
     // Deploy contract
     const name = taskArgs.contract;
 
@@ -38,11 +40,7 @@ task("deploy", "Deploy contract")
     const chainId = await (await hre.ethers.provider.getNetwork()).chainId;
     const root = hre.config.paths.root;
     const abiRoot = path.join(root, `../src/ethos/static/abi/${chainId}`)
-    try {
-      await fs.stat(abiRoot);
-    } catch (e) {
-      await fs.mkdir(abiRoot);
-    }
+    await fs.mkdir(abiRoot, { recursive: true });
 
     // Read abi data
     const buildFile = path.join(hre.config.paths.artifacts, `./contracts/${name}.sol/${name}.json`);
@@ -58,33 +56,44 @@ task("deploy", "Deploy contract")
     await fs.writeFile(abiFile, JSON.stringify(data))
   });
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+const networks = {
+  hardhat: {
+    chainId: 1337
+  },
+  localhost: {
+    url: process.env.LOCALHOST_RPC_URL || "http://127.0.0.1:8545"
+  }
+};
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- * read from env by process
- * const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
- */
-// const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
-const ALCHEMY_MUMBAI_API_URL = process.env.ALCHEMY_MUMBAI_API_URL;
+const normalizePrivateKey = (privateKey) =>
+  privateKey.startsWith("0x") ? privateKey : `0x${privateKey}`;
+
+if (process.env.INFURA_PROJECT_ID && process.env.ROPSTEN_PRIVATE_KEY) {
+  networks.ropsten = {
+    url: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+    accounts: [normalizePrivateKey(process.env.ROPSTEN_PRIVATE_KEY)]
+  };
+}
+
+const mumbaiPrivateKey =
+  process.env.MUMBAI_PRIVATE_KEY || process.env.ROPSTEN_PRIVATE_KEY;
+if (process.env.ALCHEMY_MUMBAI_API_URL && mumbaiPrivateKey) {
+  networks.Mumbai = {
+    url: process.env.ALCHEMY_MUMBAI_API_URL,
+    accounts: [normalizePrivateKey(mumbaiPrivateKey)]
+  };
+}
+
+const rinkebyPrivateKey =
+  process.env.METAMASK_RINKEBY_PRIVATE_KEY || process.env.ALCHEMY_PRIVATE_KEY;
+if (process.env.ALCHEMY_RINKEBY_API_URL && rinkebyPrivateKey) {
+  networks.rinkeby = {
+    url: process.env.ALCHEMY_RINKEBY_API_URL,
+    accounts: [normalizePrivateKey(rinkebyPrivateKey)]
+  };
+}
+
 module.exports = {
   solidity: "0.8.7",
-  networks: {
-    hardhat: {
-      chainId: 1337
-    },
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
-      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
-    },
-    Mumbai: {
-      url: `${ALCHEMY_MUMBAI_API_URL}`,
-      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
-    },
-    rinkeby: {
-      url: `${ALCHEMY_RINKEBY_API_URL}`,
-      accounts:[`${ALCHEMY_PRIVATE_KEY}`]
-    }
-  }
+  networks
 };

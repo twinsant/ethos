@@ -1,0 +1,481 @@
+---
+- name: Deploy EthOS production stack
+  hosts: "{{ ethos_hosts | default('app') }}"
+  gather_facts: false
+  become: true
+  vars:
+    ethos_repo: git@github.com:twinsant/ethos.git
+    ethos_path: /opt/ethos
+    ethos_user: ethos
+    ethos_group: ethos
+    ethos_conda: /root/miniconda3/bin/conda
+    ethos_supervisor_config_dir: /etc/supervisord.d
+    ethos_temp_dir: /tmp/ethos-deploy
+    ethos_dns_domain: twinsant.com
+    ethos_dns_subdomain: meta
+    ethos_domain: meta.twinsant.com
+    ethos_supervisor_config: "{{ ethos_supervisor_config_dir }}/ethos.ini"
+    ethos_requirements: "{{ ethos_temp_dir }}/requirements.txt"
+    ethos_env_file: "{{ ethos_temp_dir }}/production.env"
+    ethos_nginx_config: /etc/nginx/conf.d/meta.twinsant.com.conf
+
+  tasks:
+    - name: Check public IPv4 address
+      ansible.builtin.uri:
+        url: http://metadata.tencentyun.com/latest/meta-data/public-ipv4
+        return_content: true
+        status_code: 200
+        use_proxy: false
+      register: ethos_public_ip_response
+
+    - name: Store public IPv4 address
+      ansible.builtin.set_fact:
+        ethos_public_ip: "{{ ethos_public_ip_response.content | trim }}"
+
+    - name: Validate public IPv4 address
+      ansible.builtin.assert:
+        that:
+          - ethos_public_ip is match('^[0-9]{1,3}(\\.[0-9]{1,3}){3}$')
+
+    - name: Check required server commands
+      ansible.builtin.command: "{{ item }}"
+      loop:
+        - nginx -t
+        - supervisorctl pid
+        - /root/miniconda3/bin/conda --version
+        - git --version
+        - curl --version
+      changed_when: false
+
+    - name: Require an x86-64 Linux host for the bundled driver
+      ansible.builtin.command: uname -sm
+      register: ethos_platform
+      changed_when: false
+      failed_when: ethos_platform.stdout != 'Linux x86_64'
+
+    - name: Query existing meta DNS records
+      ansible.builtin.command:
+        argv:
+          - tccli
+          - dnspod
+          - DescribeRecordList
+          - --Domain
+          - "{{ ethos_dns_domain }}"
+          - --Subdomain
+          - "{{ ethos_dns_subdomain }}"
+          - --Limit
+          - "20"
+          - --Offset
+          - "0"
+          - --ErrorOnEmpty
+          - "no"
+      delegate_to: localhost
+      become: false
+      register: ethos_dns_a_query
+      changed_when: false
+
+    - name: Read existing meta DNS records
+      ansible.builtin.set_fact:
+        ethos_dns_records: >-
+          {{ ((ethos_dns_a_query.stdout | from_json).RecordList | default([], true))
+          | selectattr('Name', 'equalto', ethos_dns_subdomain) | list }}
+
+    - name: Reject conflicting or incomplete DNS records
+      ansible.builtin.assert:
+        that:
+          - ((ethos_dns_a_query.stdout | from_json).RecordCountInfo.TotalCount | int) <= 20
+          - ethos_dns_records | selectattr('Type', 'equalto', 'CNAME') | list | length == 0
+          - ethos_dns_records | selectattr('Type', 'equalto', 'AAAA') | list | length == 0
+          - ethos_dns_records | selectattr('Type', 'equalto', 'A') | rejectattr('Status', 'equalto', 'ENABLE') | list | length == 0
+        fail_msg: "Resolve conflicting CNAME/AAAA, disabled A records, or excess DNS records manually."
+
+    - name: Read existing meta A record values
+      ansible.builtin.set_fact:
+        ethos_dns_a_values: >-
+          {{ ethos_dns_records | selectattr('Type', 'equalto', 'A')
+          | map(attribute='Value') | unique | list }}
+
+    - name: Refuse to overwrite an existing meta A record
+      ansible.builtin.assert:
+        that:
+          - ethos_dns_a_values | length == 0 or ethos_dns_a_values == [ethos_public_ip]
+        fail_msg: >-
+          DNS meta.twinsant.com already points to {{ ethos_dns_a_values }} instead of
+          this host ({{ ethos_public_ip }}). Update DNS manually before deploying.
+
+    - name: Ensure EthOS system group exists
+      ansible.builtin.group:
+        name: "{{ ethos_group }}"
+        system: true
+
+    - name: Ensure EthOS service user exists
+      ansible.builtin.user:
+        name: "{{ ethos_user }}"
+        group: "{{ ethos_group }}"
+        home: /var/lib/ethos
+        create_home: true
+        shell: /sbin/nologin
+        system: true
+
+    - name: Checkout the deployed EthOS commit
+      ansible.builtin.git:
+        repo: "{{ ethos_repo }}"
+        dest: "{{ ethos_path }}"
+        version: "{{ ethos_commit }}"
+        update: true
+        recursive: false
+
+    - name: Initialize the FluffOS mudcore submodule
+      ansible.builtin.command:
+        argv:
+          - git
+          - submodule
+          - update
+          - --init
+          - --
+          - lib/mudcore
+      args:
+        chdir: "{{ ethos_path }}"
+      register: ethos_submodule_update
+      changed_when: "'already exists' not in ethos_submodule_update.stdout"
+
+    - name: Set EthOS checkout ownership
+      ansible.builtin.file:
+        path: "{{ ethos_path }}/lib"
+        owner: root
+        group: "{{ ethos_group }}"
+        mode: "g+rwX"
+        recurse: true
+
+    - name: Ensure the Linux FluffOS driver is executable
+      ansible.builtin.file:
+        path: "{{ ethos_path }}/bin/driver.linux.x86_64"
+        owner: "{{ ethos_user }}"
+        group: "{{ ethos_group }}"
+        mode: "0750"
+
+    - name: Ensure the web launcher is executable
+      ansible.builtin.file:
+        path: "{{ ethos_path }}/ops/run-web.sh"
+        owner: "{{ ethos_user }}"
+        group: "{{ ethos_group }}"
+        mode: "0750"
+
+    - name: Ensure EthOS log directory exists
+      ansible.builtin.file:
+        path: /var/log/ethos
+        state: directory
+        owner: "{{ ethos_user }}"
+        group: "{{ ethos_group }}"
+        mode: "0750"
+
+    - name: Ensure EthOS configuration directory exists
+      ansible.builtin.file:
+        path: /etc/ethos
+        state: directory
+        owner: root
+        group: "{{ ethos_group }}"
+        mode: "0750"
+
+    - name: Install EthOS production environment
+      ansible.builtin.copy:
+        src: "{{ ethos_env_file }}"
+        dest: /etc/ethos/ethos.env
+        owner: root
+        group: "{{ ethos_group }}"
+        mode: "0640"
+      no_log: true
+
+    - name: Create FluffOS runtime log directory
+      ansible.builtin.file:
+        path: "{{ ethos_path }}/lib/log"
+        state: directory
+        owner: "{{ ethos_user }}"
+        group: "{{ ethos_group }}"
+        mode: "0750"
+
+    - name: Link the startup log path to the mudlib logs
+      ansible.builtin.file:
+        src: "{{ ethos_path }}/lib/log"
+        dest: "{{ ethos_path }}/log"
+        state: link
+
+    - name: Create the production chain ABI directory
+      ansible.builtin.file:
+        path: "{{ ethos_path }}/src/ethos/static/abi/{{ ethos_chain_id }}"
+        state: directory
+        mode: "0755"
+
+    - name: Install the production contract deployment files
+      ansible.builtin.copy:
+        src: "{{ ethos_abi_root }}/{{ ethos_chain_id }}/{{ item }}.json"
+        dest: "{{ ethos_path }}/src/ethos/static/abi/{{ ethos_chain_id }}/{{ item }}.json"
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - Player
+
+    - name: Check the server Conda installation
+      ansible.builtin.stat:
+        path: "{{ ethos_conda }}"
+      register: ethos_conda_binary
+
+    - name: Require the server Conda installation
+      ansible.builtin.assert:
+        that:
+          - ethos_conda_binary.stat.exists
+        fail_msg: "Python 3.10 runtime manager not found at {{ ethos_conda }}"
+
+    - name: Create an isolated Python 3.10 runtime for EthOS
+      ansible.builtin.command:
+        argv:
+          - "{{ ethos_conda }}"
+          - create
+          - --copy
+          - --yes
+          - --prefix
+          - "{{ ethos_path }}/.venv"
+          - python=3.10
+          - pip
+        creates: "{{ ethos_path }}/.venv/bin/python"
+
+    - name: Copy locked Python requirements to the server
+      ansible.builtin.copy:
+        src: "{{ ethos_requirements }}"
+        dest: /etc/ethos/requirements.txt
+        owner: root
+        group: root
+        mode: "0600"
+
+    - name: Install locked EthOS Python dependencies
+      ansible.builtin.command:
+        argv:
+          - "{{ ethos_path }}/.venv/bin/pip"
+          - install
+          - --disable-pip-version-check
+          - --requirement
+          - /etc/ethos/requirements.txt
+      register: ethos_pip_install
+      changed_when: "'Successfully installed' in ethos_pip_install.stdout"
+
+    - name: Verify the remote RPC and contracts as the service user
+      ansible.builtin.shell: |
+        set -e
+        set -a
+        source /etc/ethos/ethos.env
+        set +a
+        "{{ ethos_path }}/.venv/bin/python" "{{ ethos_path }}/ops/check-contracts.py" \
+          "{{ ethos_path }}/src/ethos/static/abi"
+      args:
+        executable: /bin/bash
+      become_user: "{{ ethos_user }}"
+      changed_when: false
+      register: ethos_remote_chain
+
+    - name: Require the remote RPC chain to match the release
+      ansible.builtin.assert:
+        that:
+          - ethos_remote_chain.stdout | trim == ethos_chain_id | string
+
+    - name: Install the EthOS Supervisor programs
+      ansible.builtin.copy:
+        src: "{{ ethos_local_root }}/ops/supervisor/ethos.ini"
+        dest: "{{ ethos_supervisor_config }}"
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Reload Supervisor configuration
+      ansible.builtin.command: supervisorctl reread
+      register: ethos_supervisor_reread
+      changed_when: "'available' in ethos_supervisor_reread.stdout or 'changed' in ethos_supervisor_reread.stdout"
+
+    - name: Apply Supervisor configuration
+      ansible.builtin.command: supervisorctl update ethos-driver ethos-web
+      register: ethos_supervisor_update
+      changed_when: "'ethos' in ethos_supervisor_update.stdout"
+
+    - name: Ensure FluffOS and Tornado programs are running
+      ansible.builtin.command: supervisorctl restart ethos-driver ethos-web
+      register: ethos_supervisor_restart
+      changed_when: true
+
+    - name: Check EthOS Supervisor status
+      ansible.builtin.command: supervisorctl status ethos-driver ethos-web
+      register: ethos_supervisor_status
+      changed_when: false
+
+    - name: Require both EthOS Supervisor programs to be running
+      ansible.builtin.assert:
+        that:
+          - ethos_supervisor_status.stdout_lines | length == 2
+          - ethos_supervisor_status.stdout_lines | select('search', 'RUNNING') | list | length == 2
+
+    - name: Check the local EthOS unauthenticated health endpoint
+      ansible.builtin.uri:
+        url: http://127.0.0.1:4003/api/me
+        status_code: 204
+      register: ethos_health
+      retries: 12
+      delay: 5
+      until: ethos_health.status == 204
+
+    - name: Wait for the private FluffOS WebSocket port
+      ansible.builtin.wait_for:
+        host: 127.0.0.1
+        port: 4001
+        timeout: 30
+
+    - name: Ensure the shared Nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+
+    - name: Ensure Nginx TLS directory exists
+      ansible.builtin.file:
+        path: /etc/nginx/ssl
+        state: directory
+
+    - name: Inspect existing EthOS TLS and virtual host files
+      ansible.builtin.stat:
+        path: "{{ item }}"
+      loop:
+        - /etc/nginx/ssl/meta.twinsant.com.crt
+        - /etc/nginx/ssl/meta.twinsant.com.key
+        - "{{ ethos_nginx_config }}"
+      register: ethos_nginx_files
+
+    - name: Refuse symlinks or non-files at managed Nginx paths
+      ansible.builtin.assert:
+        that:
+          - not item.stat.exists or (item.stat.isreg | default(false))
+      loop: "{{ ethos_nginx_files.results }}"
+
+    - name: Keep existing EthOS Nginx files in memory for rollback
+      ansible.builtin.slurp:
+        src: "{{ item.item }}"
+      loop: "{{ ethos_nginx_files.results }}"
+      when: item.stat.exists
+      register: ethos_nginx_previous
+      no_log: true
+
+    - name: Activate only the EthOS virtual host and certificate
+      block:
+        - name: Install the issued TLS certificate
+          ansible.builtin.copy:
+            src: "{{ ethos_temp_dir }}/certificate/server.crt"
+            dest: /etc/nginx/ssl/meta.twinsant.com.crt
+            owner: root
+            group: root
+            mode: "0644"
+
+        - name: Install the TLS private key
+          ansible.builtin.copy:
+            src: "{{ ethos_temp_dir }}/certificate/server.key"
+            dest: /etc/nginx/ssl/meta.twinsant.com.key
+            owner: root
+            group: root
+            mode: "0600"
+          no_log: true
+
+        - name: Install the EthOS Nginx virtual host
+          ansible.builtin.template:
+            src: "{{ ethos_local_root }}/ops/nginx/meta.twinsant.com.conf.template"
+            dest: "{{ ethos_nginx_config }}"
+            owner: root
+            group: root
+            mode: "0644"
+
+        - name: Validate all Nginx configuration before reload
+          ansible.builtin.command: nginx -t
+          changed_when: false
+
+        - name: Reload Nginx without restarting shared sites
+          ansible.builtin.service:
+            name: nginx
+            state: reloaded
+
+        - name: Check the local HTTPS virtual host
+          ansible.builtin.command:
+            argv:
+              - curl
+              - --resolve
+              - "{{ ethos_domain }}:443:127.0.0.1"
+              - --silent
+              - --show-error
+              - --fail
+              - --output
+              - /dev/null
+              - --write-out
+              - "%{http_code}"
+              - "https://{{ ethos_domain }}/"
+          register: ethos_https_health
+          changed_when: false
+          retries: 6
+          delay: 5
+          until: ethos_https_health.stdout == '200'
+
+      rescue:
+        - name: Restore previously existing EthOS Nginx files
+          ansible.builtin.copy:
+            content: "{{ item.content | b64decode }}"
+            dest: "{{ item.item.item }}"
+            owner: "{{ item.item.stat.uid }}"
+            group: "{{ item.item.stat.gid }}"
+            mode: "{{ item.item.stat.mode }}"
+          loop: "{{ ethos_nginx_previous.results }}"
+          when: item.content is defined
+          no_log: true
+
+        - name: Remove EthOS Nginx files that did not exist before deployment
+          ansible.builtin.file:
+            path: "{{ item.item }}"
+            state: absent
+          loop: "{{ ethos_nginx_files.results }}"
+          when: not item.stat.exists
+
+        - name: Validate restored Nginx configuration
+          ansible.builtin.command: nginx -t
+          changed_when: false
+
+        - name: Reload the restored Nginx configuration
+          ansible.builtin.service:
+            name: nginx
+            state: reloaded
+
+        - name: Report the failed EthOS TLS activation
+          ansible.builtin.fail:
+            msg: "EthOS TLS activation failed; previous Nginx files were restored. See the failed task above."
+
+    - name: Create meta A record after health checks pass
+      ansible.builtin.command:
+        argv:
+          - tccli
+          - dnspod
+          - CreateRecord
+          - --Domain
+          - "{{ ethos_dns_domain }}"
+          - --SubDomain
+          - "{{ ethos_dns_subdomain }}"
+          - --RecordType
+          - A
+          - --RecordLineId
+          - "0"
+          - --RecordLine
+          - 默认
+          - --Value
+          - "{{ ethos_public_ip }}"
+          - --TTL
+          - "600"
+      delegate_to: localhost
+      become: false
+      when: ethos_dns_a_values | length == 0
+
+    - name: Show deployment result
+      ansible.builtin.debug:
+        msg:
+          - "EthOS deployed at https://{{ ethos_domain }}"
+          - "Supervisor status: {{ ethos_supervisor_status.stdout_lines }}"
+          - "HTTPS status: HTTP {{ ethos_https_health.stdout }}"
+          - "Health check: HTTP {{ ethos_health.status }}"

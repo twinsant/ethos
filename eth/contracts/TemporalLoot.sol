@@ -1527,6 +1527,7 @@ contract TemporalLoot is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     function tokenURI(uint256 tokenId) override public view returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
         string[17] memory parts;
         parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" /><text x="10" y="20" class="base">';
 

@@ -1,5 +1,11 @@
 *.sh
+!ops/*.sh
 .env
+ops/production.env
+ops/abi/
+.venv/
+**/__pycache__/
 src/ethos/static/abi/1337/
 lib/log
+/log
 node_modules/

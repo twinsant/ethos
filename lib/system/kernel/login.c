@@ -58,10 +58,12 @@ void get_did(string arg)
         user->set("id", did);
         user->set("name", name);
         user->set("nameClaimed", nameClaimed);
-        user->set("cookie", cookie);
         user->set("address", address);
     }
 
+    user->set("cookie", cookie);
+    user->set("name", name);
+    user->set("nameClaimed", nameClaimed);
     exec(user, logon);
     user->set_temp("logon", logon);
 

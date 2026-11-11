@@ -2,11 +2,14 @@
 pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "hardhat/console.sol";
 
 contract Player is Ownable {
-  mapping (address => string) public names; // TODO: handle case later
+  mapping (address => string) public names;
   mapping (string => address) public whois;
+  address public pendingOwner;
+  event NameClaimed(address indexed player, string name);
+  event Withdrawal(address indexed owner, uint256 amount);
+  event OwnershipTransferStarted(address indexed owner, address indexed pendingOwner);
   
   constructor() {
   }
@@ -28,16 +31,25 @@ contract Player is Ownable {
 
   function claim(string memory name)
     public payable {
-    require(msg.value >= 0.01 ether, "0.01 Ethers needed.");
-    require(!_hashCompareWithLengthCheck(name, ""), "Empty string not allowed.");
-    // TODO: check not allowed chars
+    require(msg.value == 0.01 ether, "Exact 0.01 ETH required.");
+    bytes memory nameBytes = bytes(name);
+    require(nameBytes.length > 0 && nameBytes.length <= 32, "Invalid name length.");
+    for (uint256 i = 0; i < nameBytes.length; i++) {
+        bytes1 character = nameBytes[i];
+        require(
+            (character >= 0x61 && character <= 0x7a) ||
+            (character >= 0x30 && character <= 0x39) ||
+            character == 0x5f,
+            "Invalid name character."
+        );
+    }
 
     if (whois[name] != address(0) && whois[name] != msg.sender) {
         revert("Name taken.");
     }
 
     if (!_hashCompareWithLengthCheck("", names[msg.sender]) && _hashCompareWithLengthCheck(name, names[msg.sender])) {
-        return;
+        revert("Name already claimed.");
     }
 
     if (!_hashCompareWithLengthCheck("", names[msg.sender]) && whois[names[msg.sender]] != address(0)) {
@@ -46,7 +58,24 @@ contract Player is Ownable {
      
     whois[name] = msg.sender;
     names[msg.sender] = name;
+    emit NameClaimed(msg.sender, name);
   }
+
+    function renounceOwnership() public pure override {
+        revert("Ownership cannot be renounced.");
+    }
+
+    function transferOwnership(address newOwner) public override onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        pendingOwner = newOwner;
+        emit OwnershipTransferStarted(owner(), newOwner);
+    }
+
+    function acceptOwnership() public {
+        require(msg.sender == pendingOwner, "Not pending owner.");
+        delete pendingOwner;
+        _transferOwnership(msg.sender);
+    }
 
     function withdraw() public onlyOwner {
         // get the amount of Ether stored in this contract
@@ -57,6 +86,7 @@ contract Player is Ownable {
         // Owner can receive Ether since the address of owner is payable
         (bool success, ) = owner().call{value: amount}("");
         require(success, "Failed to send Ether");
+        emit Withdrawal(owner(), amount);
     }
 }
 

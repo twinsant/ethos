@@ -19,49 +19,49 @@ class MLoot:
             self.idx = -1
 
     def getHead(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getHead(self.idx)
         else:
             return None
 
     def getNeck(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getNeck(self.idx)
         else:
             return None
 
     def getChest(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getChest(self.idx)
         else:
             return None
 
     def getWaist(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getWaist(self.idx)
         else:
             return None
 
     def getFoot(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getFoot(self.idx)
         else:
             return None
 
     def getWeapon(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getWeapon(self.idx)
         else:
             return None
 
     def getHand(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getHand(self.idx)
         else:
             return None
 
     def getRing(self):
-        if self.idx > 0:
+        if self.idx >= 0:
             return contract.getRing(self.idx)
         else:
             return None

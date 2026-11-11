@@ -18,6 +18,7 @@ void receive_data(int fd, mixed result)
         result = json_decode(trim(result[n..]));
     }
 
+    map_delete(status, fd);
     socket_close(fd);
 }
 
@@ -29,6 +30,7 @@ void receive_callback(int fd, mixed result, string addr)
 void socket_shutdown(int fd)
 {
     debug_message(sprintf("shutdown %d", fd));
+    map_delete(status, fd);
     socket_close(fd);
 }
 
@@ -43,9 +45,12 @@ void slack(string message)
     // mapping db;
     string cookie;
 
-    status[fd] = ([]);
-
     fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
+    if (fd < 0) {
+        write("Failed to create notification socket.\n");
+        return;
+    }
+    status[fd] = ([]);
 
     data = ([
         "message": message
@@ -59,5 +64,9 @@ void slack(string message)
     cookie = player->query("cookie", 1);
     status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\n" + "Cookie: " + cookie + "\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
 
-    socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data");
+    if (socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data") != 1) {
+        write("Failed to connect to notification service.\n");
+        map_delete(status, fd);
+        socket_close(fd);
+    }
 }

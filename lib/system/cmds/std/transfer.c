@@ -20,7 +20,7 @@ int main(object me, string arg)
     // TODO: use regex
     r = sscanf(arg, "%s %d", prefix, amount);
 
-    if (r==2 && prefix && strlen(prefix)>4 && amount) {
+    if (r==2 && prefix && strlen(prefix)>4 && amount > 0) {
         e = environment(me);
         someone = find_player_by_prefix(e, prefix);
         if (someone)
@@ -34,7 +34,7 @@ int main(object me, string arg)
             ]);
             write_cmd("Transfering...\n", "callback", transfer);
         }else{
-            write(sprintf("%s不在房间里\n", prefix));
+            write(sprintf("%s 不在房间里或地址前缀不唯一\n", prefix));
         }
     }else{
         return help(this_object());
@@ -47,7 +47,7 @@ int help(object me)
     write(@HELP
 命令 : transfer [someone] [amount]
 
-给someone（例如0xf39）转账amount数量的ETH.
+使用唯一的钱包地址前缀向房间内玩家转账 ETH。
 
 HELP );
     return 1;

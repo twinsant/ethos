@@ -1,0 +1,24 @@
+[project]
+name = "ethos-metaverse"
+version = "0.1.0"
+description = "A text-based metaverse prototype built on FluffOS and Ethereum"
+requires-python = ">=3.8,<3.11"
+dependencies = [
+    "eth-typing>=2,<3",
+    "requests",
+    "siwe==1.0.1",
+    "setuptools<81",
+    "tornado",
+    "web3>=5.31.4,<6",
+]
+
+[dependency-groups]
+dev = [
+    "coverage==6.2",
+    "pytest==6.2.5",
+]
+
+[tool.uv]
+package = false
+# Web3.py 5 pins ipfshttpclient to its only available 0.8 release, an alpha.
+prerelease = "if-necessary"

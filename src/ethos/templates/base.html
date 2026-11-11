@@ -4,6 +4,10 @@
     <head>
         <title>EthOS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self' 'nonce-{{ csp_nonce }}'; font-src 'self' unpkg.com; connect-src 'self' {{ socket_origin }} https://*.walletconnect.org wss://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
+        />
         <link href="{{ static_url('css/tailwind.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ static_url('css/98.css') }}" />
         <link rel="stylesheet" href="{{ static_url('jquery-ui-1.13.1/jquery-ui.min.css') }}" />
@@ -23,10 +27,6 @@
         <script src="{{ static_url('js/xterm-addon-unicode11.min.js')}}"></script>
         <script src="{{ static_url('js/ethers-5.2.umd.min.js')}}"></script>
         <script src="{{ static_url('js/contracts.js')}}"></script>
-        <meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' cdn-cors.ethers.io cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' unpkg.com; connect-src 'self' wss://echo.websocket.events ws://127.0.0.1:4003 wss://*.walletconnect.org https://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
-        />
     </head>
 
     <body class="h-screen w-screen flex flex-col">
@@ -119,31 +119,47 @@
                 class="clock justify-end px-2 items-center flex m-1 cursor-default select-none"
             ></div>
         </div>
-        <script>
+        <script nonce="{{ csp_nonce }}">
             // Web3
             // On hardhat network
             // c = loadContract("0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0", "Greeter")
             // await c.greet()
             // 
-            // c = loadContract("0x5FC8d32690cc91D4c39d9d3abcBD16989F875707", "TemporalLoot")
-            // await c.claim(1)
-            //
             // c =  loadContract("0x610178dA211FEF7D417bC0e6FeD39F05609AD788", "PaidGreeter")
             // await c.setGreeting("Paid", overrides={value: _ethers.utils.parseEther("0.01")})
             function getOverrides(value) {
                 return {value: _ethers.utils.parseEther(`${value}`)};
             }
-            async function loadContract(contractName) {
+            async function getAuthorizedWallet() {
                 if (!window.ethereum) {
-                    throw new Error('MetaMask is required to load a contract.');
+                    throw new Error('MetaMask is required.');
                 }
+                const response = await fetch('/api/me', {credentials: 'include'});
+                if (!response.ok || response.status === 204) {
+                    throw new Error('Please sign in again.');
+                }
+                const session = await response.json();
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
-                let network = await provider.getNetwork();
+                const network = await provider.getNetwork();
+                const signer = provider.getSigner();
+                const address = await signer.getAddress();
+                if (String(network.chainId) !== String(session.chainId) ||
+                    address.toLowerCase() !== session.address.toLowerCase()) {
+                    throw new Error('Wallet account or network differs from the signed-in session.');
+                }
+                return {provider, signer, network, address};
+            }
+
+            async function loadContract(contractName) {
+                const {signer, network} = await getAuthorizedWallet();
                 const ms = Date.now();
                 const r = await fetch(`/static/abi/${network.chainId}/${contractName}.json?dummy=${ms}`);
+                if (!r.ok) {
+                    throw new Error('Contract configuration is unavailable for this network.');
+                }
                 let j = await r.json();
                 let abi = j['abi'];
-                let contract = new ethers.Contract(j['address'], abi, provider.getSigner());
+                let contract = new ethers.Contract(j['address'], abi, signer);
                 return contract;
             }
 
@@ -159,20 +175,27 @@
             var ws;
 
             async function _onmessage(message) {
+                    try {
                         var ret = JSON.parse(message.data);
                         if (ret.callback) {
                             switch (ret.callback.cmd) {
                                 case "transfer":
+                                    const wallet = await getAuthorizedWallet();
+                                    const recipient = ethers.utils.getAddress(ret.callback.address);
+                                    if (!window.confirm(`Send ${ret.callback.amount} ETH to ${recipient} on chain ${wallet.network.chainId}?`)) {
+                                        break;
+                                    }
+                                    await getAuthorizedWallet();
                                     let wei = _ethers.utils.parseEther(`${ret.callback.amount}`).toHexString();
                                     const transactionParameters = {
-                                        to: ret.callback.address, // Required except during contract publications.
-                                        from: ethereum.selectedAddress, // must match user's active address.
-                                        value: wei, // Only required to send ether to the recipient from the initiating external account.
+                                        to: recipient,
+                                        from: wallet.address,
+                                        value: wei,
                                     };
 
                                     // txHash is a hex string
                                     // As with any RPC call, it may throw an error
-                                    ethereum.request({
+                                    await ethereum.request({
                                         method: 'eth_sendTransaction',
                                         params: [transactionParameters],
                                     });
@@ -181,7 +204,9 @@
                                 case "name":
                                     let name = ret.callback.name
                                     let c = await loadContract("Player");
-                                    await c.claim(name, overrides={value: _ethers.utils.parseEther("0.01")})
+                                    await getAuthorizedWallet();
+                                    const tx = await c.claim(name, {value: _ethers.utils.parseEther("0.01")});
+                                    await tx.wait();
                                     ws.send('renamed\r\n');
                                     break;
                                 case "save":
@@ -196,12 +221,17 @@
 
                         }
                         term.write(ret.message + '> ');
+                    } catch (error) {
+                        console.error(error);
+                        term.write('\r\nUnable to process the request. Please check your wallet and network.\r\n');
+                    }
                     }
 
             function connectWs(term) {
                 if (ws == undefined) {
                     // Chrome will not accept ascii mode?
-                    ws = new WebSocket('ws://127.0.0.1:4003/ws');//, 'ascii');
+                    const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                    ws = new WebSocket(`${wsProtocol}//${window.location.host}/ws`);//, 'ascii');
 
                     // https://github.com/xtermjs/xterm.js/blob/a13f11adb4b04245684b24a5b33cbbc2351588d4/addons/xterm-addon-attach/src/AttachAddon.ts#L70
                     ws.onopen = function () {

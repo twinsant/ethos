@@ -1,61 +1,97 @@
 import json
+import time
+from datetime import datetime, timezone
+from urllib.parse import urlsplit
 
 import tornado.web
 from siwe import siwe
+
 import w3.player as player
 
 MYTOKEN = 'mytoken'
+NONCE_COOKIE = 'ethos_nonce'
+NONCE_TTL = 300
+SESSION_TTL = 12 * 60 * 60
+
 
 class BaseHandler(tornado.web.RequestHandler):
+    def prepare(self):
+        origin = self.request.headers.get('Origin')
+        if self.request.method not in ('GET', 'HEAD', 'OPTIONS') and origin and origin != self.settings['ethos_origin']:
+            raise tornado.web.HTTPError(403, 'Invalid request origin')
+        if self.request.path.startswith('/mudapi/') and self.request.method == 'POST':
+            if self.request.headers.get('Content-Type', '').split(';')[0] != 'application/json':
+                raise tornado.web.HTTPError(415)
+
+    def cookie_options(self):
+        return {
+            'httponly': True,
+            'secure': urlsplit(self.settings['ethos_origin']).scheme == 'https',
+            'samesite': 'Strict',
+        }
+
+    def require_origin(self):
+        if self.request.headers.get('Origin') != self.settings['ethos_origin']:
+            raise tornado.web.HTTPError(403, 'Invalid request origin')
+
     def get_current_user(self):
-        user_cookie = self.get_secure_cookie(MYTOKEN)
-        if user_cookie:
-            message = json.loads(user_cookie)
-            if self.validate_message(message):
-                name = player.contract.names(message['address'])
-                if name:
-                    message['name'] = name
-                    message['nameClaimed'] = 1
-                else:
-                    message['nameClaimed'] = 0
-                return message
-            else:
-                return None
-        return None
+        token = self.get_secure_cookie(MYTOKEN, max_age_days=SESSION_TTL / 86400)
+        if token:
+            token = token.decode('utf-8')
+        elif (
+            self.request.path.startswith('/mudapi/')
+            and self.request.remote_ip in ('127.0.0.1', '::1')
+            and not self.request.headers.get('Origin')
+        ):
+            token = self.settings['ethos_mud_tokens'].get(self.get_cookie('ethos_mud', ''))
+        if not token:
+            return None
+        session = self.settings['ethos_sessions'].get(token)
+        if not session:
+            return None
+        if session['expires'] <= time.time():
+            del self.settings['ethos_sessions'][token]
+            return None
+        user = dict(session['user'])
+        name = player.contract.names(user['address'])
+        if name:
+            user['name'] = name
+            user['nameClaimed'] = 1
+        else:
+            user['nameClaimed'] = 0
+        return user
 
-    def validate_message(self, message):
-        '''
-        {'domain': '127.0.0.1:4003',
-         'address': '0x464eE0FF90B7aC76d3ec8D2a25E6926DeCC88f6d',
-         'chainId': '1',
-         'uri': 'http://127.0.0.1:4003',
-         'version': '1',
-         'statement': 'EthOS',
-         'type': 'Personal signature',
-         'nonce': '...',
-         'issuedAt': '2022-01-24T02:32:10.239Z',
-         'signature': '...'
-         }
-        '''
-        ret = False
-        
-        if 'chainId' in message:
-            message['chain_id'] = message['chainId']
-            del message['chainId']
-        if 'issuedAt' in message:
-            message['issued_at'] = message['issuedAt']
-            del message['issuedAt']
-        FIELDS_CHECK = ['ens', 'domain', 'address', 'chainId', 'chain_id', 'uri', 'version', 'statement', 'type', 'nonce', 'issuedAt', 'issued_at', 'signature']
-        for k, v in message.items():
-            if k not in FIELDS_CHECK:
-                app_log.warn(f'Message filed invalid: {k}!')
-                return False
-        siwe_message = siwe.SiweMessage(message)
-        _signature = message['signature']
+    def validate_message(self, message, nonce):
+        if not isinstance(message, dict):
+            return None
+        fields = {
+            'domain', 'address', 'chainId', 'uri', 'version', 'statement',
+            'type', 'nonce', 'issuedAt', 'signature',
+        }
+        if set(message) - fields:
+            return None
         try:
-            siwe_message.validate(_signature)
-            ret = True
-        except siwe.ValidationError:
-            app_log.warn(f'Address { message["address"] } sign in failed.')
-
-        return ret
+            origin = self.settings['ethos_origin']
+            if (
+                message['domain'] != urlsplit(origin).netloc
+                or message['uri'] != origin
+                or message['version'] != '1'
+                or message['nonce'] != nonce
+                or int(message['chainId']) != player.contract.web3.eth.chainId
+            ):
+                return None
+            issued_at = datetime.fromisoformat(message['issuedAt'].replace('Z', '+00:00'))
+            if issued_at.tzinfo is None:
+                return None
+            age = (datetime.now(timezone.utc) - issued_at).total_seconds()
+            if age < -30 or age > NONCE_TTL:
+                return None
+            signed = dict(message)
+            signed['chain_id'] = signed.pop('chainId')
+            signed['issued_at'] = signed.pop('issuedAt')
+            signature = signed.pop('signature')
+            signed.pop('type', None)
+            siwe.SiweMessage(signed).validate(signature)
+            return {'address': signed['address'], 'chain_id': str(signed['chain_id'])}
+        except (KeyError, TypeError, ValueError, siwe.ValidationError):
+            return None

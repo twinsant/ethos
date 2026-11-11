@@ -21,15 +21,22 @@ object load_object(string filename)
 object find_player_by_prefix(object e, string prefix)
 {
     object *ai;
+    object match;
+    string address;
 
     if (prefix && strlen(prefix)>4) {
         ai = all_inventory(e);
         foreach(object i in ai) {
-            if (strsrch(i->query("name"), prefix)!=-1) {
-                return i;
+            address = i->query("address");
+            if (stringp(address) && strsrch(lower_case(address), lower_case(prefix)) == 0) {
+                if (match)
+                    return 0;
+                match = i;
             }
         }
+        return match;
     }
+    return 0;
 }
 
 object find_player_by_name(object e, string name)

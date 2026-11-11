@@ -1,6 +1,5 @@
 #define STREAM 1
 nosave mapping status = ([]);
-nosave object cmd_obj;
 
 void write_data(int fd)
 {
@@ -16,9 +15,10 @@ void receive_data(int fd, mixed result)
     if (n > 0)
     {
         data = json_decode(trim(result[n..]));
-        cmd_obj->on_data(data);
+        status[fd]["cmd"]->on_data(data, status[fd]["player"]);
     }
 
+    map_delete(status, fd);
     socket_close(fd);
 }
 
@@ -30,6 +30,7 @@ void receive_callback(int fd, mixed result, string addr)
 void socket_shutdown(int fd)
 {
     debug_message(sprintf("shutdown %d", fd));
+    map_delete(status, fd);
     socket_close(fd);
 }
 
@@ -44,10 +45,12 @@ void balance(object cmd)
     string cookie;
     object player;
 
-    cmd_obj = cmd;
-    status[fd] = ([]);
-
     fd = socket_create(STREAM, "receive_callback", "socket_shutdown");
+    if (fd < 0) {
+        write("Failed to create balance socket.\n");
+        return;
+    }
+    status[fd] = (["cmd": cmd, "player": this_player(0)]);
 
     data = ([
     ]);
@@ -60,5 +63,9 @@ void balance(object cmd)
     cookie = player->query("cookie", 1);
     status[fd]["http"] = "POST " + path + " HTTP/1.1\nHost: 127.0.0.1\nContent-Type: application/json\n" + "Cookie: " + cookie + "\nContent-Length: " + sizeof(string_encode(body, "utf-8")) + "\r\n\r\n" + body;
 
-    socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data");
+    if (socket_connect(fd, "127.0.0.1 4003", "receive_data", "write_data") != 1) {
+        write("Failed to connect to balance service.\n");
+        map_delete(status, fd);
+        socket_close(fd);
+    }
 }

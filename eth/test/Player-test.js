@@ -24,7 +24,7 @@ contract('Player', function ([ owner, other ]) {
   it('claim without ethers', async function () {
     await expectRevert(
       this.player.claim(this.alice, this.otherWithoutFee),
-      '0.01 Ethers needed.',
+      'Exact 0.01 ETH required.',
     );
   });
 
@@ -32,14 +32,14 @@ contract('Player', function ([ owner, other ]) {
     let wei = ethers.utils.parseEther('0.009').toHexString();
     await expectRevert(
       this.player.claim(this.alice, { from: other, value: wei}),
-      '0.01 Ethers needed.',
+      'Exact 0.01 ETH required.',
     );
   });
 
   it('claim with empty name', async function () {
     await expectRevert(
       this.player.claim("", this.otherWithFee),
-      'Empty string not allowed.',
+      'Invalid name length.',
     );
   });
 
@@ -66,11 +66,43 @@ contract('Player', function ([ owner, other ]) {
 
   it('claim same', async function () {
     await this.player.claim(this.alice, this.otherWithFee);
-    await this.player.claim(this.alice, this.otherWithFee);
+    await expectRevert(
+      this.player.claim(this.alice, this.otherWithFee),
+      'Name already claimed.',
+    );
     let whoami = await this.player.whoami(this.otherWithoutFee);
     let whois = await this.player.whois(this.alice, this.otherWithoutFee);
     assert.equal(whoami, this.alice);
     assert.equal(whois, other);
+  });
+
+  it('rejects overpayment', async function () {
+    await expectRevert(
+      this.player.claim(this.alice, { from: other, value: ethers.utils.parseEther('0.02').toHexString() }),
+      'Exact 0.01 ETH required.',
+    );
+  });
+
+  it('prevents renouncing ownership of the fee-collecting contract', async function () {
+    await expectRevert(this.player.renounceOwnership({ from: owner }), 'Ownership cannot be renounced.');
+  });
+
+  it('requires the new owner to accept ownership', async function () {
+    await this.player.transferOwnership(other, { from: owner });
+    assert.equal(await this.player.owner(), owner);
+    await expectRevert(this.player.acceptOwnership({ from: owner }), 'Not pending owner.');
+    await this.player.acceptOwnership({ from: other });
+    assert.equal(await this.player.owner(), other);
+    assert.equal(await this.player.pendingOwner(), ethers.constants.AddressZero);
+  });
+
+  it('accepts only lowercase ASCII names of at most 32 characters', async function () {
+    for (const name of ['Alice', 'alice bob', 'alice\x1b', 'alice.eth', 'a'.repeat(33)]) {
+      await expectRevert.unspecified(this.player.claim(name, this.otherWithFee));
+    }
+    const name = 'a_0' + 'b'.repeat(29);
+    await this.player.claim(name, this.otherWithFee);
+    assert.equal(await this.player.whois(name), other);
   });
 
   it('claim taken', async function () {
