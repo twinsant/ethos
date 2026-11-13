@@ -159,18 +159,21 @@ async function signIn(connector) {
         const provider = new ethers.providers.Web3Provider(wallet);
         const [address] = await provider.listAccounts();
         if (!address) throw new Error('Address not found.');
+        const network = await provider.getNetwork();
         let ens;
-        try {
-            ens = await provider.lookupAddress(address);
-        } catch (error) {
-            console.error('ENS lookup failed:', error);
+        if (network.ensAddress) {
+            try {
+                ens = await provider.lookupAddress(address);
+            } catch (error) {
+                console.error('ENS lookup failed:', error);
+            }
         }
         const nonceResponse = await fetch('/api/nonce', { credentials: 'include' });
         if (!nonceResponse.ok) throw new Error('Unable to obtain a sign-in nonce.');
         const message = new SiweMessage({
             domain: document.location.host,
             address,
-            chainId: `${(await provider.getNetwork()).chainId}`,
+            chainId: `${network.chainId}`,
             uri: document.location.origin,
             version: '1',
             statement: 'EthOS',
