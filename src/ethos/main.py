@@ -13,7 +13,7 @@ from tornado.log import app_log
 
 from slack import slack_message
 
-from handlers.base import BaseHandler, NONCE_COOKIE, NONCE_TTL
+from handlers.base import BaseHandler, NONCE_COOKIE, NONCE_TTL, player
 from handlers.auth import SigninHandler, SignoutHandler, MeHandler
 from handlers.w3 import CryptoHandler, BalanceHandler
 from handlers.mud import MudWebSocket, EchoWebSocket
@@ -22,7 +22,9 @@ class MainHandler(BaseHandler):
     def get(self):
         origin = urlsplit(self.settings['ethos_origin'])
         socket_origin = f'{"wss" if origin.scheme == "https" else "ws"}://{origin.netloc}'
-        self.render('index.html', csp_nonce=secrets.token_urlsafe(24), socket_origin=socket_origin)
+        self.render('index.html', csp_nonce=secrets.token_urlsafe(24), socket_origin=socket_origin,
+                    walletconnect_project_id=os.environ.get('WALLETCONNECT_PROJECT_ID', ''),
+                    walletconnect_chain_id=player.contract.chain_id)
 
 class NonceHandler(BaseHandler):
     def get(self):

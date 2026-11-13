@@ -23,6 +23,7 @@ class EthContract:
         self.web3 = Web3(Web3.HTTPProvider(endpoint))
         # web3 = Web3(Web3.IPCProvider("~/Library/Ethereum/geth.ipc"))
         chain_id = self.web3.eth.chainId
+        self.chain_id = chain_id
 
         fn = os.path.abspath(os.path.join(os.path.dirname(__file__), f'../static/abi/{chain_id}/{abi_name}.json'))
         with open(fn) as f:

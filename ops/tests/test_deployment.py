@@ -223,6 +223,7 @@ class RuntimeTests(unittest.TestCase):
             modules[module_name] = module
         modules["handlers.base"].NONCE_COOKIE = "ethos_nonce"
         modules["handlers.base"].NONCE_TTL = 300
+        modules["handlers.base"].player = types.SimpleNamespace()
         modules["slack"] = self.slack
         with patch.dict(sys.modules, modules), patch.dict(os.environ, {
             "ETHOS_COOKIE_SECRET": "production-test-secret",
@@ -247,11 +248,15 @@ class RuntimeTests(unittest.TestCase):
                 request=types.SimpleNamespace(host=host),
                 csp_nonce="test-nonce",
                 socket_origin=socket_origin,
+                walletconnect_project_id="test-project-id",
+                walletconnect_chain_id=1,
             ).decode()
             self.assertIn(socket_origin, html)
             self.assertIn("script-src 'self' 'nonce-test-nonce'", html)
             self.assertIn('<script nonce="test-nonce">', html)
             self.assertNotIn("connect-src 'self' ws: wss:", html)
+            self.assertIn('data-walletconnect-project-id="test-project-id"', html)
+            self.assertIn('data-walletconnect-chain-id="1"', html)
 
     def test_deploy_help_does_not_require_credentials(self):
         result = subprocess.run(["bash", str(ROOT / "ops/deploy.sh"), "--help"],

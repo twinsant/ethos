@@ -115,6 +115,17 @@ PYTHONPATH=src ENDPOINT=http://127.0.0.1:8545 \
 - 应用使用 Web3.py 5 时期的 API，`pyproject.toml` 将版本限制在兼容的 5.x 系列。
 - 应用启动时需要可访问的 Ethereum JSON-RPC 端点，以及已经部署的 `Player` 合约。如果 `src/ethos/static/abi/<chain-id>/` 下缺少 `Player.json`，服务将无法启动。
 
+WalletConnect 登录使用 V2 协议和官方中继。设置环境变量
+`WALLETCONNECT_PROJECT_ID` 为 [Reown 控制台](https://dashboard.reown.com/)的项目 ID，
+并在控制台将应用的访问源加入允许列表；未配置时 WalletConnect 登录会提示配置错误。
+修改浏览器端集成后，重新生成并提交打包文件：
+
+```sh
+cd src/ethos/static
+npm ci
+npm run build
+```
+
 ## 生产部署
 
 `ops/deploy.sh` 将 `main` 分支部署到现有的 `twinsant.com` 腾讯云主机，访问地址为 `https://meta.twinsant.com`。它分别为 FluffOS 和 Tornado 配置 Supervisor 服务，安装独立的 Nginx HTTPS/WebSocket 虚拟主机，并在缺失时创建 `meta.twinsant.com` 的 DNS A 记录。已有且指向其他地址的 A 记录不会被覆盖。
@@ -143,12 +154,13 @@ openssl rand -hex 32
 
 ```sh
 ENDPOINT='https://mainnet.infura.io/v3/YOUR_INFURA_API_KEY'
+WALLETCONNECT_PROJECT_ID='YOUR_PROJECT_ID'
 ETHOS_COOKIE_SECRET='PASTE_THE_GENERATED_RANDOM_SECRET_HERE'
 SLACK_SECRET=''
 SLACK_CHANNEL='twinsant-com'
 ```
 
-在本地替换 API Key，并将刚生成的随机字符串填入 `ETHOS_COOKIE_SECRET`。不要公开 API Key 和 Cookie 密钥；该环境文件已被 Git 忽略，部署时会复制到服务器的 `/etc/ethos/ethos.env`。Slack 是可选功能，`SLACK_SECRET` 为空时禁用。
+在本地替换 API Key 和 WalletConnect 项目 ID，并将刚生成的随机字符串填入 `ETHOS_COOKIE_SECRET`。不要公开 API Key 和 Cookie 密钥；该环境文件已被 Git 忽略，部署时会复制到服务器的 `/etc/ethos/ethos.env`。Slack 是可选功能，`SLACK_SECRET` 为空时禁用。
 
 如果先使用 **Sepolia 测试网**，将端点改为：
 

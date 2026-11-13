@@ -109,6 +109,18 @@ The secret must be at least 32 characters and kept private. For a different publ
 
 The desktop windows wrap on narrow screens and scroll inside the desktop, keeping the bottom taskbar visible. Drag windows by their title bars; the terminal automatically fits its container. MetaMask is required for its contract actions, but not for rendering the desktop.
 
+WalletConnect sign-in uses the V2 protocol and the official relay. Set
+`WALLETCONNECT_PROJECT_ID` to a project ID from the
+[Reown dashboard](https://dashboard.reown.com/), and allowlist the application's
+origin in the dashboard. Without it, WalletConnect sign-in reports a configuration
+error. After editing the browser integration, regenerate its checked-in bundle:
+
+```sh
+cd src/ethos/static
+npm ci
+npm run build
+```
+
 ### Current setup limitations
 
 - Remote Ropsten, Mumbai, and Rinkeby networks are optional and only added when their RPC URL and private key environment variables are set. The local Hardhat and `localhost` networks work without remote credentials.
@@ -130,7 +142,7 @@ Before deploying:
    openssl rand -hex 32
    ```
 
-   Set `ENDPOINT` to the production HTTP(S) JSON-RPC endpoint, use the generated value for `ETHOS_COOKIE_SECRET`, and optionally set `SLACK_SECRET`. This is a trusted shell environment file; quote values and restrict its permissions with `chmod 600 ops/production.env`.
+   Set `ENDPOINT` to the production HTTP(S) JSON-RPC endpoint, `WALLETCONNECT_PROJECT_ID` to your project ID, use the generated value for `ETHOS_COOKIE_SECRET`, and optionally set `SLACK_SECRET`. This is a trusted shell environment file; quote values and restrict its permissions with `chmod 600 ops/production.env`.
 4. Put `Player.json` under the ignored `ops/abi/<chain-id>/` directory, or set `ETHOS_ABI_DIR` to another directory containing `<chain-id>/`. The file must contain a nonempty `abi` array and its deployed `address`. It is explicitly copied to the server. Both controller and server verify the chain and deployed bytecode; development chains 1337 and 31337 are rejected. The script does not run Hardhat or deploy contracts, and the RPC must be reachable from both machines.
 5. Run `bash ops/deploy.sh` from the repository root. The script validates and privately stages Tencent Cloud certificate `bf3pwcJF` before applying server configuration. Set `ETHOS_CERTIFICATE_ID` to use another issued certificate. `bash ops/deploy.sh --help` lists the supported overrides.
 
@@ -150,6 +162,7 @@ In the Infura dashboard, select the intended network and copy its HTTPS RPC URL.
 
 ```sh
 ENDPOINT='https://mainnet.infura.io/v3/YOUR_INFURA_API_KEY'
+WALLETCONNECT_PROJECT_ID='YOUR_PROJECT_ID'
 ETHOS_COOKIE_SECRET='PASTE_THE_GENERATED_RANDOM_SECRET_HERE'
 SLACK_SECRET=''
 SLACK_CHANNEL='twinsant-com'

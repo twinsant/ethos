@@ -1,8 +1,19 @@
 {
+  "scripts": {
+    "build": "esbuild src/providers.js --bundle --minify --platform=browser --target=es2020 --outfile=js/bundle.js"
+  },
   "dependencies": {
+    "@walletconnect/ethereum-provider": "^2.26.0",
+    "ethers": "5.5.1",
+    "mousetrap": "^1.6.5",
+    "qrcode": "^1.5.4",
+    "siwe": "^1.1.6",
     "xterm": "^4.16.0",
     "xterm-addon-attach": "^0.6.0",
     "xterm-addon-fit": "^0.5.0",
     "xterm-addon-unicode11": "^0.3.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }

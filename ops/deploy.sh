@@ -46,6 +46,7 @@ set +a
 
 : "${ENDPOINT:?Set ENDPOINT in the production environment file}"
 : "${ETHOS_COOKIE_SECRET:?Set ETHOS_COOKIE_SECRET in the production environment file}"
+: "${WALLETCONNECT_PROJECT_ID:?Set WALLETCONNECT_PROJECT_ID in the production environment file}"
 if [[ ${#ETHOS_COOKIE_SECRET} -lt 32 || "$ETHOS_COOKIE_SECRET" == replace-* || "$ETHOS_COOKIE_SECRET" == __TODO:* ]]; then
     printf 'ETHOS_COOKIE_SECRET must be a non-placeholder secret of at least 32 characters.\n' >&2
     exit 1

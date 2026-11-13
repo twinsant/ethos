@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'nonce-{{ csp_nonce }}'; font-src 'self' unpkg.com; connect-src 'self' {{ socket_origin }} https://*.walletconnect.org wss://*.walletconnect.org https://*.infura.io; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
+            content="default-src 'self'; script-src 'self' 'nonce-{{ csp_nonce }}'; font-src 'self' unpkg.com; connect-src 'self' {{ socket_origin }} https://*.walletconnect.org wss://*.walletconnect.org https://*.walletconnect.com wss://*.walletconnect.com https://*.infura.io; frame-src 'self' https://verify.walletconnect.org https://verify.walletconnect.com; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
         />
         <link href="{{ static_url('css/tailwind.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ static_url('css/98.css') }}" />
@@ -29,14 +29,20 @@
         <script src="{{ static_url('js/contracts.js')}}"></script>
     </head>
 
-    <body class="h-screen w-screen flex flex-col">
+    <body class="h-screen w-screen flex flex-col" data-walletconnect-project-id="{{ walletconnect_project_id }}" data-walletconnect-chain-id="{{ walletconnect_chain_id }}">
+        <dialog id="walletconnect-dialog">
+            <p>Scan with your wallet, or open the link on your phone.</p>
+            <img id="walletconnect-qr" alt="WalletConnect pairing QR code" />
+            <p><a id="walletconnect-uri">Open wallet</a></p>
+            <button id="walletconnect-close" type="button">Cancel</button>
+        </dialog>
         <div class="w-full h-full" id="desktop">
             <div id="notepad-window" class="window inline-block select-none">
                 <div class="title-bar">
                     <div class="title-bar-text">
                         <div class="flex">
                             <img src="{{ static_url('img/favicon.png')}}" alt="Notepad icon" class="w-4 h-4 mr-1" />
-                            <p class="title">Untitled</p>
+                            <p class="title" id="title">Untitled</p>
                             &nbsp- Notepad&nbsp
                             <p id="unsaved"></p>
                         </div>
