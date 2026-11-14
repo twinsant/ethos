@@ -24,7 +24,8 @@ class MainHandler(BaseHandler):
         socket_origin = f'{"wss" if origin.scheme == "https" else "ws"}://{origin.netloc}'
         self.render('index.html', csp_nonce=secrets.token_urlsafe(24), socket_origin=socket_origin,
                     walletconnect_project_id=os.environ.get('WALLETCONNECT_PROJECT_ID', ''),
-                    walletconnect_chain_id=player.contract.chain_id)
+                    walletconnect_chain_id=player.contract.chain_id,
+                    ga_measurement_id=os.environ.get('GA_MEASUREMENT_ID', ''))
 
 class NonceHandler(BaseHandler):
     def get(self):

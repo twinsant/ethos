@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'nonce-{{ csp_nonce }}'; font-src 'self' unpkg.com; connect-src 'self' {{ socket_origin }} https://*.walletconnect.org wss://*.walletconnect.org https://*.walletconnect.com wss://*.walletconnect.com https://*.infura.io; frame-src 'self' https://verify.walletconnect.org https://verify.walletconnect.com; img-src 'self' data:; style-src 'self' 'unsafe-inline' unpkg.com;"
+            content="default-src 'self'; script-src 'self' 'nonce-{{ csp_nonce }}' https://www.googletagmanager.com; font-src 'self' unpkg.com; connect-src 'self' {{ socket_origin }} https://*.walletconnect.org wss://*.walletconnect.org https://*.walletconnect.com wss://*.walletconnect.com https://*.infura.io https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'self' https://verify.walletconnect.org https://verify.walletconnect.com; img-src 'self' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline' unpkg.com;"
         />
         <link href="{{ static_url('css/tailwind.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ static_url('css/98.css') }}" />
@@ -27,6 +27,40 @@
         <script src="{{ static_url('js/xterm-addon-unicode11.min.js')}}"></script>
         <script src="{{ static_url('js/ethers-5.2.umd.min.js')}}"></script>
         <script src="{{ static_url('js/contracts.js')}}"></script>
+        {% if ga_measurement_id %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+        <script nonce="{{ csp_nonce }}">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', '{{ ga_measurement_id }}');
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // 两种钱包登录入口各记一次，用来区分 Metamask 和 WalletConnect
+                ['metamask', 'walletconnect'].forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('click', function () {
+                            gtag('event', 'wallet_connect', { method: id });
+                        });
+                    }
+                });
+
+                // 终端真正渲染出 canvas 才算“进到游戏里”
+                var term = document.getElementById('terminal');
+                if (term) {
+                    var fired = false;
+                    var obs = new MutationObserver(function () {
+                        if (fired || !term.querySelector('canvas, .xterm-screen')) { return; }
+                        fired = true;
+                        gtag('event', 'terminal_open');
+                        obs.disconnect();
+                    });
+                    obs.observe(term, { childList: true, subtree: true });
+                }
+            });
+        </script>
+        {% endif %}
     </head>
 
     <body class="h-screen w-screen flex flex-col" data-walletconnect-project-id="{{ walletconnect_project_id }}" data-walletconnect-chain-id="{{ walletconnect_chain_id }}">
