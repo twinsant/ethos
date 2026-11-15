@@ -42,8 +42,8 @@ const bundle = build({
     }],
 }).then((result) => result.outputFiles[0].text);
 
-async function login(network, lookupError = false) {
-    const state = { network, lookupError, lookups: 0, errors: [] };
+async function setup(network, { lookupError = false, restored = false } = {}) {
+    const state = { network, lookupError, lookups: 0, errors: [], events: [] };
     const elements = new Map();
     const element = (id) => {
         if (!elements.has(id)) elements.set(id, {
@@ -62,27 +62,53 @@ async function login(network, lookupError = false) {
         getElementById: element,
         addEventListener(event, callback) { if (event === 'DOMContentLoaded') ready = callback; },
     };
-    const window = { ethereum: { request: async () => {} } };
+    const window = {
+        ethereum: { request: async () => {} },
+        dispatchEvent(event) { state.events.push(event.type); },
+    };
     const context = {
         document, window, testState: state,
+        Event: class { constructor(type) { this.type = type; } },
         console: { error: (...args) => state.errors.push(args) },
-        localStorage: { setItem() {} },
+        localStorage: { setItem() {}, getItem() { return null; }, removeItem() {} },
         fetch: async (url, options) => {
-            if (url === '/api/me') return { status: 204 };
+            if (url === '/api/me') return restored
+                ? { ok: true, json: async () => ({ address: '0x123' }) }
+                : { status: 204 };
             if (url === '/api/nonce') return { ok: true, text: async () => 'nonce' };
             if (url === '/api/sign_in') {
                 state.payload = JSON.parse(options.body);
                 return { ok: true, json: async () => ({ address: '0x123' }) };
             }
+            if (url === '/api/sign_out') return { ok: true };
             throw new Error(`Unexpected request: ${url}`);
         },
         alert(message) { throw new Error(message); },
     };
     vm.runInNewContext(await bundle, context);
     await ready();
+    return { state, element };
+}
+
+async function login(network, lookupError = false) {
+    const { state, element } = await setup(network, { lookupError });
     await element('metamask').listeners.click();
     return state;
 }
+
+test('notifies the terminal on sign-in, sign-out, and session restoration', async () => {
+    const { state, element } = await setup({ chainId: 1 });
+    assert.deepEqual(state.events, ['disconnectedState']);
+    await element('metamask').listeners.click();
+    assert.deepEqual(state.events, ['disconnectedState', 'connectedState']);
+    await element('disconnectButton').listeners.click();
+    assert.deepEqual(state.events, ['disconnectedState', 'connectedState', 'disconnectedState']);
+    await element('metamask').listeners.click();
+    assert.equal(state.events.at(-1), 'connectedState');
+
+    const restored = await setup({ chainId: 1 }, { restored: true });
+    assert.deepEqual(restored.state.events, ['connectedState']);
+});
 
 test('skips ENS lookup when the network has no ENS registry', async () => {
     const state = await login({ chainId: 11155111, name: 'unknown' });

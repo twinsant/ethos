@@ -52,6 +52,7 @@ function connectedState(text, address, ens) {
     if (text) element('notepad').value = text;
     blockSave();
     updateTitle(ens ?? address);
+    window.dispatchEvent(new Event('connectedState'));
 }
 
 function disconnectedState() {
@@ -61,6 +62,7 @@ function disconnectedState() {
     element('closeButton').setAttribute('disabled', 'disabled');
     element('saveButton').classList.add('hidden');
     element('disconnectButton').classList.add('hidden');
+    window.dispatchEvent(new Event('disconnectedState'));
 }
 
 async function initializeWalletConnect() {
