@@ -65,9 +65,11 @@
 
     <body class="h-screen w-screen flex flex-col" data-walletconnect-project-id="{{ walletconnect_project_id }}" data-walletconnect-chain-id="{{ walletconnect_chain_id }}">
         <dialog id="walletconnect-dialog">
-            <p>Scan with your wallet, or open the link on your phone.</p>
-            <img id="walletconnect-qr" alt="WalletConnect pairing QR code" />
-            <p><a id="walletconnect-uri">Open wallet</a></p>
+            <p id="walletconnect-progress" role="status"></p>
+            <div id="walletconnect-pairing" hidden>
+                <img id="walletconnect-qr" alt="WalletConnect pairing QR code" />
+                <p><a id="walletconnect-uri">Open wallet</a></p>
+            </div>
             <button id="walletconnect-close" type="button">Cancel</button>
         </dialog>
         <div class="w-full h-full" id="desktop">
@@ -111,6 +113,7 @@
                         WalletConnect
                     </div>
                 </div>
+                <p id="walletconnect-error" role="alert"></p>
                 <textarea
                     name="notepad"
                     id="notepad"

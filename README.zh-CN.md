@@ -118,6 +118,7 @@ PYTHONPATH=src ENDPOINT=http://127.0.0.1:8545 \
 WalletConnect 登录使用 V2 协议和官方中继。设置环境变量
 `WALLETCONNECT_PROJECT_ID` 为 [Reown 控制台](https://dashboard.reown.com/)的项目 ID，
 并在控制台将应用的访问源加入允许列表；未配置时 WalletConnect 登录会提示配置错误。
+如果显示二维码之前提示中继无响应，请切换网络重试，或使用 MetaMask 浏览器扩展登录。
 修改浏览器端集成后，重新生成并提交打包文件：
 
 ```sh

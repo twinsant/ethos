@@ -5,8 +5,11 @@ import QRCode from 'qrcode';
 import { SignatureType, SiweMessage } from 'siwe';
 
 let walletconnect;
+let walletConnectInitialization;
+let walletConnectPairingPending = false;
 let signingIn = false;
 const walletProviderKey = 'ethos-wallet-provider';
+const walletConnectCancelled = new Error('WalletConnect connection cancelled.');
 
 const element = (id) => document.getElementById(id);
 const updateTitle = (text) => { element('title').innerText = text; };
@@ -72,7 +75,7 @@ async function initializeWalletConnect() {
         throw new Error('WalletConnect is not configured. Contact the site administrator.');
     }
 
-    return EthereumProvider.init({
+    walletConnectInitialization ??= EthereumProvider.init({
         projectId,
         optionalChains: [chainId],
         showQrModal: false,
@@ -82,12 +85,24 @@ async function initializeWalletConnect() {
             url: window.location.origin,
             icons: [new URL('/static/img/favicon.png', window.location.origin).href],
         },
+    }).catch((error) => {
+        walletConnectInitialization = undefined;
+        throw error;
     });
+    return walletConnectInitialization;
 }
 
 async function connectWalletConnect() {
-    const provider = await initializeWalletConnect();
+    if (walletConnectPairingPending) {
+        throw new Error('The previous WalletConnect attempt is still closing. Wait a moment or reload the page.');
+    }
     const dialog = element('walletconnect-dialog');
+    const progress = element('walletconnect-progress');
+    const pairing = element('walletconnect-pairing');
+    progress.textContent = 'Connecting to the WalletConnect relay…';
+    pairing.hidden = true;
+    dialog.showModal();
+    let provider;
     let cancelled = false;
     let completed = false;
     let pairingTopic;
@@ -98,18 +113,25 @@ async function connectWalletConnect() {
         }
     };
     let cancelConnection;
+    let stopConnection;
     const cancellation = new Promise((_, reject) => {
-        cancelConnection = () => {
+        stopConnection = (error) => {
             if (completed || cancelled) return;
             cancelled = true;
             disconnectPairing();
-            reject(new Error('WalletConnect connection cancelled.'));
+            reject(error);
+        };
+        cancelConnection = (event) => {
+            event.preventDefault();
+            stopConnection(walletConnectCancelled);
         };
     });
-    dialog.addEventListener('close', cancelConnection);
     dialog.addEventListener('cancel', cancelConnection);
     element('walletconnect-close').addEventListener('click', cancelConnection);
-    provider.on('display_uri', async (uri) => {
+    const startupTimeout = setTimeout(() => {
+        stopConnection(new Error('WalletConnect relay did not respond. Check your network and try again, or use MetaMask.'));
+    }, 15000);
+    const displayUri = async (uri) => {
         try {
             const match = /^wc:([^@]+)@2(?:\?|$)/.exec(uri);
             if (!match) throw new Error('Invalid WalletConnect pairing URI.');
@@ -122,22 +144,35 @@ async function connectWalletConnect() {
             if (cancelled || completed) return;
             element('walletconnect-qr').src = qr;
             element('walletconnect-uri').href = uri;
-            if (!dialog.open) dialog.showModal();
+            pairing.hidden = false;
+            progress.textContent = 'Scan with your wallet, or open the link on your phone.';
+            clearTimeout(startupTimeout);
         } catch (error) {
-            console.error('Unable to display WalletConnect QR code:', error);
-            cancelConnection();
+            stopConnection(error);
         }
+    };
+    const connection = (async () => {
+        provider = await initializeWalletConnect();
+        if (cancelled) return;
+        provider.on('display_uri', displayUri);
+        walletConnectPairingPending = true;
+        try {
+            await provider.connect();
+            if (cancelled) await provider.disconnect();
+        } finally {
+            walletConnectPairingPending = false;
+            provider.removeListener('display_uri', displayUri);
+        }
+    })();
+    connection.catch((error) => {
+        if (cancelled) console.error('WalletConnect attempt ended after cancellation:', error);
     });
-    const connection = provider.connect();
-    connection.then(() => {
-        if (cancelled) provider.disconnect().catch(console.error);
-    }, () => {});
     try {
         await Promise.race([connection, cancellation]);
         completed = true;
         return provider;
     } finally {
-        dialog.removeEventListener('close', cancelConnection);
+        clearTimeout(startupTimeout);
         dialog.removeEventListener('cancel', cancelConnection);
         element('walletconnect-close').removeEventListener('click', cancelConnection);
         if (dialog.open) dialog.close();
@@ -147,6 +182,8 @@ async function connectWalletConnect() {
 async function signIn(connector) {
     if (signingIn) return;
     signingIn = true;
+    const walletError = element('walletconnect-error');
+    walletError.textContent = '';
     try {
         let wallet;
         if (connector === 'metamask') {
@@ -199,6 +236,7 @@ async function signIn(connector) {
             alert('Signed in, but wallet disconnection after a reload may not work.');
         }
     } catch (error) {
+        if (error === walletConnectCancelled) return;
         if (connector === 'walletconnect' && walletconnect?.session) {
             try {
                 await walletconnect.disconnect();
@@ -208,7 +246,9 @@ async function signIn(connector) {
             }
         }
         console.error('Sign-in failed:', error);
-        alert(error instanceof Error ? error.message : 'Sign-in failed.');
+        const message = error instanceof Error ? error.message : 'Sign-in failed.';
+        if (connector === 'walletconnect') walletError.textContent = message;
+        else alert(message);
     } finally {
         signingIn = false;
     }
@@ -247,7 +287,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     element('disconnectButton').addEventListener('click', signOut);
     element('metamask').addEventListener('click', () => signIn('metamask'));
     element('walletconnect').addEventListener('click', () => signIn('walletconnect'));
-    element('walletconnect-close').addEventListener('click', () => element('walletconnect-dialog').close());
     element('saveButton').addEventListener('click', save);
     element('notepad').addEventListener('input', enableSave);
     Mousetrap.bind('mod+s', save);

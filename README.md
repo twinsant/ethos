@@ -113,7 +113,9 @@ WalletConnect sign-in uses the V2 protocol and the official relay. Set
 `WALLETCONNECT_PROJECT_ID` to a project ID from the
 [Reown dashboard](https://dashboard.reown.com/), and allowlist the application's
 origin in the dashboard. Without it, WalletConnect sign-in reports a configuration
-error. After editing the browser integration, regenerate its checked-in bundle:
+error. If the relay does not respond before the QR code appears, try another
+network or sign in with the MetaMask extension instead. After editing the browser
+integration, regenerate its checked-in bundle:
 
 ```sh
 cd src/ethos/static
